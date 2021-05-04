@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/sounds">
-        <file>save.wav</file>
-    </qresource>
-</RCC>
