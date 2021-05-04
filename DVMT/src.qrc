@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>save.wav</file>
+    </qresource>
+    <qresource prefix="/imag">
+        <file>icon.png</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file>icon.ico</file>
+    </qresource>
+    <qresource prefix="/text">
+        <file>license.GPLv3</file>
+    </qresource>
+    <qresource prefix="/rc">
+        <file>icon.rc</file>
+    </qresource>
+</RCC>

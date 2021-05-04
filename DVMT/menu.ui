@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Menu</class>
+ <widget class="QWidget" name="Menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>732</width>
+    <height>553</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>菜单</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="src.qrc">
+    <normaloff>:/imag/icon.png</normaloff>:/imag/icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QToolTip{
+
+background-color:rgb(46, 52, 54);
+color: rgb(211, 215, 207);
+border:1px solid rgb(85, 87, 83);
+}
+
+QWidget{
+	background-color: rgb(85, 87, 83);
+}</string>
+  </property>
+  <widget class="QPushButton" name="newp">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>140</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Ctrl+N</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>新项目</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="open">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>180</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Ctrl+O</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>打开项目</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>220</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>保存项目</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sets">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>260</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>F2</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>项目设置</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="read">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>300</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Ctrl+R</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>读取波形</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="about">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>350</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Ctrl+A</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>关于DVMT</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
+ <connections/>
+</ui>
