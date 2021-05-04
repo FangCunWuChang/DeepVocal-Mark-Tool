@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Center</class>
+ <widget class="QWidget" name="Center">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>666</width>
+    <height>420</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>核心组件</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="src.qrc">
+    <normaloff>:/imag/icon.png</normaloff>:/imag/icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QToolTip{
+
+background-color:rgb(46, 52, 54);
+color: rgb(211, 215, 207);
+border:1px solid rgb(85, 87, 83);
+}
+
+
+
+QWidget{
+background-color: rgb(85, 87, 83);
+	color: rgb(238, 238, 236);
+}
+QScrollBar:vertical {
+        border: 1px solid grey;
+        background-color:rgb(136, 138, 133);
+        width: 20px;
+        margin: 0px 0 0px 0;
+    }
+    QScrollBar::handle:vertical {
+        border: 	1px solid grey;
+        border-radius: 7px;
+        background-color: rgb(85, 87, 83);
+        min-height: 60px;
+        margin: 0px 0px 0px 0px;
+    }
+    QScrollBar::add-line:vertical {
+        border: none;
+        background: rgb(85, 87, 83);
+        height: 0px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::sub-line:vertical {
+        border: none;
+background: rgb(85, 87, 83);
+        height: 0px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::add-page:vertical {
+        background-color: rgb(136, 138, 133);
+    }
+    QScrollBar::sub-page:vertical {
+        background-color:rgb(136, 138, 133);
+    }
+QScrollBar:vertical:disabled{
+        border: 1px solid rgb(238, 238, 236);
+        background-color:rgb(186, 189, 182);
+        width: 20px;
+        margin: 0px 0 0px 0;
+    }
+    QScrollBar::handle:vertical:disabled{
+        border: 	1px solid rgb(238, 238, 236);
+        border-radius: 7px;
+        background-color:rgb(186, 189, 182);
+        min-height: 60px;
+        margin: 0px 0px 0px 0px;
+    }
+    QScrollBar::add-line:vertical:disabled{
+        border: none;
+        background: rgb(85, 87, 83);
+        height: 0px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::sub-line:vertical:disabled{
+        border: none;
+background: rgb(85, 87, 83);
+        height: 0px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::add-page:vertical:disabled{
+        background-color:rgb(186, 189, 182);
+    }
+    QScrollBar::sub-page:vertical:disabled {
+        background-color:rgb(186, 189, 182);
+    }</string>
+  </property>
+  <widget class="QListWidget" name="list">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>131</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QListWidget{
+background-color: rgb(85, 87, 83);
+color: rgb(211, 215, 207);
+border:1px solid grey;
+}
+
+QListWidget::disabled{
+background-color: rgb(136, 138, 133);
+color: rgb(211, 215, 207);
+border:1px solid grey;
+}
+
+    
+</string>
+   </property>
+   <property name="uniformItemSizes">
+    <bool>false</bool>
+   </property>
+   <property name="selectionRectVisible">
+    <bool>false</bool>
+   </property>
+   <property name="currentRow">
+    <number>-1</number>
+   </property>
+  </widget>
+  <widget class="AuPlot" name="plot" native="true">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>100</y>
+     <width>120</width>
+     <height>80</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="menu">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Alt+M</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>菜单</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+M</string>
+   </property>
+  </widget>
+  <widget class="Menu" name="mt" native="true">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>140</y>
+     <width>120</width>
+     <height>80</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="lhb">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>40</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>&lt;&lt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="lsb">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>90</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>当前无符号</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sea">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>250</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>搜索</string>
+   </property>
+  </widget>
+  <widget class="Search" name="sear" native="true">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>40</y>
+     <width>120</width>
+     <height>80</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="Egg" name="egg" native="true">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>290</y>
+     <width>120</width>
+     <height>80</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="aw">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>340</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Alt+Z</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 134, 255);
+	border: 0px solid white;
+	border-radius:7px;
+}
+QPushButton:disabled{
+border:0px solid white;
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:7px;
+}
+QPushButton:pressed{
+	color: rgb(0, 134, 255);
+	background-color:  white;
+	border: 0px solid white;
+	border-radius:7px;
+}</string>
+   </property>
+   <property name="text">
+    <string>文件预测</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+Z</string>
+   </property>
+  </widget>
+  <widget class="AutoWav" name="aww" native="true">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>210</y>
+     <width>120</width>
+     <height>80</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>AuPlot</class>
+   <extends>QWidget</extends>
+   <header location="global">AuPlot/auplot.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Menu</class>
+   <extends>QWidget</extends>
+   <header location="global">menu.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Search</class>
+   <extends>QWidget</extends>
+   <header location="global">search.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Egg</class>
+   <extends>QWidget</extends>
+   <header location="global">egg.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AutoWav</class>
+   <extends>QWidget</extends>
+   <header location="global">autowav.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
+ <connections/>
+</ui>

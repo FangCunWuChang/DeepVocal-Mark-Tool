@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ToolButtons</class>
+ <widget class="QWidget" name="ToolButtons">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1190</width>
+    <height>66</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	
+	background-color: rgb(85, 87, 83);
+}
+QToolTip{
+
+background-color:rgb(46, 52, 54);
+color: rgb(211, 215, 207);
+border:1px solid rgb(85, 87, 83);
+}</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QPushButton" name="b1">
+     <property name="toolTip">
+      <string>Alt+E</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(238, 238, 236);
+	
+	color: rgb(237, 212, 0);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>短时能量</string>
+     </property>
+     <property name="shortcut">
+      <string>Alt+E</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b2">
+     <property name="toolTip">
+      <string>Alt+P</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(238, 238, 236);
+	
+	color: rgb(115, 210, 22);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>短时过零率</string>
+     </property>
+     <property name="shortcut">
+      <string>Alt+P</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b3">
+     <property name="toolTip">
+      <string>Alt+F</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color:rgb(238, 238, 236);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>频率分析</string>
+     </property>
+     <property name="shortcut">
+      <string>Alt+F</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b4">
+     <property name="toolTip">
+      <string>Alt+R</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+	color: rgb(46, 52, 54);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>重新分析</string>
+     </property>
+     <property name="shortcut">
+      <string>Alt+R</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b5">
+     <property name="toolTip">
+      <string>Alt+C</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+	color: rgb(46, 52, 54);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>清空缓存</string>
+     </property>
+     <property name="shortcut">
+      <string>Alt+C</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b6">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string>P</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(238, 238, 236);
+	
+	color: rgb(46, 52, 54);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>播放</string>
+     </property>
+     <property name="shortcut">
+      <string>P</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b7">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>Alt+A</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(238, 238, 236);
+	
+	color: rgb(46, 52, 54);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>自动切换</string>
+     </property>
+     <property name="shortcut">
+      <string>Alt+A</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b8">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>1</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(238, 238, 236);
+	
+	
+	color: rgb(114, 159, 207);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>一线</string>
+     </property>
+     <property name="shortcut">
+      <string>1</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b9">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>2</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(238, 238, 236);
+	
+	
+	color: rgb(252, 233, 79);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>二线</string>
+     </property>
+     <property name="shortcut">
+      <string>2</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b10">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>3</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(238, 238, 236);
+	
+	
+	color: rgb(173, 127, 168);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>三线</string>
+     </property>
+     <property name="shortcut">
+      <string>3</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b11">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>4</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(238, 238, 236);
+	
+	
+	color: rgb(138, 226, 52);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>四线</string>
+     </property>
+     <property name="shortcut">
+      <string>4</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="b12">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string>Return</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color: rgb(186, 189, 182);
+border-radius:2px;
+}
+QPushButton:disabled{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+background-color: rgb(85, 87, 83);
+color:  rgb(100,100,100);
+border-radius:2px;
+}
+QPushButton:checked{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(238, 238, 236);
+	
+	color: rgb(46, 52, 54);
+border-radius:2px;
+}
+QPushButton:hover{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+	background-color: rgb(136, 138, 133);
+
+
+border-radius:2px;
+}
+QPushButton:pressed{
+border: 1px solid black;
+border-color: rgb(46, 52, 54);
+color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-radius:2px;
+}</string>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+     <property name="shortcut">
+      <string>Return</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="autoDefault">
+      <bool>true</bool>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
