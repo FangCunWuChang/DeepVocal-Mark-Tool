@@ -4,6 +4,8 @@
     </qresource>
     <qresource prefix="/imag">
         <file>icon.png</file>
+        <file>Splash.png</file>
+        <file>Splash.psd</file>
     </qresource>
     <qresource prefix="/icon">
         <file>icon.ico</file>
@@ -13,5 +15,12 @@
     </qresource>
     <qresource prefix="/rc">
         <file>icon.rc</file>
+    </qresource>
+    <qresource prefix="/type">
+        <file>wqy-microhei.ttc</file>
+    </qresource>
+    <qresource prefix="/plugins">
+        <file>pluginsample1.dll</file>
+        <file>pluginsample2.dll</file>
     </qresource>
 </RCC>

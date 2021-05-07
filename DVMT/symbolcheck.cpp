@@ -20,13 +20,18 @@ QString Symbolcheck::error(QStringList in)
     QString out="正确";
     QStringList sltc1,sltc3,slts,slte,sltn,sltt;
     for(int i=0;i<in.size();i++){
-        if(in.at(i).at(0)=='#'){
-            in.removeAt(i);
+        QString slt=in.at(i);
+        int flags=slt.size();
+        if(slt.contains('#')){
+            flags=slt.indexOf('#');
         }
+        slt=slt.left(flags);
+        slt.remove(' ');
+        in.replace(i,slt);
     }
     for(int i=0;i<in.size();i++){
         if(!in.at(i).isEmpty()){
-            QStringList slt=in.at(i).split(",",QString::SkipEmptyParts);
+            QStringList slt=in.at(i).split(",",QString::KeepEmptyParts);
 
             if(!(slt.size()==1||slt.size()==3)){
                 out=QString::asprintf("(第%d条)句法有误：",i+1)+in.at(i);
@@ -210,13 +215,18 @@ QVector<CVVCSymbol> Symbolcheck::split(QStringList in)
     if(check(in)){
         QStringList symcl,sl,el,symvl,tl;
         for(int i=0;i<in.size();i++){
-            if(in.at(i).at(0)=='#'){
-                in.removeAt(i);
+            QString slt=in.at(i);
+            int flags=slt.size();
+            if(slt.contains('#')){
+                flags=slt.indexOf('#');
             }
+            slt=slt.left(flags);
+            slt.remove(' ');
+            in.replace(i,slt);
         }
         for(int i=0;i<in.size();i++){
             if(!in.at(i).isEmpty()){
-                QStringList slt=in.at(i).split(",",QString::SkipEmptyParts);
+                QStringList slt=in.at(i).split(",",QString::KeepEmptyParts);
                 if(slt.size()==3){
                     bool cfsymc=false;
                     for(int j=0;j<symcl.size();j++){

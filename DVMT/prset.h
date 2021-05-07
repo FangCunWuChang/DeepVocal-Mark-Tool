@@ -28,21 +28,13 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 private slots:
-    //void on_cancelbut_clicked();
-
     void on_dic_textChanged();
-
-    //void on_enterbut_clicked();
 
     void on_remove_clicked();
 
     void on_add_clicked();
 
     void on_flagm_clicked();
-
-    //void on_enterbut_toggled(bool checked);
-
-    //void on_cancelbut_toggled(bool checked);
 
 private:
     Ui::Prset *ui;

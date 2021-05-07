@@ -22,7 +22,7 @@ void Search::resizeEvent(QResizeEvent *event)
     ui->slist->move(0.20*width()+0.05*0.60*width(),0.2*height()+(0.033333)*3*0.60*height()+0.1*0.60*height());
     ui->push->move(0.20*width()+0.05*0.60*width(),0.2*height()+(0.033333)*0.60*height()+0.1*0.60*height());
     for(int i=0;i<ui->slist->count();i++){
-        ui->slist->item(i)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.05));
+        ui->slist->item(i)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.1));
     }
     repaint();
     QWidget::resizeEvent(event);
@@ -32,8 +32,7 @@ void Search::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.fillRect(0,0,width(),height(),QColor(211,215,207,0));
-    painter.fillRect(0.20*width(),0.20*height(),0.6*width(),0.6*height(),QColor(85,87,83));
-    //painter.fillRect(0.20*width(),0.20*height(),0.6*width(),0.6*height(),Qt::darkGray);
+    painter.fillRect(0.20*width(),0.20*height(),0.6*width(),0.6*height(),QColor(61,59,79));
     QWidget::paintEvent(event);
 }
 
@@ -64,7 +63,7 @@ void Search::setsymbols(QVector<CVVCSymbol> CSL)
             brush.setColor(QColor(255,255,0,70));
         }
         ui->slist->item(ui->slist->count()-1)->setBackground(brush);
-        ui->slist->item(ui->slist->count()-1)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.05));
+        ui->slist->item(ui->slist->count()-1)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.1));
     }
 }
 
@@ -85,9 +84,8 @@ void Search::on_line_textChanged(const QString &arg1)
                 brush.setColor(QColor(255,255,0,70));
             }
             ui->slist->item(ui->slist->count()-1)->setBackground(brush);
-            ui->slist->item(ui->slist->count()-1)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.05));
+            ui->slist->item(ui->slist->count()-1)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.1));
         }
-         //ui->slist->setCurrentRow(-1);
     }else{
         QVector<CVVCSymbol> CSLT;
         for(int i=0;i<CSL.size();i++){
@@ -109,9 +107,8 @@ void Search::on_line_textChanged(const QString &arg1)
                 brush.setColor(QColor(255,255,0,70));
             }
             ui->slist->item(ui->slist->count()-1)->setBackground(brush);
-            ui->slist->item(ui->slist->count()-1)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.05));
+            ui->slist->item(ui->slist->count()-1)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.1));
         }
-        //ui->slist->setCurrentRow(-1);
     }
 }
 

@@ -6,9 +6,8 @@ Prset::Prset(QWidget *parent) :
     ui(new Ui::Prset)
 {
     ui->setupUi(this);
-    //connect(ui->enterbut,&QPushButton::toggled,this,&Prset::on_enterbut_toggled,Qt::UniqueConnection);
-    //connect(ui->cancelbut,&QPushButton::toggled,this,&Prset::on_cancelbut_toggled,Qt::UniqueConnection);
     ui->la->hide();
+    fmd->setWindowFlags(Qt::Dialog|Qt::CustomizeWindowHint|Qt::WindowTitleHint|Qt::WindowCloseButtonHint);
 }
 
 Prset::~Prset()
@@ -22,7 +21,7 @@ void Prset::on_dic_textChanged()
 {
     QString data=ui->dic->toPlainText();
     if(!data.isEmpty()){
-        QStringList dl=data.split("\n",QString::SkipEmptyParts);
+        QStringList dl=data.split("\n",QString::KeepEmptyParts);
         QString error=Symbolcheck::error(dl);
         if(dl.size()>0){
             if(error=="正确"){
@@ -156,46 +155,6 @@ void Prset::on_flagm_clicked()
     }
 
 }
-/*
-void Prset::on_enterbut_toggled(bool checked)
-{
-    Q_UNUSED(checked);
-    if(canenter){
-        qDebug("Enter 0");
-        Project pro;
-        QString data=ui->dic->toPlainText();
-        if(!data.isEmpty()){
-            QStringList dl=data.split("\n",QString::SkipEmptyParts);
-            pro.setsymbols(dl);
-        }
-        qDebug("Enter 1");
-        QString ps=ui->P1->currentText()+ui->P2->currentText();
-        pro.setpitch(ps);
-        qDebug("Enter 2");
-        QStringList pl;
-        for(int i=0;i<ui->path->count();i++){
-            pl.append(ui->path->item(i)->text());
-        }
-        qDebug("Enter 3");
-        pro.setpaths(pl);
-        qDebug("Enter 4");
-        pro.setflags(Symbolcheck::split(pro.getsymbols()));
-        qDebug("Enter 5");
-        emit prochanged(pro,false);
-        qDebug("Enter 6");
-        this->pro=pro;
-        this->close();
-        qDebug("Enter 7");
-    }
-
-}
-
-void Prset::on_cancelbut_toggled(bool checked)
-{
-    Q_UNUSED(checked);
-    this->close();
-}
-*/
 
 void Prset::closeEvent(QCloseEvent *event)
 {
@@ -203,7 +162,7 @@ void Prset::closeEvent(QCloseEvent *event)
         Project pro;
         QString data=ui->dic->toPlainText();
         if(!data.isEmpty()){
-            QStringList dl=data.split("\n",QString::SkipEmptyParts);
+            QStringList dl=data.split("\n",QString::KeepEmptyParts);
             pro.setsymbols(dl);
         }
         QString ps=ui->P1->currentText()+ui->P2->currentText();
@@ -230,6 +189,11 @@ void Prset::closeEvent(QCloseEvent *event)
         }
 
     }else{
-        event->accept();
+        QMessageBox::StandardButton result = QMessageBox::warning(this,"警告！","项目字典中存在错误，你所做的任何更改都不会被保存，是否离开？",QMessageBox::StandardButtons(QMessageBox::Yes|QMessageBox::No),QMessageBox::No);
+        if(result==QMessageBox::Yes){
+          event->accept();
+        }else{
+            event->ignore();
+        }
     }
 }

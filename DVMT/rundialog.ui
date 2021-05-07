@@ -20,14 +20,14 @@
   <property name="styleSheet">
    <string notr="true">
 QWidget{
-background-color: rgb(85, 87, 83);
+background-color: rgb(61,59,79);
 	color: rgb(211, 215, 207);
 }
 QToolTip{
 
-background-color:rgb(46, 52, 54);
+background-color:rgb(61,59,79);
 color: rgb(211, 215, 207);
-border:1px solid rgb(85, 87, 83);
+border:1px solid rgb(61,59,79);
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -44,7 +44,7 @@ border:1px solid rgb(85, 87, 83);
    <item>
     <widget class="QProgressBar" name="num">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(85, 87, 83);
+      <string notr="true">background-color: rgb(61,59,79);
 color: rgb(211, 215, 207);
 border:none;</string>
      </property>

@@ -365,7 +365,6 @@ bool VCH::get(CVVCSymbol *symbol,QString path)
                 QJsonObject jo=jd.object();
                 QJsonObject jos=jo[symbol->pitch+"->"+symbol->name].toObject();
                 if(symbol->isCV>0){
-                    //qDebug("CV: %s %s %s",qPrintable(jos["srcType"].toString()),qPrintable(jos["pitch"].toString()),qPrintable(jos["symbol"].toString()));
                     if(jos["srcType"].toString()=="CV"&&jos["pitch"].toString()==symbol->pitch&&jos["symbol"].toString()==symbol->name){
                         QWaveInfo wave;
                         if(wave.ReadFile(path+"/"+jos["wavName"].toString())){
@@ -383,15 +382,12 @@ bool VCH::get(CVVCSymbol *symbol,QString path)
                             symbol->l4=(VEP*FS)/wavesize;
                             return true;
                         }else{
-                            //qDebug("gcserr wir");
                             return false;
                         }
                     }else{
-                        //qDebug("gcserr vcc");
                         return false;
                     }
                 }else if(symbol->isCV==0){
-                    //qDebug("VX: %s %s %s",qPrintable(jos["srcType"].toString()),qPrintable(jos["pitch"].toString()),qPrintable(jos["symbol"].toString()));
                     if(jos["srcType"].toString()=="VX"&&jos["pitch"].toString()==symbol->pitch&&jos["symbol"].toString()==symbol->name){
                         QWaveInfo wave;
                         if(wave.ReadFile(path+"/"+jos["wavName"].toString())){
@@ -412,7 +408,6 @@ bool VCH::get(CVVCSymbol *symbol,QString path)
                         return false;
                     }
                 }else{
-                    //qDebug("INDIE: %s %s %s",qPrintable(jos["srcType"].toString()),qPrintable(jos["pitch"].toString()),qPrintable(jos["symbol"].toString()));
                     if(jos["srcType"].toString()=="INDIE"&&jos["pitch"].toString()==symbol->pitch&&jos["symbol"].toString()==symbol->name){
                         QWaveInfo wave;
                         if(wave.ReadFile(path+"/"+jos["wavName"].toString())){
