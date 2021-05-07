@@ -15,7 +15,6 @@ void CopThread::run()
     bool yestoall=0;
     for(int i=0;i<slist.size();i++){
         emit percent((double)((double)i/(double)slist.size()));
-        //qDebug("percent%d 0",i);
         QCoreApplication::processEvents();
         DVSym dvst;
         try{
@@ -26,12 +25,9 @@ void CopThread::run()
         QString pathn=dvst.path;
         dvst.path=path;
         dvst.pitch=pit;
-        //qDebug("change%d 0",i);
         bool yesthis=true;
         if(VCH::have(&dvst,path)){
-            //qDebug("have%d 0",i);
             if(yestoall==0){
-                //QMessageBox::StandardButton result=QMessageBox::warning(parent,"重复的标记","在路径\n"+path+"\n中已存在"+pit+"音阶的采样\""+dvst.symbol+"\"\n是否要覆盖？",QMessageBox::StandardButtons(QMessageBox::Yes|QMessageBox::No|QMessageBox::YesToAll|QMessageBox::NoToAll|QMessageBox::Cancel),QMessageBox::Cancel);
                 wannaflagchange(path,pit,dvst.symbol,pathn);
                 if(result==QMessageBox::Cancel){
                     break;
@@ -54,10 +50,8 @@ void CopThread::run()
                 yesthis=false;
             }
         }
-        //qDebug("have%d 1",i);
         if(yesthis){
             VCH::set(&dvst);
-            //qDebug("set%d",i);
         }
 
     }

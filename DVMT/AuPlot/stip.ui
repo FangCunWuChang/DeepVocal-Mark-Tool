@@ -14,8 +14,8 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(238, 238, 236);
-background-color: rgb(85, 87, 83);</string>
+   <string notr="true">color: rgb(214,236,240);
+background-color: rgb(61,59,79);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -31,9 +31,15 @@ background-color: rgb(85, 87, 83);</string>
    <item>
     <widget class="QProgressBar" name="num">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(85, 87, 83);
-color: rgb(211, 215, 207);
-border:none;</string>
+      <string notr="true">QProgressBar{
+	background-color: rgb(61,59,79);
+	color: rgb(214,236,240);
+	border:none;
+}
+
+QProgressBar::chunk{
+	background-color: #1bd1a5;
+}</string>
      </property>
      <property name="value">
       <number>24</number>

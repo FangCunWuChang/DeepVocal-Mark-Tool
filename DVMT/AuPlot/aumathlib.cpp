@@ -88,76 +88,6 @@ double AuMathLib::fre(int FS,double cut)
         return 0;
     }
     QVector<double> dacf=acf();
-    /*
-    int flag=0;
-    for(int i=1;i<dacf.size()-1;i++){
-        if(dacf.at(i-1)>=filter&&dacf.at(i)>=filter&&dacf.at(i+1)>=filter){
-            if(dacf.at(i)>dacf.at(i-1)&&dacf.at(i)>=dacf.at(i+1)){
-                flag=i;
-            }
-        }
-    }
-    return 1/(static_cast<double>(flag)*(1/FS));
-
-    int len=dacf.size();
-    QVector<qreal> dataca;
-    for (int i=0;i<len;i++)
-        {
-            if(dacf.at(i)>cut)
-            {
-                dataca.append(dacf.at(i));
-            }
-            else
-
-            {
-                dataca.append(-1);
-            }
-        }
-        int af=0;
-        int rf=0;
-        int flag=0;
-        for (int i=0;i<len;i++)
-        {
-            if(dataca.at(i)!=-1&&flag==0)
-            {
-            }
-            else if (dataca.at(i)==-1&&flag==0)
-            {
-                flag=1;
-            }
-            else if(dataca.at(i)!=-1&&flag==1)
-            {
-                af=i;
-                flag=2;
-            }
-            else if(dataca.at(i)!=-1&&flag==2)
-            {
-            }
-            else if(dataca.at(i)==-1&&flag==2)
-            {
-                rf=i;
-                break;
-            }
-            else
-            {
-
-            }
-        }
-        double maxn=0;
-        for (int i=af;i<rf;i++)
-        {
-            maxn=qMax(dataca.at(i),maxn);
-        }
-        int out=0;
-        for (int i=af;i<rf;i++)
-        {
-            if(dataca.at(i)==maxn)
-            {
-                out=i;
-            }
-        }
-        double outt=1/((double)out/(double)FS);
-        return outt;*/
     double maxn=0;
     int cf=0;
     for(int i=1,flag=0;i<dacf.size()-1;i++){
@@ -183,85 +113,14 @@ double AuMathLib::fre(int FS,double cut)
 
 double AuMathLib::fre(QVector<double> data,int FS,double cut)
 {
-    Q_UNUSED(cut);
     if(data.isEmpty()){
         return 0;
     }
     QVector<double> dacf=AuMathLib::acf(data);
-    /*
-    int flag=0;
-    for(int i=1;i<dacf.size()-1;i++){
-        if(dacf.at(i-1)>=filter&&dacf.at(i)>=filter&&dacf.at(i+1)>=filter){
-            if(dacf.at(i)>dacf.at(i-1)&&dacf.at(i)>=dacf.at(i+1)){
-                flag=i;
-            }
-        }
-    }
-    qDebug("fre:%.2f",1/(static_cast<double>(flag)*(1/FS)));
-    return 1/(static_cast<double>(flag)*(1/FS));
-
-    int len=dacf.size();
-    QVector<qreal> dataca;
-    for (int i=0;i<len;i++)
-        {
-            if(dacf.at(i)>cut)
-            {
-                dataca.append(dacf.at(i));
-            }
-            else
-
-            {
-                dataca.append(-1);
-            }
-        }
-        int af=0;
-        int rf=0;
-        int flag=0;
-        for (int i=0;i<len;i++)
-        {
-            if(dataca.at(i)!=-1&&flag==0)
-            {
-            }
-            else if (dataca.at(i)==-1&&flag==0)
-            {
-                flag=1;
-            }
-            else if(dataca.at(i)!=-1&&flag==1)
-            {
-                af=i;
-                flag=2;
-            }
-            else if(dataca.at(i)!=-1&&flag==2)
-            {
-            }
-            else if(dataca.at(i)==-1&&flag==2)
-            {
-                rf=i;
-                break;
-            }
-            else
-            {
-
-            }
-        }
-        double maxn=0;
-        for (int i=af;i<rf;i++)
-        {
-            maxn=qMax(dataca.at(i),maxn);
-        }
-        int out=0;
-        for (int i=af;i<rf;i++)
-        {
-            if(dataca.at(i)==maxn)
-            {
-                out=i;
-            }
-        }
-        double outt=1/((double)out/(double)FS);
-        return outt;
-        */
-    double maxn=0;
+    //double maxn=0;
     int cf=0;
+    Q_UNUSED(cf);
+    int mf=0;
     for(int i=1,flag=0;i<dacf.size()-1;i++){
         if(flag==0){
             if((dacf.at(i)<dacf.at(i-1))&&(dacf.at(i)<=dacf.at(i+1))){
@@ -269,14 +128,9 @@ double AuMathLib::fre(QVector<double> data,int FS,double cut)
                 cf=i;
             }
         }else{
-            maxn=qMax(maxn,dacf.at(i));
-        }
-    }
-    int mf=0;
-    for(int i=cf;i<dacf.size();i++){
-        if(dacf.at(i)==maxn){
-            mf=i;
-            break;
+            if((dacf.at(i)>dacf.at(i-1))&&(dacf.at(i)<=dacf.at(i+1))&&(dacf.at(i)>cut)){
+                mf=i;
+            }
         }
     }
     double outt=1/((double)mf/(double)FS);
@@ -590,7 +444,6 @@ QVector<double> AuMathLib::hanning(QVector<double> data)
 
 double AuMathLib::Hann(int n,int N)
 {
-    //qDebug("Hann:%.3f",(double)(1+cos(2*pi*(double)((double)n/(double)(N-1))))/2);
     return (double)(1+cos(2*pi*(double)((double)n/(double)(N-1))))/2;
 }
 

@@ -27,6 +27,6 @@ void STip::setnum(int num)
 void STip::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.fillRect(0,0,width(),height(),QColor(85, 87, 83));
+    painter.fillRect(0,0,width(),height(),QColor(61,59,79));
     QWidget::paintEvent(event);
 }

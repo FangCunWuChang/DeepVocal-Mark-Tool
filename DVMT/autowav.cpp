@@ -32,8 +32,7 @@ void AutoWav::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.fillRect(0,0,width(),height(),QColor(211,215,207,0));
-    painter.fillRect(0.20*width(),0.20*height(),0.6*width(),0.6*height(),QColor(85,87,83));
-    //painter.fillRect(0.20*width(),0.20*height(),0.6*width(),0.6*height(),Qt::darkGray);
+    painter.fillRect(0.20*width(),0.20*height(),0.6*width(),0.6*height(),QColor(61,59,79));
     QWidget::paintEvent(event);
 }
 
@@ -98,9 +97,27 @@ void AutoWav::slovelist()
             }
             for(int i=0;i<paths.size();i++){
                 for(int j=0;j<filelist.at(i).size();j++){
-                    QString slt=searchlist.at(k);
+                    QString slt=filelist.at(i).at(j);
                     slt.remove(".wav",Qt::CaseInsensitive);
-                    if(filelist.at(i).at(j).contains(slt,Qt::CaseInsensitive)){
+                    slt.remove(searchlist.at(k),Qt::CaseSensitive);
+                    slt.remove(' ');
+                    slt.remove('_');
+                    slt.remove('-');
+                    if(slt.isEmpty()){
+                        if(!listht.contains(filelist.at(i).at(j))){
+                            listht.append(filelist.at(i).at(j));
+                            ui->olist->addItem(filelist.at(i).at(j));
+                            ui->olist->item(ui->olist->count()-1)->setToolTip(paths.at(i));
+                        }
+
+                    }
+                }
+            }
+            for(int i=0;i<paths.size();i++){
+                for(int j=0;j<filelist.at(i).size();j++){
+                    QString slt=filelist.at(i).at(j);
+                    slt.remove(".wav",Qt::CaseInsensitive);
+                    if(slt.contains(searchlist.at(k),Qt::CaseInsensitive)){
                         if(!listht.contains(filelist.at(i).at(j))){
                             listht.append(filelist.at(i).at(j));
                             ui->olist->addItem(filelist.at(i).at(j));

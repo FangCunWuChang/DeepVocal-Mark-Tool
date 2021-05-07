@@ -12,6 +12,7 @@ FM::FM(QWidget *parent) :
     connect(&cot,&CopThread::percent,this,&FM::onpercent,Qt::DirectConnection);
     connect(this,&FM::thrcopenddia,this,&FM::onthrcopenddia,Qt::QueuedConnection);
     connect(&cot,&CopThread::flagdia,this,&FM::oncopflagdia,Qt::QueuedConnection);
+    rud->setWindowFlag(Qt::FramelessWindowHint);
 }
 
 FM::~FM()
@@ -105,21 +106,21 @@ void FM::on_clem_clicked()
         for(int i=0;i<psl.size();i++){
             VCH::removepit(psl.at(i),pit);
         }
+        if(MCG.isRunning()){
+            MCG.terminate();
+            MCG.wait();
+        }
+        MCG.setlist(psl);
+        this->lockdia(false);
+        MCG.start();
+        QMessageBox::information(this,"删除标记","已删除"+pit+"音阶的全部标记");
     }
-    if(MCG.isRunning()){
-        MCG.terminate();
-        MCG.wait();
-    }
-    MCG.setlist(psl);
-    this->lockdia(false);
-    MCG.start();
-    QMessageBox::information(this,"删除标记","已删除"+pit+"音阶的全部标记");
-
 }
 
 void FM::on_copm_clicked()
 {
     QString pit=ui->pitl->currentItem()->text();
+    cpsd->setWindowFlags(Qt::Dialog|Qt::CustomizeWindowHint|Qt::WindowTitleHint|Qt::WindowCloseButtonHint);
     cpsd->setpl(psl);
     cpsd->exec();
     if((!cpsd->path.isEmpty())&&cpsd->acceptflag){
@@ -139,6 +140,7 @@ void FM::on_copm_clicked()
 void FM::on_edim_clicked()
 {
     PSM *psm=new PSM(this);
+    psm->setWindowFlags(Qt::Dialog|Qt::CustomizeWindowHint|Qt::WindowTitleHint|Qt::WindowCloseButtonHint);
     psm->setPitch(cstl.at(ui->pitl->currentRow()));
     psm->exec();
     if(MCG.isRunning()){
@@ -154,36 +156,26 @@ void FM::onpercent(double percent)
 {
     rud->setpercent(percent);
     if(percent==1){
-        qDebug("Close copdia 0");
         try{
             rud->close();
         }catch(...){
             qDebug("rud dialog threw an error!");
         }
 
-        qDebug("Close copdia 1");
-
         if(MCG.isRunning()){
             MCG.terminate();
             MCG.wait();
         }
-        qDebug("Close copdia 2");
         MCG.setlist(psl);
-        qDebug("Close copdia 3");
         this->lockdia(false);
-        qDebug("Close copdia 4");
         MCG.start();
-        qDebug("Close copdia 5");
         emit thrcopenddia();
-        qDebug("Close copdia 6");
     }
 }
 
 void FM::onthrcopenddia()
 {
-    qDebug("copend dia 0");
     QMessageBox::information(this,"复制标记","标记复制完成！");
-    qDebug("copend dia 1");
 }
 
 void FM::lockdia(bool ok)

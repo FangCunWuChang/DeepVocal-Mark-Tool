@@ -1,7 +1,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#define AU_VERSION "3.2.1-beta"
+#define AU_VERSION "3.2.2-alpha"
 
 class global_sets{
 public:
@@ -15,8 +15,10 @@ public:
     constexpr static double enebound=0;
     constexpr static double rptzbound=1;
     constexpr static double speccut=0.08;
-    constexpr static int maxlength=300*FS;
+    constexpr static int maxlength=10*FS;
     constexpr static int Threads=5;
+    constexpr static double tempsgate=500;
+    constexpr static double tempsstep=100;
 };
 
 

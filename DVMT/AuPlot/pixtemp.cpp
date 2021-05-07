@@ -2,7 +2,6 @@
 
 PixTemp::PixTemp()
 {
-    //qDebug("%s",qPrintable(QCoreApplication::applicationDirPath()));
     QDir dir(QCoreApplication::applicationDirPath()+"/temp/");
     if(!dir.exists()){
         dir.mkdir(QCoreApplication::applicationDirPath()+"/temp/");
@@ -68,9 +67,8 @@ bool PixTemp::check(QString name)
             if(flag3){
                 QFile vtempfe(QCoreApplication::applicationDirPath()+"/temp/"+QString::number(flag2)+"_ene.dvmttemp");
                 QFile vtempfr(QCoreApplication::applicationDirPath()+"/temp/"+QString::number(flag2)+"_rptz.dvmttemp");
-                QFile vtempfa(QCoreApplication::applicationDirPath()+"/temp/"+QString::number(flag2)+"_acf.dvmttemp");
                 QFile vtempff(QCoreApplication::applicationDirPath()+"/temp/"+QString::number(flag2)+"_flag.dvmttemp");
-                if(vtempfe.exists()&&vtempfr.exists()&&vtempfa.exists()&&vtempff.exists()){
+                if(vtempfe.exists()&&vtempfr.exists()&&vtempff.exists()){
 
                     return true;
 
@@ -191,7 +189,6 @@ void PixTemp::write(QString name,int num,QVector<double> datapix)
 
 QVector<double> PixTemp::read(QString name,int num)
 {
-    //qDebug("read1");
     QVector<double> out;
     if(check(name)&&num<global_sets::num){
         QFile file(QCoreApplication::applicationDirPath()+"/temp/temp.json");
@@ -202,7 +199,6 @@ QVector<double> PixTemp::read(QString name,int num)
         }
         QString data=file.readAll();
         file.close();
-        //qDebug("read2");
         QJsonDocument jd=QJsonDocument::fromJson(data.toUtf8());
         if(jd.isObject()){
             QJsonObject jo=jd.object();
@@ -217,26 +213,22 @@ QVector<double> PixTemp::read(QString name,int num)
                     break;
                 }
             }
-            //qDebug("read3");
             if(flag1){
                 QString filename=QCoreApplication::applicationDirPath()+"/temp/"+QString::number(flag2)+"-"+QString::number(num)+".dvmttemp";
                 QFile file2(filename);
-                //qDebug("read3.1");
                 if(file2.exists()){
                     if(!RQV(&out,filename)){
                       qDebug("无法读取缓存：%s",qPrintable(filename));
                     }else{
                       qDebug("已读取缓存：%s",qPrintable(filename));
                     }
-                    //qDebug("read3.2");
 
                 }
 
             }
-            //qDebug("read4");
         }
     }
-    return out;//qDebug("read1");
+    return out;
 }
 
 void PixTemp::write2(QString name,int num,QVector<QVector<double>> datapix)
@@ -337,9 +329,7 @@ void PixTemp::write2(QString name,int num,QVector<QVector<double>> datapix)
 
 QVector<QVector<double>> PixTemp::read2(QString name,int num)
 {
-    //qDebug("readii1");
     QVector<QVector<double>> out;
-    //qDebug("readii2");
     if(check(name)&&num<global_sets::num){
         QFile file(QCoreApplication::applicationDirPath()+"/temp/temp.json");
         if(!file.open(QIODevice::Text|QIODevice::ReadWrite)){
@@ -349,7 +339,6 @@ QVector<QVector<double>> PixTemp::read2(QString name,int num)
         }
         QString data=file.readAll();
         file.close();
-        //qDebug("readii3");
         QJsonDocument jd=QJsonDocument::fromJson(data.toUtf8());
         if(jd.isObject()){
             QJsonObject jo=jd.object();
@@ -364,7 +353,6 @@ QVector<QVector<double>> PixTemp::read2(QString name,int num)
                     break;
                 }
             }
-            //qDebug("readii4");
             if(flag1){
                 QString filename=QCoreApplication::applicationDirPath()+"/temp/"+QString::number(flag2)+"-"+QString::number(num)+".dvmttemp";
                 QFile file2(filename);
@@ -378,7 +366,6 @@ QVector<QVector<double>> PixTemp::read2(QString name,int num)
                 }
 
             }
-            //qDebug("readii5");
         }
     }
     return out;
@@ -806,10 +793,8 @@ bool PixTemp::WQV(QVector<double> *data,QString filename)
 
 bool PixTemp::RQV(QVector<double> *data,QString filename)
 {
-    //qDebug("rv1");
     bool out=true;
     QFile file(filename);
-    //qDebug("rv2");
     if(file.open(QIODevice::ReadOnly)){
         QDataStream stream(&file);
 #if Q_BYTE_ORDER==Q_LITTLE_ENDIAN
@@ -817,24 +802,18 @@ bool PixTemp::RQV(QVector<double> *data,QString filename)
 #else
         stream.setByteOrder(QDataStream::BigEndian);
 #endif
-        //qDebug("rv3");
         int size=0;
         out=stream.readRawData((char*)&size,sizeof (int))>-1;
-        //qDebug("rv4");
-        //out=(size==(int)((file.size()-sizeof (int))/sizeof (double)))&&out;
 
         data->clear();
 
-        //qDebug("rv5");
         for(int i=0;i<size;i++){
             double temp;
             out=(stream.readRawData((char*)&temp,sizeof (double))>-1)&&out;
             data->append(temp);
         }
 
-        //qDebug("rv6");
 
-        //qDebug("rv7");
         file.close();
     }else{
         out=false;
@@ -874,10 +853,8 @@ bool PixTemp::WQV2(QVector<QVector<double>> *data,QString filename)
 
 bool PixTemp::RQV2(QVector<QVector<double>> *data,QString filename)
 {
-    //qDebug("rvii1");
     bool out=true;
     QFile file(filename);
-    //qDebug("rvii2");
     if(file.open(QIODevice::ReadOnly)){
         QDataStream stream(&file);
 #if Q_BYTE_ORDER==Q_LITTLE_ENDIAN
@@ -887,7 +864,6 @@ bool PixTemp::RQV2(QVector<QVector<double>> *data,QString filename)
 #endif
         int msize=0;
         out=stream.readRawData((char*)&msize,sizeof (int))>-1;
-        //qDebug("rvii3");
         data->clear();
         for(int i=0;i<msize;i++){
 
@@ -898,12 +874,8 @@ bool PixTemp::RQV2(QVector<QVector<double>> *data,QString filename)
                 datat.append(temp);
             }
 
-
-            //qDebug("rvii5[%d/%d]",i,msize);
-
             data->append(datat);
         }
-        //qDebug("rvii6");
 
         file.close();
     }else{
@@ -950,7 +922,6 @@ bool PixTemp::RQB(QVector<bool> *data,QString filename)
 #endif
         int size=0;
         out=stream.readRawData((char*)&size,sizeof (int))>-1;
-        //out=(size==static_cast<int>((file.size()-sizeof (int))/sizeof (bool)))&&out;
 
         data->clear();
         for(int i=0;i<size;i++){
@@ -963,4 +934,17 @@ bool PixTemp::RQB(QVector<bool> *data,QString filename)
         out=false;
     }
     return out;
+}
+
+double PixTemp::size()
+{
+    QDir dir(QCoreApplication::applicationDirPath()+"/temp/");
+    dir.setFilter(QDir::Files);
+    int dircount=dir.count();
+    double size=0;
+    for(int i=0;i<dircount;i++){
+        QFile filet(QCoreApplication::applicationDirPath()+"/temp/"+dir[i]);
+        size+=(double)((double)filet.size()/(double)(1024*1024));
+    }
+    return size;
 }

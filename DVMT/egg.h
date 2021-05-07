@@ -8,6 +8,10 @@
 #include "AuPlot/global.h"
 #include <QFile>
 #include "gpl.h"
+#include <QLibrary>
+#include <QCoreApplication>
+#include <QDir>
+#include <QJsonDocument>
 
 namespace Ui {
 class Egg;
@@ -30,6 +34,11 @@ private slots:
 
 private:
     Ui::Egg *ui;
+    QStringList pluginurllist;
+    QStringList pluginlist;
+    QStringList plugininfolist;
+    void checkplugins();
+    void openplugin(int id);
 };
 
 #endif // EGG_H

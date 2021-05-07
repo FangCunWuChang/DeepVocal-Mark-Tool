@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(61,59,79);</string>
+  </property>
   <widget class="Waveview" name="waveview" native="true">
    <property name="geometry">
     <rect>
@@ -35,8 +38,20 @@
      <height>61</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(85, 87, 83);</string>
+    <string notr="true">QWidget{
+	
+	background-color: rgb(61,59,79);
+}
+QToolTip{
+
+background-color:rgb(61,59,79);
+color: rgb(214,236,240);
+border:1px solid rgb(22,24,35);
+}</string>
    </property>
   </widget>
   <widget class="QSplitter" name="splitter">
@@ -49,9 +64,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QSplitter{
-	background-color: rgb(85, 87, 83);
-}</string>
+    <string notr="true">background-color: rgb(61,59,79);</string>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -63,7 +76,7 @@
    </widget>
    <widget class="Specplot" name="specplot" native="true">
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(46, 52, 54);</string>
+     <string notr="true">background-color: rgb(61,59,79);</string>
     </property>
    </widget>
   </widget>

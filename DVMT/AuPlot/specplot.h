@@ -26,7 +26,7 @@ public:
     ~Specplot();
     void setpix(QVector<QVector<double>> pixmap,int wsize,int samplerates=44100);
     void changemode(int code);
-    void setv(QVector<double> acftemp,QVector<bool> flagtemp);
+    void setv(QVector<bool> flagtemp);
     void setselected(bool selected,double ssp,double sep);
     void setlines(double l1,double l2,double l3,double l4);
     void setfourlines(bool fourlines);
@@ -40,8 +40,6 @@ private:
     double vs=0.5;
     int samplerates=44100;
     double hs=0,he=1;
-    bool acfon=true;
-    QVector<double> acftemp;
     QVector<bool> flagtemp;
     bool isxon=false;
     bool yon=false;
@@ -71,8 +69,6 @@ private:
     void tempchange();
     QRect g_poi(int x,int y);
     QColor getcolor(double v);
-    QColor getacfcolor(double x,double max=0,double min=-70);
-    QColor getacfcolor2(double x,double max=0,double min=-80);
 protected:
     void resizeEvent(QResizeEvent *event);
     void paintEvent(QPaintEvent *event);

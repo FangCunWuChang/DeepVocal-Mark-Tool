@@ -41,7 +41,6 @@ void OpenWav::setps(QStringList paths,QVector<QStringList> filelist)
     fv.clear();
     this->ps=paths;
     QString pshow;
-    //qDebug("1");
     int pi=0;
     while(pi<ps.size()){
         QStringList pl;
@@ -62,17 +61,13 @@ void OpenWav::setps(QStringList paths,QVector<QStringList> filelist)
         fv.append(pl);
         pi++;
     }
-    //qDebug("2");
     ui->plist->clear();
     ui->plist->setText(pshow);
-    //qDebug("3");
-    //ui->olist->clear();
     while(ui->olist->count()>0){
 
         QListWidgetItem *it=ui->olist->takeItem(0);
         delete it;
     }
-    //qDebug("3.1");
     for(int i=0;i<fv.size();i++){
         for(int j=0;j<fv.at(i).size();j++){
             ui->olist->addItem(fv.at(i).at(j));
@@ -85,7 +80,6 @@ void OpenWav::setps(QStringList paths,QVector<QStringList> filelist)
     }else{
         OWError("请选择一个文件");
     }
-    //qDebug("4");
 }
 void OpenWav::on_cancel_clicked()
 {
@@ -107,7 +101,6 @@ void OpenWav::on_enter_clicked()
 
 void OpenWav::on_name_textChanged(const QString &arg1)
 {
-    //ui->olist->clear();
     while(ui->olist->count()>0){
         QListWidgetItem *it=ui->olist->takeItem(0);
         delete it;
@@ -137,22 +130,6 @@ void OpenWav::on_name_textChanged(const QString &arg1)
     }
 }
 
-/*
-void OpenWav::on_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
-{
-    Q_UNUSED(previous);
-    if(ui->olist->count()>0){
-        path=current->toolTip();
-        file=current->text();
-        if(!(path.isEmpty()||file.isEmpty())){
-            OWAccept("正确");
-        }else{
-            OWError("请选择一个文件");
-        }
-    }
-
-}
-*/
 void OpenWav::on_olist_itemPressed(QListWidgetItem *item)
 {
     if(ui->olist->count()>0){

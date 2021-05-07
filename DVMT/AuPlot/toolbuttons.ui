@@ -19,13 +19,13 @@
   <property name="styleSheet">
    <string notr="true">QWidget{
 	
-	background-color: rgb(85, 87, 83);
+	background-color: rgb(61,59,79);
 }
 QToolTip{
 
-background-color:rgb(46, 52, 54);
-color: rgb(211, 215, 207);
-border:1px solid rgb(85, 87, 83);
+background-color:rgb(61,59,79);
+color: rgb(214,236,240);
+border:1px solid rgb(22,24,35);
 }</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -36,34 +36,39 @@ border:1px solid rgb(85, 87, 83);
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
+}
+QPushButton:disabled{
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(238, 238, 236);
-	
-	color: rgb(237, 212, 0);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #ffb61e;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -87,34 +92,39 @@ border-radius:2px;
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
+}
+QPushButton:disabled{
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(238, 238, 236);
-	
-	color: rgb(115, 210, 22);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #2add9c;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -132,95 +142,45 @@ border-radius:2px;
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="b3">
-     <property name="toolTip">
-      <string>Alt+F</string>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
-}
-QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color:rgb(238, 238, 236);
-border-radius:2px;
-}
-QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
-}
-QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
-}</string>
-     </property>
-     <property name="text">
-      <string>频率分析</string>
-     </property>
-     <property name="shortcut">
-      <string>Alt+F</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QPushButton" name="b4">
      <property name="toolTip">
       <string>Alt+R</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-	color: rgb(46, 52, 54);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #6b6882;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-color: rgb(186, 189, 182);
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -241,40 +201,39 @@ border-radius:2px;
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-	color: rgb(46, 52, 54);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #6b6882;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-color: rgb(186, 189, 182);
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -294,52 +253,50 @@ border-radius:2px;
       <bool>false</bool>
      </property>
      <property name="toolTip">
-      <string>P</string>
+      <string>Alt+X</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(238, 238, 236);
-	
-	color: rgb(46, 52, 54);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #6b6882;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
       <string>播放</string>
      </property>
      <property name="shortcut">
-      <string>P</string>
+      <string>Alt+X</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -359,41 +316,39 @@ border-radius:2px;
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(238, 238, 236);
-	
-	color: rgb(46, 52, 54);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #6b6882;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -420,42 +375,39 @@ border-radius:2px;
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(238, 238, 236);
-	
-	
-	color: rgb(114, 159, 207);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #4b5cc4;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -482,42 +434,39 @@ border-radius:2px;
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(238, 238, 236);
-	
-	
-	color: rgb(252, 233, 79);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #ffa631;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -544,42 +493,39 @@ border-radius:2px;
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(238, 238, 236);
-	
-	
-	color: rgb(173, 127, 168);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #cb3a56;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -606,42 +552,39 @@ border-radius:2px;
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(238, 238, 236);
-	
-	
-	color: rgb(138, 226, 52);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #7fecad;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
@@ -664,52 +607,50 @@ border-radius:2px;
       <bool>false</bool>
      </property>
      <property name="toolTip">
-      <string>Return</string>
+      <string>Alt+S</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color: #d6ecf0;
+    border-radius:2px;
 }
 QPushButton:disabled{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-background-color: rgb(85, 87, 83);
-color:  rgb(100,100,100);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #3d3b4f;
+    color:  #000000;
+    border-radius:2px;
 }
 QPushButton:checked{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(238, 238, 236);
-	
-	color: rgb(46, 52, 54);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    background-color: #e3f9fd;
+    color: #6b6882;
+    border-radius:2px;
 }
 QPushButton:hover{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-	background-color: rgb(136, 138, 133);
-
-
-border-radius:2px;
+        border: 1px solid #161823;
+        border-color: #161823;
+        background-color: #88ada6;
+        color: #d6ecf0;
+        border-radius:2px;
 }
 QPushButton:pressed{
-border: 1px solid black;
-border-color: rgb(46, 52, 54);
-color: rgb(136, 138, 133);
-background-color: rgb(186, 189, 182);
-border-radius:2px;
+    border: 1px solid #161823;
+    border-color: #161823;
+    color: #d6ecf0;
+    background-color: #88ada6;
+    border-radius:2px;
 }</string>
      </property>
      <property name="text">
       <string>保存</string>
      </property>
      <property name="shortcut">
-      <string>Return</string>
+      <string>Alt+S</string>
      </property>
      <property name="checkable">
       <bool>false</bool>

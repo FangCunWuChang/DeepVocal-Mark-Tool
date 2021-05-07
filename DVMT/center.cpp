@@ -20,23 +20,33 @@ Center::Center(QWidget *parent) :
     connect(&F_Scaner,&FileScaner::files,this,&Center::onfiles);
     connect(watcher,&QFileSystemWatcher::fileChanged,this,&Center::onwatcherchanged);
     connect(watcher,&QFileSystemWatcher::directoryChanged,this,&Center::onwatcherchanged);
-    connect(&cget,&CSLget::append,this,&Center::oncgetappend);
+    connect(&cget,&CSLget::append,this,&Center::oncgetappend,Qt::DirectConnection);
+    connect(ui->cbm,&CBM::awclicked,this,&Center::onawclicked);
+    connect(ui->cbm,&CBM::menuclicked,this,&Center::onmenuclicked);
+    connect(ui->cbm,&CBM::lhbclicked,this,&Center::onlhbclicked);
+    connect(ui->cbm,&CBM::seaclicked,this,&Center::onseaclicked);
+    connect(ui->cbm,&CBM::rp,this,&Center::oncbmrp);
+
+    this->setMouseTracking(true);
     effect->setSource(QUrl::fromLocalFile(":/sounds/save.wav"));
     effect->setLoopCount(0);
     effect->setVolume(1);
-    //retitle();
-    //ui->menu->setMenu(menu);
-    //ui->plot->WaveAnalyse(QCoreApplication::applicationDirPath()+"/ai.wav");
+    ui->mt->hide();
+    ui->sear->hide();
+    ui->egg->hide();
+    ui->aww->hide();
+    ow->setWindowFlags(Qt::Dialog|Qt::CustomizeWindowHint|Qt::WindowTitleHint|Qt::WindowCloseButtonHint);
+    pset->setWindowFlags(Qt::Dialog|Qt::CustomizeWindowHint|Qt::WindowTitleHint|Qt::WindowCloseButtonHint);
 }
 
 Center::~Center()
 {
-    //delete menu;
     if(F_Scaner.isRunning()){
         F_Scaner.terminate();
         F_Scaner.wait();
     }
     if(cget.isRunning()){
+        cget.stopflag=true;
         cget.terminate();
         cget.wait();
     }
@@ -50,12 +60,10 @@ Center::~Center()
 void Center::resizeEvent(QResizeEvent *event)
 {
     resize();
-
-    //ui->list->setBatchSize(0.1*ui->list->height());
     QWidget::resizeEvent(event);
 }
 
-void Center::on_menu_clicked()
+void Center::onmenuclicked()
 {
     ui->sear->hide();
     ui->egg->hide();
@@ -85,7 +93,7 @@ void Center::onmenukey(int id)
         break;
     case 6:
     {
-        QString mes="Deepvocal Mark Tool "+QString(DVMT_VERSION)+" Build "+QString(__DATE__)+"\nDVMT (C)2020-2021 Wu Chang.All rights reserved.\n声库配布时请注明使用DVMT进行标记.\nAuPlot版本："+QString(AU_VERSION)+"\nAuPlot (C)2020-2021 Wu Chang.All rights reserved.\nQt库版本："+QString(qVersion())+"\nDeepVocal 软件版权归Boxstar所有.\n思源黑体版权归Adobe所有.";
+        QString mes="Deepvocal Mark Tool "+QString(DVMT_VERSION)+" Build "+QString(__DATE__)+"\nDVMT (C)2020-2021 Wu Chang.All rights reserved.\n声库配布时请注明使用DVMT进行标记.\nAuPlot版本："+QString(AU_VERSION)+"\nAuPlot (C)2020-2021 Wu Chang.All rights reserved.\nQt库版本："+QString(qVersion())+"\nDeepVocal 软件版权归Boxstar所有.\n文泉驿微米黑体使用GPLv3许可协议.";
         QMessageBox::information(this,"关于DVMT",mes);
         break;
     }
@@ -97,23 +105,42 @@ void Center::onmenukey(int id)
 void Center::onspchanged(Project pro,bool pitref)
 {
     if(pitref){
-        this->pro=pro;
-        saved=false;
+        if(this->pro!=pro){
+            this->pro=pro;
+            saved=false;
+        }
+        if(F_Scaner.isRunning()){
+            F_Scaner.terminate();
+            F_Scaner.wait();
+        }
+        if(cget.isRunning()){
+            cget.stopflag=true;
+            cget.terminate();
+            cget.wait();
+        }
         refreshwatchpath();
         CSL=pro.getflags();
         refreshsym();
     }else{
         if(this->pro!=pro){
-            QString pp=this->pro.getpitch();//
-            QString pn=pro.getpitch();//
+            QString pp=this->pro.getpitch();
+            QString pn=pro.getpitch();
             this->pro=pro;
             saved=false;
+            if(F_Scaner.isRunning()){
+                F_Scaner.terminate();
+                F_Scaner.wait();
+            }
+            if(cget.isRunning()){
+                cget.stopflag=true;
+                cget.terminate();
+                cget.wait();
+            }
             refreshwatchpath();
             CSL=pro.getflags();
             refreshsym();
-            if(pp!=pn){//
-                //
-            }//
+            if(pp!=pn){
+            }
         }
     }
 
@@ -169,10 +196,17 @@ void Center::newpro()
                 pro.clear();
                 int first=propath.lastIndexOf ("/"); //从后面查找"/"位置
                 QString ppt=propath.left(first);
-                //qDebug("propath:%s",qPrintable(propath));
                 propath=ppt+"/未命名项目.dvmtp";
-                //qDebug("propath:%s",qPrintable(propath));
                 saved=true;
+                if(F_Scaner.isRunning()){
+                    F_Scaner.terminate();
+                    F_Scaner.wait();
+                }
+                if(cget.isRunning()){
+                    cget.stopflag=true;
+                    cget.terminate();
+                    cget.wait();
+                }
                 refreshwatchpath();
                 CSL=pro.getflags();
                 refreshsym();
@@ -187,10 +221,17 @@ void Center::newpro()
         pro.clear();
         int first=propath.lastIndexOf ("/"); //从后面查找"/"位置
         QString ppt=propath.left(first);
-        //qDebug("propath:%s",qPrintable(propath));
         propath=ppt+"/未命名项目.dvmtp";
-        //qDebug("propath:%s",qPrintable(propath));
         saved=true;
+        if(F_Scaner.isRunning()){
+            F_Scaner.terminate();
+            F_Scaner.wait();
+        }
+        if(cget.isRunning()){
+            cget.stopflag=true;
+            cget.terminate();
+            cget.wait();
+        }
         refreshwatchpath();
         CSL=pro.getflags();
         refreshsym();
@@ -220,12 +261,30 @@ void Center::openpro()
                     if(pro.readfile(opath)){
                         propath=opath;
                         saved=true;
+                        if(F_Scaner.isRunning()){
+                            F_Scaner.terminate();
+                            F_Scaner.wait();
+                        }
+                        if(cget.isRunning()){
+                            cget.stopflag=true;
+                            cget.terminate();
+                            cget.wait();
+                        }
                         refreshwatchpath();
                         CSL=pro.getflags();
                         refreshsym();
 
                     }else{
                         pro=pt;
+                        if(F_Scaner.isRunning()){
+                            F_Scaner.terminate();
+                            F_Scaner.wait();
+                        }
+                        if(cget.isRunning()){
+                            cget.stopflag=true;
+                            cget.terminate();
+                            cget.wait();
+                        }
                         refreshwatchpath();
                         CSL=pro.getflags();
                         refreshsym();
@@ -250,6 +309,15 @@ void Center::openpro()
             if(pro.readfile(opath)){
                 propath=opath;
                 saved=true;
+                if(F_Scaner.isRunning()){
+                    F_Scaner.terminate();
+                    F_Scaner.wait();
+                }
+                if(cget.isRunning()){
+                    cget.stopflag=true;
+                    cget.terminate();
+                    cget.wait();
+                }
                 refreshwatchpath();
                 CSL=pro.getflags();
                 refreshsym();
@@ -258,6 +326,15 @@ void Center::openpro()
                 }
             }else{
                 pro=pt;
+                if(F_Scaner.isRunning()){
+                    F_Scaner.terminate();
+                    F_Scaner.wait();
+                }
+                if(cget.isRunning()){
+                    cget.stopflag=true;
+                    cget.terminate();
+                    cget.wait();
+                }
                 refreshwatchpath();
                 CSL=pro.getflags();
                 refreshsym();
@@ -295,6 +372,7 @@ void Center::refreshsym()
 {
     rechecksym();
     if(cget.isRunning()){
+        cget.stopflag=true;
         cget.terminate();
         cget.wait();
     }
@@ -313,12 +391,6 @@ void Center::onwavchanged(QString path,QString filename)
         if(path==this->CSL.at(row).path&&filename==this->CSL.at(row).file){
             ui->plot->setlines(this->CSL.at(row).l1,this->CSL.at(row).l2,this->CSL.at(row).l3,this->CSL.at(row).l4);
         }
-        /*
-        CVVCSymbol ct=this->CSL.at(row);
-        ct.path=path;
-        ct.file=filename;
-        this->CSL.replace(row,ct);
-*/
         patht=path;
         filet=filename;
     }
@@ -331,13 +403,12 @@ void Center::rechecksym()
 
 void Center::on_list_currentRowChanged(int currentRow)
 {
-    //qDebug("Row:%d",currentRow);
     if(currentRow>=0&&currentRow<CSL.size()){
         if(!CSL.at(currentRow).name.isEmpty()){
-            ui->lsb->setText("当前符号："+CSL.at(currentRow).name);
+            ui->cbm->setText("当前符号："+CSL.at(currentRow).name);
             ui->aww->setsymname(CSL.at(currentRow).name);
         }else{
-            ui->lsb->setText("当前符号为空");
+            ui->cbm->setText("当前符号为空");
             ui->aww->setsymname("");
         }
         if(CSL.at(currentRow).mes!="未标记"){
@@ -353,10 +424,10 @@ void Center::on_list_currentRowChanged(int currentRow)
             }
         }else{
             ui->plot->setfourlines(this->CSL.at(currentRow).isCV>0);
-            ui->plot->setlines(this->CSL.at(currentRow).l1,this->CSL.at(currentRow).l2,this->CSL.at(currentRow).l3,this->CSL.at(currentRow).l4);
+            ui->plot->setlines(0,0,0,0);
         }
     }else{
-        ui->lsb->setText("当前无符号");
+        ui->cbm->setText("当前无符号");
         ui->aww->setsymname("");
     }
 }
@@ -364,7 +435,7 @@ void Center::on_list_currentRowChanged(int currentRow)
 bool Center::checkwav(QString path,QString filename)
 {
     bool out=false;
-    if(QWaveHandle::checkwav(path+"/"+filename,1,44100,16,2*global_sets::perp)){
+    if(QWaveHandle::checkwav(path+"/"+filename,1,44100,16,2*global_sets::perp,global_sets::maxlength)){
         out=true;
     }
     return out;
@@ -438,30 +509,24 @@ void Center::onausaved(double l1,double l2,double l3,double l4)
 void Center::on_list_itemChanged(QListWidgetItem *item)
 {
     Q_UNUSED(item);
-    //qDebug("Row:%d",ui->list->currentRow());
-    //qDebug("Index:%d",ui->list->currentIndex().row());
 }
 
 void Center::on_list_itemSelectionChanged()
 {
-    //qDebug("Row:%d",ui->list->currentRow());
-    //qDebug("Index:%d",ui->list->currentIndex().row());
 }
 
 void Center::on_list_currentTextChanged(const QString &currentText)
 {
     Q_UNUSED(currentText);
-    //qDebug("Row:%d",ui->list->currentRow());
-    //qDebug("Index:%d",ui->list->currentIndex().row());
 }
 
 void Center::onplotlocked()
 {
 
-    ui->menu->setEnabled(false);
+    ui->cbm->setmenuenabled(false);
     ui->list->setEnabled(false);
-    ui->sea->setEnabled(false);
-    ui->aw->setEnabled(false);
+    ui->cbm->setseaenabled(false);
+    ui->cbm->setawenabled(false);
     lockflag++;
 }
 
@@ -469,10 +534,10 @@ void Center::onplotunlocked()
 {
     lockflag--;
     if(lockflag==0){
-        ui->menu->setEnabled(true);
+        ui->cbm->setmenuenabled(true);
         ui->list->setEnabled(true);
-        ui->sea->setEnabled(true);
-        ui->aw->setEnabled(true);
+        ui->cbm->setseaenabled(true);
+        ui->cbm->setawenabled(true);
     }
 }
 
@@ -498,19 +563,13 @@ void Center::changepit(QString past,QString now)
     }
 }
 
-void Center::on_lhb_clicked()
+void Center::onlhbclicked(bool ok)
 {
-    lisshow=false;
+    lisshow=ok;
     resize();
 }
 
-void Center::on_lsb_clicked()
-{
-    lisshow=true;
-    resize();
-}
-
-void Center::on_sea_clicked()
+void Center::onseaclicked()
 {
     ui->sear->setsymbols(CSL);
     ui->mt->hide();
@@ -522,90 +581,49 @@ void Center::on_sea_clicked()
 void Center::resize()
 {
     if(lisshow){
-        ui->sea->show();
-        ui->lhb->show();
-        ui->aw->show();
-        ui->lsb->hide();
-        ui->lhb->resize(qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->sea->resize(qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->lsb->resize(3*qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->aw->resize(qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->lhb->move(0.2*width()-qMin(0.05*width(),0.05*height())/2-qMin(0.05*width(),0.05*height()),0.1*height()+qMin(0.05*width(),0.05*height()));
-        ui->aw->move(0.2*width()-qMin(0.05*width(),0.05*height())/2-qMin(0.05*width(),0.05*height()),0.1*height()+3*qMin(0.05*width(),0.05*height()));
-        ui->sea->move(0.2*width()-qMin(0.05*width(),0.05*height())/2-qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->lsb->move(qMin(0.05*width(),0.05*height())/2,0.1*height()+qMin(0.05*width(),0.05*height()));
         ui->list->resize(0.2*width(),height());
         ui->plot->resize(0.8*width(),height());
         ui->list->move(0,0);
         ui->plot->move(0.2*width(),0);
-        ui->menu->resize(qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->menu->move(0.2*width()-qMin(0.05*width(),0.05*height())/2-qMin(0.05*width(),0.05*height()),height()-qMin(0.05*width(),0.05*height())-qMin(0.05*width(),0.05*height())/4);
-        ui->menu->raise();
-
-        ui->lhb->raise();
-        ui->sea->raise();
-        ui->lsb->raise();
-        ui->aw->raise();
+        ui->cbm->resize(qMin(0.15*width(),0.15*height()),qMin(0.15*width(),0.15*height()));
+        ui->cbm->move(width()*cbmx,height()*cbmy);
+        ui->cbm->raise();
         ui->mt->resize(width(),height());
         ui->mt->move(0,0);
         ui->mt->raise();
-        ui->mt->hide();
         ui->sear->resize(width(),height());
         ui->sear->move(0,0);
         ui->sear->raise();
-        ui->sear->hide();
         ui->egg->resize(width(),height());
         ui->egg->move(0,0);
         ui->egg->raise();
-        ui->egg->hide();
         ui->aww->resize(width(),height());
         ui->aww->move(0,0);
         ui->aww->raise();
-        ui->aww->hide();
         for(int i=0;i<ui->list->count();i++){
             ui->list->item(i)->setSizeHint(QSize(ui->list->width()*0.9,ui->list->height()*0.025));
         }
     }else{
-        ui->sea->hide();
-        ui->lhb->hide();
-        ui->aw->show();
-        ui->lsb->show();
-        ui->lhb->resize(qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->sea->resize(qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->lsb->resize(3*qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->aw->resize(3*qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->lsb->move(0.5*qMin(0.05*width(),0.05*height()),0.1*height()+qMin(0.05*width(),0.05*height()));
-        ui->lhb->move(0.5*qMin(0.05*width(),0.05*height()),0.1*height()+qMin(0.05*width(),0.05*height()));
-        ui->aw->move(0.5*qMin(0.05*width(),0.05*height()),0.1*height()+3*qMin(0.05*width(),0.05*height()));
-        ui->sea->move(qMin(0.05*width(),0.05*height())/2,qMin(0.05*width(),0.05*height()));
         ui->list->resize(0.2*width(),height());
         ui->plot->resize(width(),height());
         ui->list->move(0,0);
         ui->plot->move(0,0);
         ui->plot->raise();
-        ui->menu->resize(qMin(0.05*width(),0.05*height()),qMin(0.05*width(),0.05*height()));
-        ui->menu->move(qMin(0.05*width(),0.05*height())/2,height()-qMin(0.05*width(),0.05*height())-qMin(0.05*width(),0.05*height())/4);
-        ui->menu->raise();
-        ui->lhb->raise();
-        ui->sea->raise();
-        ui->lsb->raise();
-        ui->aw->raise();
+        ui->cbm->resize(qMin(0.15*width(),0.15*height()),qMin(0.15*width(),0.15*height()));
+        ui->cbm->move(width()*cbmx,height()*cbmy);
+        ui->cbm->raise();
         ui->mt->resize(width(),height());
         ui->mt->move(0,0);
         ui->mt->raise();
-        ui->mt->hide();
         ui->sear->resize(width(),height());
         ui->sear->move(0,0);
         ui->sear->raise();
-        ui->sear->hide();
         ui->egg->resize(width(),height());
         ui->egg->move(0,0);
         ui->egg->raise();
-        ui->egg->hide();
         ui->aww->resize(width(),height());
         ui->aww->move(0,0);
         ui->aww->raise();
-        ui->aww->hide();
         for(int i=0;i<ui->list->count();i++){
             ui->list->item(i)->setSizeHint(QSize(ui->list->width()*0.9,ui->list->height()*0.025));
         }
@@ -665,12 +683,30 @@ void Center::openfile(QString file)
                     if(pro.readfile(opath)){
                         propath=opath;
                         saved=true;
+                        if(F_Scaner.isRunning()){
+                            F_Scaner.terminate();
+                            F_Scaner.wait();
+                        }
+                        if(cget.isRunning()){
+                            cget.stopflag=true;
+                            cget.terminate();
+                            cget.wait();
+                        }
                         refreshwatchpath();
                         CSL=pro.getflags();
                         refreshsym();
 
                     }else{
                         pro=pt;
+                        if(F_Scaner.isRunning()){
+                            F_Scaner.terminate();
+                            F_Scaner.wait();
+                        }
+                        if(cget.isRunning()){
+                            cget.stopflag=true;
+                            cget.terminate();
+                            cget.wait();
+                        }
                         refreshwatchpath();
                         CSL=pro.getflags();
                         refreshsym();
@@ -695,6 +731,15 @@ void Center::openfile(QString file)
             if(pro.readfile(opath)){
                 propath=opath;
                 saved=true;
+                if(F_Scaner.isRunning()){
+                    F_Scaner.terminate();
+                    F_Scaner.wait();
+                }
+                if(cget.isRunning()){
+                    cget.stopflag=true;
+                    cget.terminate();
+                    cget.wait();
+                }
                 refreshwatchpath();
                 CSL=pro.getflags();
                 refreshsym();
@@ -703,6 +748,15 @@ void Center::openfile(QString file)
                 }
             }else{
                 pro=pt;
+                if(F_Scaner.isRunning()){
+                    F_Scaner.terminate();
+                    F_Scaner.wait();
+                }
+                if(cget.isRunning()){
+                    cget.stopflag=true;
+                    cget.terminate();
+                    cget.wait();
+                }
                 refreshwatchpath();
                 CSL=pro.getflags();
                 refreshsym();
@@ -721,7 +775,7 @@ void Center::openfile(QString file)
 void Center::refreshwatchpath()
 {
     ui->mt->setowlock(true);
-    ui->aw->setEnabled(false);
+    ui->cbm->setawenabled(false);
     F_Scaner.setpaths(pro.getpaths());
     if(F_Scaner.isRunning()){
         F_Scaner.terminate();
@@ -732,13 +786,12 @@ void Center::refreshwatchpath()
 
 void Center::onfiles(QStringList paths,QVector<QStringList> filelist)
 {
-    //qDebug("onfiles");
     this->paths=paths;
     this->filelist=filelist;
     ui->aww->setpathes(paths,filelist);
     refreshwatchlist();
     ui->mt->setowlock(false);
-    ui->aw->setEnabled(true);
+    ui->cbm->setawenabled(true);
 }
 
 void Center::refreshwatchlist()
@@ -791,7 +844,7 @@ void Center::buildmodel(int cr)
 
 }
 
-void Center::on_aw_clicked()
+void Center::onawclicked()
 {
     ui->mt->hide();
     ui->egg->hide();
@@ -801,4 +854,10 @@ void Center::on_aw_clicked()
     }else{
         ui->aww->okey();
     }
+}
+
+void Center::oncbmrp(QPoint pos)
+{
+    cbmx=(double)((double)pos.x()/(double)width());
+    cbmy=(double)((double)pos.y()/(double)height());
 }

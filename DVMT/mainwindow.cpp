@@ -41,3 +41,8 @@ void MainWindow::dropEvent(QDropEvent *event)
         ui->cen->openfile(fileName);
     }
 }
+
+void MainWindow::openfile(QString filename)
+{
+    ui->cen->openfile(filename);
+}

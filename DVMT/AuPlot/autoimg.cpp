@@ -6,19 +6,6 @@ AutoImg::AutoImg()
     if(!dir.exists()){
         dir.mkdir(QCoreApplication::applicationDirPath()+"/autoimgtemp");
     }
-    /*
-    int num=0;
-    while(true){
-        QDir tdir(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-        QFileInfo fi(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-        if(!fi.isDir()){
-            dir.mkdir(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-            qDebug("%s",qPrintable(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num)));
-            this->id=num;
-            break;
-        }
-        num++;
-    }*/
 
     dir.setFilter(QDir::Dirs);
     QStringList paths;
@@ -82,32 +69,6 @@ AutoImg::AutoImg(int w,int h,QImage::Format format)
             break;
         }
     }
-    /*
-    for(int num=0;;num++){
-        QDir tdir(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-        QFileInfo fi(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-        fi.refresh();
-        qDebug("%d:%s",fi.isDir(),qPrintable(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num)));
-        if(!fi.isDir()){
-            dir.mkdir(QString::asprintf("%d",num));
-            qDebug("create:%s",qPrintable(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num)));
-            this->id=num;
-            break;
-        }
-    }*/
-        /*
-    while(true){
-        QDir tdir(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-        QFileInfo fi(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-        qDebug("%d:%s",fi.isDir(),qPrintable(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num)));
-        if(!fi.isDir()){
-            dir.mkdir(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num));
-            qDebug("create:%s",qPrintable(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",num)));
-            this->id=num;
-            break;
-        }
-        num++;
-    }*/
     this->w=w;
     this->h=h;
     this->format=format;
@@ -150,10 +111,6 @@ AutoImg::AutoImg(int w,int h,QImage::Format format)
 
 AutoImg::~AutoImg()
 {
-    //int xc=qCeil(w/part);
-    //int yc=qCeil(h/part);
-    //int wm=w-(xc-1)*part;
-    //int hm=h-(yc-1)*part;
     QDir dir(QCoreApplication::applicationDirPath()+"/autoimgtemp");
     if(dir.exists()){
         QDir tdir(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",this->id));
@@ -161,11 +118,9 @@ AutoImg::~AutoImg()
             tdir.setFilter(QDir::Files);
             for(uint i=0;i<tdir.count();i++){
                 QString fn=tdir.path()+"/"+tdir[i];
-                //qDebug("fn %s",qPrintable(fn));
                 QFile ft(fn);
                 if(ft.exists()){
-                    ft.remove();//bool out=
-                    //qDebug("%d:clear %s",out,qPrintable(fn));
+                    ft.remove();
                 }
             }
             tdir.rmdir(QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d",this->id));
@@ -197,22 +152,11 @@ QImage AutoImg::image()
 {
   int xc=qMax(1,qCeil((double)w/(double)part));
   int yc=qMax(1,qCeil((double)h/(double)part));
-  //int wm=w-(xc-1)*part;
-  //int hm=h-(yc-1)*part;
   savetemp();
   QImage out(w,h,format);
   for(int i=0;i<xc;i++){
     for(int j=0;j<yc;j++){
       prepareimag(i,j);
-      /*
-      int ow=part;
-      int oh=part;
-      if(i==xc-1){
-        ow=wm;
-      }
-      if(j==yc-1){
-        oh=hm;
-      }*/
       int xpos=i*part;
       int ypos=j*part;
       imagcopy(&currentImg,&out,xpos,ypos);
@@ -239,7 +183,7 @@ void AutoImg::setimage(QImage *image)
         wn=wm;
       }
       if(j==yc-1){
-        hn=hm;//wn=hm;
+        hn=hm;
       }
       currentImg=image->copy(xpos,ypos,wn,hn);
     }
@@ -283,7 +227,6 @@ QImage AutoImg::get(int sx,int sy,int sw,int sh,int pw,int ph)
       }
       int wp=xep-xsp+1,hp=yep-ysp+1;
       QImage imgtemp=currentImg.copy(xsp,ysp,wp,hp).scaled(wp*scalew,hp*scaleh);
-      //qDebug()<<QString("%0,%1").arg(wp*scalew).arg(hp*scaleh)<<endl;
       imagcopy(&imgtemp,&out,i==sxid?0:((part-sxpos)*scalew+(i-sxid-1)*part*scalew),j==syid?0:((part-sypos)*scaleh+(j-syid-1)*part*scaleh));
     }
   }
@@ -640,11 +583,6 @@ bool AutoImg::prepareimag(int x,int y)
 void AutoImg::savetemp()
 {
   QString filenamen=QCoreApplication::applicationDirPath()+"/autoimgtemp/"+QString::asprintf("%d/%d_%d.png",id,px,py);
-  /*
-  QFile filen(filenamen);
-  if(filen.exists()){
-    filen.remove();
-  }*/
   currentImg.save(filenamen,"png");
 }
 

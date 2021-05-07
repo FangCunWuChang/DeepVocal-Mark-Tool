@@ -37,6 +37,7 @@ public:
     bool RQB(QVector<bool> *data,QString file);
     bool WQV2(QVector<QVector<double>> *data,QString file);
     bool RQV2(QVector<QVector<double>> *data,QString file);
+    double size();
 private:
     int countid=0;
 

@@ -26,8 +26,6 @@ AuPlot::AuPlot(QWidget *parent) :
     connect(ui->specplot,&Specplot::xon,ui->waveplot,&Waveplot::setxon);
     connect(ui->waveplot,&Waveplot::xmoved,ui->specplot,&Specplot::setxw);
     connect(ui->specplot,&Specplot::xmoved,ui->waveplot,&Waveplot::setxw);
-    //connect(&MPlayer,&QMediaPlayer::stateChanged,this,&AuPlot::onMPstop);
-    //connect(&AO,&QAudioOutput::stateChanged,this,&AuPlot::onAOstop);
     connect(&se,&QSoundEffect::playingChanged,this,&AuPlot::onsestop);
     connect(ui->waveplot,&Waveplot::changesp,this,&AuPlot::onspchanged);
     connect(ui->specplot,&Specplot::changesp,this,&AuPlot::onspchanged);
@@ -46,49 +44,15 @@ AuPlot::AuPlot(QWidget *parent) :
     this->lock();
     lthr->setPT(&this->pixtemp);
     sthr->setpix(&this->pixtemp);
-/*
-    AF.setByteOrder(QAudioFormat::Endian::LittleEndian);
-    AF.setSampleRate(44100);
-    AF.setSampleSize(16);
-    AF.setSampleType(QAudioFormat::SampleType::SignedInt);
-    AF.setChannelCount(1);
-    AF.setCodec("audio/pcm");
-*/
 }
 
 AuPlot::~AuPlot()
 {
     ld->close();
     delete ld;
-    //if(MPlayer.state()==QMediaPlayer::State::PlayingState){
-     //   MPlayer.stop();
-    //}
-/*
-    if(se!=nullptr){
-        se->stop();
-        disconnect(se,&QSoundEffect::playingChanged,this,&AuPlot::onsestop);
-        delete se;
-        se=nullptr;
-        ui->tool->setplay(false);
-        QFile file(QCoreApplication::applicationDirPath()+"/temp/play.wav");
-        file.remove();
-    }*/
     if(se.isPlaying()){
         se.stop();
     }
-    /*
-    if(AO!=nullptr){
-        if(AO->state()!=QAudio::State::StoppedState){
-            AO->stop();
-        }
-        delete AO;
-        AO=nullptr;
-    }
-    if(bt!=nullptr){
-        delete bt;
-        bt=nullptr;
-    }
-*/
     if(athr->isRunning()){
         athr->terminate();
         athr->wait();
@@ -130,39 +94,13 @@ void AuPlot::resizeEvent(QResizeEvent *event)
 
 void AuPlot::WaveAnalyse(QString filepath,bool repaint)
 {
-    //if(MPlayer.state()==QMediaPlayer::State::PlayingState){
-      //  MPlayer.stop();
-    //}
-/*
-    if(se!=nullptr){
-        se->stop();
-        disconnect(se,&QSoundEffect::playingChanged,this,&AuPlot::onsestop);
-        delete se;
-        se=nullptr;
-        ui->tool->setplay(false);
-        QFile file(QCoreApplication::applicationDirPath()+"/temp/play.wav");
-        file.remove();
-    }*/
     if(se.isPlaying()){
         se.stop();
     }
-    /*
-    if(AO!=nullptr){
-        AO->stop();
-        disconnect(AO,&QAudioOutput::stateChanged,this,&AuPlot::onAOstop);
-
-        delete AO;
-        AO=nullptr;
-        ui->tool->setplay(false);
-    }
-    if(bt!=nullptr){
-        delete bt;
-        bt=nullptr;
-    }*/
 
     if(repaint){
         QWaveHandle wave(filepath);
-        if(wave.channels==1&&wave.samplespersec==44100&&wave.wavedataL->size()>=2*global_sets::perp){
+        if(wave.channels==1&&wave.samplespersec==44100&&wave.wavedataL->size()>=2*global_sets::perp&&wave.wavedataL->size()<=global_sets::maxlength){
             if(filepath!=this->filepath){
                 this->setfourlines(this->fourlines);
             }
@@ -189,7 +127,7 @@ void AuPlot::WaveAnalyse(QString filepath,bool repaint)
             }else{
                 QWaveHandle wave(filepath);
 
-                if(wave.channels==1&&wave.samplespersec==44100&&wave.wavedataL->size()>=2*global_sets::perp){
+                if(wave.channels==1&&wave.samplespersec==44100&&wave.wavedataL->size()>=2*global_sets::perp&&wave.wavedataL->size()<=global_sets::maxlength){
 
                     if(filepath!=this->filepath){
                         this->setfourlines(this->fourlines);
@@ -205,7 +143,7 @@ void AuPlot::WaveAnalyse(QString filepath,bool repaint)
         }else{
             QWaveHandle wave(filepath);
 
-            if(wave.channels==1&&wave.samplespersec==44100&&wave.wavedataL->size()>=2*global_sets::perp){
+            if(wave.channels==1&&wave.samplespersec==44100&&wave.wavedataL->size()>=2*global_sets::perp&&wave.wavedataL->size()<=global_sets::maxlength){
 
                 if(filepath!=this->filepath){
                     this->setfourlines(this->fourlines);
@@ -242,31 +180,19 @@ void AuPlot::unlock()
     emit unlocked();
 }
 
-void AuPlot::draw(QVector<double> wavepixv,QVector<double> wavepixp,QVector<QVector<double>> specpix,QVector<double> v1,QVector<double> v2,QVector<double> v3,QVector<bool> v4,bool save)
+void AuPlot::draw(QVector<double> wavepixv,QVector<double> wavepixp,QVector<QVector<double>> specpix,QVector<double> v1,QVector<double> v2,QVector<bool> v4,bool save)
 {
     ui->waveview->setpix(wavepixv);
     ui->waveplot->setpix(wavepixp);
     ui->waveplot->setv(v1,v2);
-    ui->specplot->setv(v3,v4);
+    ui->specplot->setv(v4);
     ui->specplot->setpix(specpix,wavepixv.size());
 
     this->onhschanged(0,1);
     this->onspchanged(false,0,0);
 
     if(save){
-        /*
-        pixtemp.write(filepath,0,wavepixv);
-        pixtemp.write(filepath,1,wavepixp);
-        pixtemp.write(filepath,2,specpix);
-        pixtemp.write(filepath,3,enepix);
-        pixtemp.write(filepath,4,rptzpix);
-        pixtemp.write(filepath,5,acfpix);
-        pixtemp.writev(filepath,"ene",v1);
-        pixtemp.writev(filepath,"rptz",v2);
-        pixtemp.writev(filepath,"acf",v3);
-        pixtemp.writeb(filepath,"flag",v4);
-        pixtemp.savemd5(filepath);*/
-        sthr->set(filepath,wavepixv,wavepixp,specpix,v1,v2,v3,v4);
+        sthr->set(filepath,wavepixv,wavepixp,specpix,v1,v2,v4);
         sthr->start();
     }
 
@@ -321,144 +247,39 @@ void AuPlot::onbuttonchanged(int code)
         break;
     }
 }
-/*
-void AuPlot::onMPstop(QMediaPlayer::State state)
-{
-    if(state==QMediaPlayer::State::StoppedState){
-        MPlayer.playlist()->clear();
-        ui->tool->setplay(false);
-        QFile file(QCoreApplication::applicationDirPath()+"/temp/play.wav");
-        file.remove();
-    }
 
-}
-*/
 void AuPlot::plotplay(bool play)
 {
     if(selected){
         if(play){
-            //qDebug("1");
             QWaveHandle *wavetemp=new QWaveHandle;
             QWaveHandle *wave=new QWaveHandle(filepath);
             QByteArray BA;
 
-            //qDebug("2");
 
                     for(int i=ssp*wave->wavedataL->size();i<sep*wave->wavedataL->size();i++){
                         if(i<wave->wavedataL->size()){
                             wavetemp->wavedataL->append(wave->wavedataL->at(i));
-                            //BA.append(static_cast<qint16>((double)((double)wave->wavedataL->at(i)*(double)INT16_MAX)));
                         }
                     }
 
-                    //qDebug("3");
                     wavetemp->WriteFile(QCoreApplication::applicationDirPath()+"/temp/play.wav");
 
-                    //qDebug("4");
                     delete wavetemp;
                     delete wave;
-
-                    //QFile::copy(QCoreApplication::applicationDirPath()+"/temp/play.wav",QCoreApplication::applicationDirPath()+"/temp/play_debug.wav");
-
-                    //qDebug("5");
-
-                    //QMediaPlaylist pl;
-
-                    //pl.addMedia(QUrl(QCoreApplication::applicationDirPath()+"/temp/play.wav"));
-
-
-                    //MPlayer.setPlaylist(&pl);
-
-                    /*
-                    if(se!=nullptr){
-                        if(se->isPlaying()){
-                            se->stop();
-                        }
-
-                        disconnect(se,&QSoundEffect::playingChanged,this,&AuPlot::onsestop);
-                        delete se;
-                        se=nullptr;
-                        //ui->tool->setplay(false);
-                        QFile file(QCoreApplication::applicationDirPath()+"/temp/play.wav");
-                        file.remove();
-                    }*/
                     if(se.isPlaying()){
                         se.stop();
                     }
-    /*
-                    if(AO!=nullptr){
-
-                        disconnect(AO,&QAudioOutput::stateChanged,this,&AuPlot::onAOstop);
-                        delete AO;
-                        AO=nullptr;
-                    }
-                    if(bt!=nullptr){
-                        delete bt;
-                        bt=nullptr;
-                    }
-
-                    QBuffer *bf=new QBuffer(&BA,this);
-                    bt=bf;
-
-                    AO=new QAudioOutput(AF,this);
-                    connect(AO,&QAudioOutput::stateChanged,this,&AuPlot::onAOstop);
-                    AO->setVolume(1);
-                    AO->setBufferSize(bf->size());
-                    AO->start(bf);
-    */
-
-
-
-
-
-
                     se.setSource(QUrl::fromLocalFile(QCoreApplication::applicationDirPath()+"/temp/play.wav"));
                     se.setVolume(1);
                     se.setLoopCount(0);
 
                     se.play();
 
-                    //qDebug("6");
-                    //MPlayer.setVolume(100);
-                    //MPlayer.setPosition(0);
-                    //MPlayer.setPlaybackRate(0);
-
-                    //MPlayer.play();
-                    //qDebug("7");
         }else{
-            //MPlayer.stop();
-            //se->stop();
-
-            /*
-            if(se!=nullptr){
-                if(se->isPlaying()){
-                    se->stop();
-                    ui->tool->setplay(false);
-                }
-
-                disconnect(se,&QSoundEffect::playingChanged,this,&AuPlot::onsestop);
-                delete se;
-                se=nullptr;
-
-                QFile file(QCoreApplication::applicationDirPath()+"/temp/play.wav");
-                file.remove();
-            }*/
             if(se.isPlaying()){
                 se.stop();
             }
-    /*
-            if(AO!=nullptr){
-                AO->stop();
-                disconnect(AO,&QAudioOutput::stateChanged,this,&AuPlot::onAOstop);
-
-                delete AO;
-                AO=nullptr;
-                ui->tool->setplay(false);
-            }
-            if(bt!=nullptr){
-                delete bt;
-                bt=nullptr;
-            }*/
 
         }
     }
@@ -467,26 +288,6 @@ void AuPlot::plotplay(bool play)
 
 void AuPlot::onsestop()
 {
-
-    /*
-    if(se!=nullptr){
-
-        if(!se->isPlaying()){
-
-
-            disconnect(se,&QSoundEffect::playingChanged,this,&AuPlot::onsestop);
-            qDebug("play end0!");
-            //se->deleteLater();
-            delete se;
-            se=nullptr;
-            qDebug("play end1!");
-            ui->tool->setplay(false);
-            qDebug("play end2!");
-            QFile file(QCoreApplication::applicationDirPath()+"/temp/play.wav");
-            file.remove();
-        }
-
-    }*/
     if(!se.isPlaying()){
         se.stop();
         se.setSource(QUrl());
@@ -495,24 +296,6 @@ void AuPlot::onsestop()
         file.remove();
     }
 }
-
-/*
-void AuPlot::onAOstop(QAudio::State state)
-{
-    if(state==QAudio::State::StoppedState){
-        ui->tool->setplay(false);
-        if(AO!=nullptr){
-            disconnect(AO,&QAudioOutput::stateChanged,this,&AuPlot::onAOstop);
-            delete AO;
-            AO=nullptr;
-        }
-        if(bt!=nullptr){
-            delete bt;
-            bt=nullptr;
-        }
-    }
-}
-*/
 
 void AuPlot::onspchanged(bool selected,double ssp,double sep)
 {
@@ -700,10 +483,33 @@ void AuPlot::onsvanum(int num)
     if(num==100){
         emit unlocked();
         ui->tool->setlocked(false);
+        checktemps();
     }else if(num==0){
         emit locked();
         ui->tool->setlocked(true);
     }else{
 
+    }
+}
+
+void AuPlot::checktemps()
+{
+    double tsizen=pixtemp.size();
+    if(tsizen>tsizeg){
+        QString nots="缓存文件总大小已达到";
+        if(tsizeg>=1024){
+            nots+=QString::asprintf("%.2fGB",(double)((double)tsizen/(double)1024));
+        }else{
+            nots+=QString::asprintf("%.2fMB",tsizen);
+        }
+        nots+="，这将增加设备储存空间负担。\n是否要清除缓存？";
+        QMessageBox::StandardButton result=QMessageBox::warning(this,"缓存容量",nots,QMessageBox::StandardButtons(QMessageBox::Yes|QMessageBox::No),QMessageBox::No);
+        if(result==QMessageBox::Yes){
+            tsizeg=global_sets::tempsgate;
+            this->pixtemp.clear();
+            this->WaveAnalyse(filepath,true);
+        }else{
+            tsizeg+=global_sets::tempsstep;
+        }
     }
 }

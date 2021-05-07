@@ -13,9 +13,6 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QSoundEffect>
-//#include <QAudioFormat>
-//#include <QBuffer>
-//#include <QAudioOutput>
 #include "global.h"
 #include "svathread.h"
 #include "autoimg.h"
@@ -39,7 +36,6 @@ public:
 
 private:
     Ui::AuPlot *ui;
-    //AuMathLib math;
     LockDialog *ld=new LockDialog(this);
     AnaThread *athr=new AnaThread;
     LoaThread *lthr= new LoaThread;
@@ -55,7 +51,9 @@ private:
     bool fourlines=true;
     double l1=0,l2=0,l3=0,l4=0;
     int lineid=1;
-//    AutoImg *pvt=nullptr,*ppt=nullptr,*spt=nullptr,*apt=nullptr;
+
+    double tsizeg=global_sets::tempsgate;
+    void checktemps();
 protected:
     void resizeEvent(QResizeEvent *event);
 public slots:
@@ -63,14 +61,12 @@ public slots:
     void unlock();
     void tip(QString msg);
 private slots:
-    void draw(QVector<double> wavepixv,QVector<double> wavepixp,QVector<QVector<double>> specpix,QVector<double> v1,QVector<double> v2,QVector<double> v3,QVector<bool> v4,bool save=true);
+    void draw(QVector<double> wavepixv,QVector<double> wavepixp,QVector<QVector<double>> specpix,QVector<double> v1,QVector<double> v2,QVector<bool> v4,bool save=true);
     void onhschanged(double hs=0,double he=1);
     void onbuttonchanged(int code);
-    //void onMPstop(QMediaPlayer::State state);
     void plotplay(bool play);
     void onsestop();
     void onspchanged(bool selected,double ssp,double sep);
-    //void onAOstop(QAudio::State state);
     void onpmove(double px);
     void onpoint(double px);
     void onprefresh();

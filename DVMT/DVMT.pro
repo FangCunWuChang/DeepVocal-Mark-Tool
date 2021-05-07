@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     autowav.cpp \
+    cbm.cpp \
     center.cpp \
     copthread.cpp \
     cpsdialog.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 HEADERS += \
     Version.h \
     autowav.h \
+    cbm.h \
     center.h \
     copthread.h \
     cpsdialog.h \
@@ -67,6 +69,7 @@ HEADERS += \
 
 FORMS += \
     autowav.ui \
+    cbm.ui \
     center.ui \
     cpsdialog.ui \
     egg.ui \
@@ -93,13 +96,3 @@ RESOURCES += \
 
 RC_FILE += icon.rc
 
-DISTFILES += \
-    android/AndroidManifest.xml \
-    android/build.gradle \
-    android/gradle/wrapper/gradle-wrapper.jar \
-    android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew \
-    android/gradlew.bat \
-    android/res/values/libs.xml
-
-ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

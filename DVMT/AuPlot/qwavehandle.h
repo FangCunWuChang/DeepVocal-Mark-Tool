@@ -33,7 +33,7 @@ public:
     ulong datalength;
     bool ReadFile(QString Filename);
     bool WriteFile(QString Filename);
-    static bool checkwav(QString Filename,uint16_t channels=1,uint32_t samplespersec=44100,uint16_t bitspersample=16,int size=0);
+    static bool checkwav(QString Filename,uint16_t channels=1,uint32_t samplespersec=44100,uint16_t bitspersample=16,int size=0,int max=qInf());
     void clear();
 
 

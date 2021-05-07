@@ -16,6 +16,12 @@
     <height>600</height>
    </size>
   </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="tabletTracking">
+   <bool>true</bool>
+  </property>
   <property name="acceptDrops">
    <bool>true</bool>
   </property>
@@ -29,12 +35,12 @@
   <property name="styleSheet">
    <string notr="true">QToolTip{
 
-background-color:rgb(46, 52, 54);
+background-color:rgb(61,59,79);
 color: rgb(211, 215, 207);
-border:1px solid rgb(85, 87, 83);
+border:1px solid rgb(61,59,79);
 }
 QWidget{
-	background-color: rgb(85, 87, 83);
+	background-color: rgb(61,59,79);
 }
 </string>
   </property>

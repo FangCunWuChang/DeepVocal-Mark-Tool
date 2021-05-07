@@ -18,7 +18,6 @@ public:
     QQueue<QVector<double>> spec;
     QQueue<double> ene;
     QQueue<double> rptz;
-    QQueue<double> acf;
     QQueue<bool> flag;
 protected:
     void run() override;

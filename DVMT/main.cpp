@@ -9,6 +9,8 @@
 #include "dvsym.h"
 #include <QSystemSemaphore>
 #include <QSharedMemory>
+#include <QTextCodec>
+#include <QSplashScreen>
 
 int main(int argc, char *argv[])
 {
@@ -21,63 +23,21 @@ int main(int argc, char *argv[])
     qRegisterMetaType<CVVCSymbol>("CVVCSymbol");
     qRegisterMetaType<QVector<QVector<CVVCSymbol>>>("QVector<QVector<CVVCSymbol>>");
     qRegisterMetaType<QVector<QVector<DVSym>>>("QVector<QVector<DVSym>>");
-    if(QFile::exists(QCoreApplication::applicationDirPath()+"/SourceHanSans.ttc")){
-      int fontId = QFontDatabase::addApplicationFont(QCoreApplication::applicationDirPath()+"/SourceHanSans.ttc");
-      qDebug("fontFile = %s",qPrintable(QCoreApplication::applicationDirPath()+"/SourceHanSans.ttc"));
+    if(QFile::exists(":/type/wqy-microhei.ttc")){
+      int fontId = QFontDatabase::addApplicationFont(":/type/wqy-microhei.ttc");
+      qDebug("fontFile = %s",qPrintable(":/type/wqy-microhei.ttc"));
       qDebug("fontId = %d",fontId);
-      QString msyh = QFontDatabase::applicationFontFamilies(fontId).at(17);
-      //0 Source Han Sans ExtraLight
-      //1 Source Han Sans K ExtraLight
-      //2 Source Han Sans SC ExtraLight
-      //3 Source Han Sans TC ExtraLight
-      //4 Source Han Sans HC ExtraLight
-      //5 Source Han Sans Light
-      //6 Source Han Sans K Light
-      //7 Source Han Sans SC Light
-      //8 Source Han Sans TC Light
-      //9 Source Han Sans HC Light
-      //10 Source Han Sans Normal
-      //11 Source Han Sans K Normal
-      //12 Source Han Sans SC Normal
-      //13 Source Han Sans TC Normal
-      //14 Source Han Sans HC Normal
-      //15 Source Han Sans Medium
-      //16 Source Han Sans K Medium
-      //17 Source Han Sans SC Medium
-      //18 Source Han Sans TC Medium
-      //19 Source Han Sans HC Medium
-      //20 Source Han Sans Heavy
-      //21 Source Han Sans K Heavy
-      //22 Source Han Sans SC Heavy
-      //23 Source Han Sans TC Heavy
-      //24 Source Han Sans HC Heavy
-      //25 Source Han Sans
-      //26 Source Han Sans K
-      //27 Source Han Sans SC
-      //28 Source Han Sans TC
-      //29 Source Han Sans HC
-      //30 Source Han Sans HW
-      //31 Source Han Sans HW K
-      //32 Source Han Sans HW SC
-      //33 Source Han Sans HW TC
-      //34 Source Han Sans HW HC
-      //35 Source Han Sans
-      //36 Source Han Sans K
-      //37 Source Han Sans SC
-      //38 Source Han Sans TC
-      //39 Source Han Sans HC
-      //40 Source Han Sans HW
-      //41 Source Han Sans HW K
-      //42 Source Han Sans HW SC
-      //43 Source Han Sans HW TC
-      //44 Source Han Sans HW HC
+      QString msyh = QFontDatabase::applicationFontFamilies(fontId).at(0);
       qDebug("msyh = %s",qPrintable(msyh));
       QFont font(msyh);
       QApplication::setFont(font);
     }else{
-      qDebug("未找到字体：%s",qPrintable(QCoreApplication::applicationDirPath()+"/SourceHanSans.ttc"));
+      qDebug("未找到字体：%s",qPrintable(":/type/wqy-microhei.ttc"));
     }
 
+    QPixmap spixmap(":/imag/Splash.png");
+    QSplashScreen splash(spixmap);
+    splash.show();
 
     int ret=1;
     MainWindow w;
@@ -117,9 +77,25 @@ int main(int argc, char *argv[])
 
         if (isRunning) {
             QMessageBox::warning(&w,"DVMT提示","DVMT已经在运行!");
+            splash.finish(&w);
             ret=-1;
         } else {
+            QString filestr1;
+            if(argc>1){
+#ifdef Q_OS_WIN
+                QTextCodec *codec = QTextCodec::codecForName("GBK");
+#else
+                QTextCodec *codec = QTextCodec::codecForName("UTF8");
+#endif
+                QByteArray sarray(argv[1]);
+                filestr1 = codec->toUnicode(sarray);
+
+                //如果是直接双击exe打开本程序，那么程序获取到的参数个数为1，argv[0]里面是本exe文件所在的全路径
+                //如果是通过双击项目文件之后，系统打开本程序，那么程序获取到的参数个数为2，argv[0]里面是本exe文件所在的全路径，argv[1]里面是本项目文件的全路径
+            }
             w.show();
+            w.openfile(filestr1);
+            splash.finish(&w);
             ret=a.exec();
         }
     return ret;

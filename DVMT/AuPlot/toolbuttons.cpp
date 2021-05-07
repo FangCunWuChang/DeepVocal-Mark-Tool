@@ -8,7 +8,6 @@ ToolButtons::ToolButtons(QWidget *parent) :
     ui->setupUi(this);
     ui->b1->setMinimumHeight(height()*0.8);
     ui->b2->setMinimumHeight(height()*0.8);
-    ui->b3->setMinimumHeight(height()*0.8);
     ui->b4->setMinimumHeight(height()*0.8);
     ui->b5->setMinimumHeight(height()*0.8);
     ui->b6->setMinimumHeight(height()*0.8);
@@ -20,7 +19,6 @@ ToolButtons::ToolButtons(QWidget *parent) :
     ui->b12->setMinimumHeight(height()*0.8);
     ui->b1->resize(ui->b1->width(),height()*0.8);
     ui->b2->resize(ui->b2->width(),height()*0.8);
-    ui->b3->resize(ui->b3->width(),height()*0.8);
     ui->b4->resize(ui->b4->width(),height()*0.8);
     ui->b5->resize(ui->b5->width(),height()*0.8);
     ui->b6->resize(ui->b6->width(),height()*0.8);
@@ -32,7 +30,6 @@ ToolButtons::ToolButtons(QWidget *parent) :
     ui->b12->resize(ui->b12->width(),height()*0.8);
     ui->b1->move(ui->b1->geometry().x(),height()*0.1);
     ui->b2->move(ui->b2->geometry().x(),height()*0.1);
-    ui->b3->move(ui->b3->geometry().x(),height()*0.1);
     ui->b4->move(ui->b4->geometry().x(),height()*0.1);
     ui->b5->move(ui->b5->geometry().x(),height()*0.1);
     ui->b6->move(ui->b6->geometry().x(),height()*0.1);
@@ -57,11 +54,6 @@ void ToolButtons::on_b1_clicked(bool checked)
 void ToolButtons::on_b2_clicked(bool checked)
 {
     emit control(3+checked);
-}
-
-void ToolButtons::on_b3_clicked(bool checked)
-{
-    emit control(5+checked);
 }
 
 void ToolButtons::on_b4_clicked()
@@ -108,7 +100,6 @@ void ToolButtons::resizeEvent(QResizeEvent *event)
 {
     ui->b1->setMinimumHeight(height()*0.8);
     ui->b2->setMinimumHeight(height()*0.8);
-    ui->b3->setMinimumHeight(height()*0.8);
     ui->b4->setMinimumHeight(height()*0.8);
     ui->b5->setMinimumHeight(height()*0.8);
     ui->b6->setMinimumHeight(height()*0.8);
@@ -120,7 +111,6 @@ void ToolButtons::resizeEvent(QResizeEvent *event)
     ui->b12->setMinimumHeight(height()*0.8);
     ui->b1->resize(ui->b1->width(),height()*0.8);
     ui->b2->resize(ui->b2->width(),height()*0.8);
-    ui->b3->resize(ui->b3->width(),height()*0.8);
     ui->b4->resize(ui->b4->width(),height()*0.8);
     ui->b5->resize(ui->b5->width(),height()*0.8);
     ui->b6->resize(ui->b6->width(),height()*0.8);
@@ -132,7 +122,6 @@ void ToolButtons::resizeEvent(QResizeEvent *event)
     ui->b12->resize(ui->b12->width(),height()*0.8);
     ui->b1->move(ui->b1->geometry().x(),height()*0.1);
     ui->b2->move(ui->b2->geometry().x(),height()*0.1);
-    ui->b3->move(ui->b3->geometry().x(),height()*0.1);
     ui->b4->move(ui->b4->geometry().x(),height()*0.1);
     ui->b5->move(ui->b5->geometry().x(),height()*0.1);
     ui->b6->move(ui->b6->geometry().x(),height()*0.1);
@@ -267,7 +256,7 @@ void ToolButtons::wannachangeline()
 void ToolButtons::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.fillRect(0,0,width(),height(),QColor(85, 87, 83));
+    painter.fillRect(0,0,width(),height(),QColor(61,59,79));
     QWidget::paintEvent(event);
 }
 

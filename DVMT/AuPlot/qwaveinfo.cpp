@@ -21,13 +21,11 @@ bool QWaveInfo::ReadFile(QString Filename)
 {
     if(Filename.isEmpty())
     {
-        //QMessageBox::warning(NULL,"出错！","文件名为空！");
         return false;
     }
     QFile file(Filename);
     if(!file.open(QIODevice::ReadOnly))
     {
-        //QMessageBox::warning(NULL,"出错！","打开文件："+Filename+"失败！");
         file.close();
         return false;
     }
@@ -43,22 +41,19 @@ bool QWaveInfo::ReadFile(QString Filename)
     stream.readRawData((char *)&szRIFFID,4*sizeof (char));
     if(!((szRIFFID[0]=='R')&&(szRIFFID[1]=='I')&&(szRIFFID[2]=='F')&&(szRIFFID[3]=='F')))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("是一个")+szRIFFID+("文件，不是一个RIFF文件！"));
         file.close();
         return false;
     }
     stream.readRawData((char *)&uiRIFFsize,sizeof (uint32_t));
     stream.readRawData((char *)&szRIFFformat,4*sizeof (char));
-    if(!(szRIFFformat[0]=='W'&&szRIFFformat[1]=='A'&&szRIFFformat[2]=='V'&&szRIFFformat[3]=='E'))//
+    if(!(szRIFFformat[0]=='W'&&szRIFFformat[1]=='A'&&szRIFFformat[2]=='V'&&szRIFFformat[3]=='E'))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("是一个")+szRIFFformat+("文件，不是一个WAVE文件！"));
         file.close();
         return false;
     }
     stream.readRawData((char *)&formatID,4*sizeof (char));
     if(!((formatID[0]=='f')&&(formatID[1]=='m')&&(formatID[2]=='t')&&(formatID[3]==' ')))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("有一个")+formatID+("块，没有fmt块！"));
         file.close();
         return false;
     }
@@ -76,7 +71,6 @@ bool QWaveInfo::ReadFile(QString Filename)
     stream.readRawData((char *)&dataID,4*sizeof (char));
     if(!((dataID[0]=='d')&&(dataID[1]=='a')&&(dataID[2]=='t')&&(dataID[3]=='a')))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("有一个")+dataID+("块，没有data块！"));
         file.close();
         return false;
     }
@@ -91,7 +85,6 @@ bool QWaveInfo::ReadFile(QString Filename)
         }
         else
         {
-            //QMessageBox::warning(NULL,("出错！"),Filename+("不支持的轨道数！"));
             file.close();
             return false;
         }
@@ -108,14 +101,12 @@ bool QWaveInfo::ReadFile(QString Filename)
         }
         else
         {
-            //QMessageBox::warning(NULL,("出错！"),Filename+("不支持的轨道数！"));
             file.close();
             return false;
         }
     }
     else
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("比特数未知！"));
         file.close();
         return false;
     }
@@ -151,13 +142,11 @@ bool QWaveInfo::checkwav(QString Filename,uint16_t channelst,uint32_t samplesper
 {
     if(Filename.isEmpty())
     {
-        //QMessageBox::warning(NULL,"出错！","文件名为空！");
         return false;
     }
     QFile file(Filename);
     if(!file.open(QIODevice::ReadOnly))
     {
-        //QMessageBox::warning(NULL,"出错！","打开文件："+Filename+"失败！");
         file.close();
         return false;
     }
@@ -185,22 +174,19 @@ bool QWaveInfo::checkwav(QString Filename,uint16_t channelst,uint32_t samplesper
     stream.readRawData((char *)&szRIFFID,4*sizeof (char));
     if(!((szRIFFID[0]=='R')&&(szRIFFID[1]=='I')&&(szRIFFID[2]=='F')&&(szRIFFID[3]=='F')))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("是一个")+szRIFFID+("文件，不是一个RIFF文件！"));
         file.close();
         return false;
     }
     stream.readRawData((char *)&uiRIFFsize,sizeof (uint32_t));
     stream.readRawData((char *)&szRIFFformat,4*sizeof (char));
-    if(!(szRIFFformat[0]=='W'&&szRIFFformat[1]=='A'&&szRIFFformat[2]=='V'&&szRIFFformat[3]=='E'))//
+    if(!(szRIFFformat[0]=='W'&&szRIFFformat[1]=='A'&&szRIFFformat[2]=='V'&&szRIFFformat[3]=='E'))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("是一个")+szRIFFformat+("文件，不是一个WAVE文件！"));
         file.close();
         return false;
     }
     stream.readRawData((char *)&formatID,4*sizeof (char));
     if(!((formatID[0]=='f')&&(formatID[1]=='m')&&(formatID[2]=='t')&&(formatID[3]==' ')))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("有一个")+formatID+("块，没有fmt块！"));
         file.close();
         return false;
     }
@@ -230,7 +216,6 @@ bool QWaveInfo::checkwav(QString Filename,uint16_t channelst,uint32_t samplesper
     stream.readRawData((char *)&dataID,4*sizeof (char));
     if(!((dataID[0]=='d')&&(dataID[1]=='a')&&(dataID[2]=='t')&&(dataID[3]=='a')))
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("有一个")+dataID+("块，没有data块！"));
         file.close();
         return false;
     }
@@ -253,7 +238,6 @@ bool QWaveInfo::checkwav(QString Filename,uint16_t channelst,uint32_t samplesper
         }
         else
         {
-            //QMessageBox::warning(NULL,("出错！"),Filename+("不支持的轨道数！"));
             file.close();
             return false;
         }
@@ -278,14 +262,12 @@ bool QWaveInfo::checkwav(QString Filename,uint16_t channelst,uint32_t samplesper
         }
         else
         {
-            //QMessageBox::warning(NULL,("出错！"),Filename+("不支持的轨道数！"));
             file.close();
             return false;
         }
     }
     else
     {
-        //QMessageBox::warning(NULL,("出错！"),Filename+("比特数未知！"));
         file.close();
         return false;
     }

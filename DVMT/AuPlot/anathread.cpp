@@ -20,7 +20,6 @@ void AnaThread::rele()
     spectemp.clear();
     etemp.clear();
     rptztemp.clear();
-    acftemp.clear();
     flagtemp.clear();
     for(int i=0;i<sublist.size();i++){
         if(((SubAna*)sublist.at(i))->isRunning()){
@@ -44,7 +43,6 @@ void AnaThread::run()
     spectemp.resize(sc);
     etemp.resize(sc);
     rptztemp.resize(sc);
-    acftemp.resize(sc);
     flagtemp.resize(sc);
 
     qDebug("1");
@@ -98,7 +96,6 @@ void AnaThread::run()
         spectemp.replace(i,((SubAna*)sublist.at(stid))->spec.dequeue());
         etemp.replace(i,((SubAna*)sublist.at(stid))->ene.dequeue());
         rptztemp.replace(i,((SubAna*)sublist.at(stid))->rptz.dequeue());
-        acftemp.replace(i,((SubAna*)sublist.at(stid))->acf.dequeue());
         flagtemp.replace(i,((SubAna*)sublist.at(stid))->flag.dequeue());
     }
 
@@ -120,16 +117,14 @@ void AnaThread::run()
     //qDebug("actemp:%d",actemp.size());
     qDebug("etemp:%d",etemp.size());
     qDebug("rptztemp:%d",rptztemp.size());
-    qDebug("acftemp:%d",acftemp.size());
     qDebug("flagtemp:%d",flagtemp.size());
 
-    emit out(wavetemp,wavetemp,spectemp,etemp,rptztemp,acftemp,flagtemp,true);
+    emit out(wavetemp,wavetemp,spectemp,etemp,rptztemp,flagtemp,true);
 
     wavetemp.clear();
     spectemp.clear();
     etemp.clear();
     rptztemp.clear();
-    acftemp.clear();
     flagtemp.clear();
 
     emit tip("完成!");
@@ -146,26 +141,11 @@ void AnaThread::setwave(QWaveHandle *wave)
 
 QColor AnaThread::getcolor(double v)
 {
-    /*
-    int R=0,G=0,B=0;
-    if(x<=0.03){
-        R=static_cast<double>((x/0.03)*255);
-        B=static_cast<double>((x/0.03)*255);
-    }else if(x<=0.06){
-        R=static_cast<double>(255);
-        B=static_cast<double>(255-((x-0.03)/0.03)*255);
-    }else{
-        R=255;
-        G=static_cast<double>(((x-0.06)/0.94)*255);
-    }
-    QColor out(R,G,B);
-    return out;*/
     const double vii = (v-global_sets::m_minBound)/(global_sets::m_maxBound-global_sets::m_minBound);
     int red = 0,green = 0,blue = 0;
     if (vii>=0 && vii<0.25)
     {
         blue = vii/0.25*255;
-        //red = vii/0.25*255/2;
 
     }
 
@@ -189,59 +169,3 @@ QColor AnaThread::getcolor(double v)
             red = 255, blue = 255, green = 255;
     return QColor(red,green,blue);
 }
-
-QColor AnaThread::getacfcolor(double x,double max,double min)
-{
-    double part=(double)((double)(max-min)/(double)6);
-    if(x<=min+part){
-        return Qt::black;
-    }else if(x<=min+2*part){
-        return Qt::blue;
-    }else if(x<=min+3*part){
-        return Qt::green;
-    }
-    else if(x<=min+4*part){
-        return Qt::yellow;
-    }
-    else if(x<=min+5*part){
-        return QColor(255,127,0);
-    }
-    else{
-        return Qt::red;
-    }
-}
-
-QColor AnaThread::getacfcolor2(double x,double max,double min)
-{
-    const double vii = (x-min)/(max-min);
-    int red = 0,green = 0,blue = 0;
-    if (vii>=0 && vii<0.25)
-    {
-        blue = vii/0.25*255;
-        //red = vii/0.25*255/2;
-
-    }
-
-    else if (vii>=0.25 && vii<0.5 )
-    {
-            blue = (0.5-vii)/0.25*255;
-            red =  (vii-0.25)/0.25*255;
-    }
-    else if (vii>=0.5 && vii<0.75 )
-    {
-            red =  255;
-            green = (vii-0.5)/0.25*255;
-    }
-    else if (vii>=0.75 && vii<1)
-    {
-            red = 255;
-            green = 255;
-            blue =  (vii-0.75)/0.25*255;
-    }
-    else if (vii>=1)
-            red = 255, blue = 255, green = 255;
-    return QColor(red,green,blue);
-
-}
-
-

@@ -7,18 +7,11 @@ Waveview::Waveview(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setMouseTracking(true);
-    //pixmap->fill(Qt::black);
     pm2->fill(Qt::black);
 }
 
 Waveview::~Waveview()
 {
-    /*
-    if(pixmap!=nullptr){
-        delete pixmap;
-        pixmap=nullptr;
-    }
-*/
     delete pm2;
     delete ui;
 }
@@ -38,20 +31,17 @@ void Waveview::pixchange()
     QPen pen;
     QBrush brush;
     pen.setWidth(1);
-    pen.setColor(QColor(114,159,207));
+    pen.setColor(QColor(68,206,246));//波形：蓝
     pen.setStyle(Qt::SolidLine);
     pen.setCapStyle(Qt::RoundCap);
     pen.setJoinStyle(Qt::RoundJoin);
     painter.setPen(pen);
-    brush.setColor(QColor(114,159,207,200));
+    brush.setColor(QColor(68,206,246,200));//波形：蓝
     brush.setStyle(Qt::SolidPattern);
     painter.setBrush(brush);
     QPolygon poly;
     poly.append(QPoint(-1,(double)((double)(pm2->height())/(double)2)));
     for(int i=0;i<pt.size();i++){
-        //if(qRound((double)((double)i/(double)pt.size())*pm2->width())==((double)((double)i/(double)pt.size())*pm2->width())){
-
-        //}
         poly.append(g_poi(i,pt.at(i)));
 
     }
@@ -60,10 +50,9 @@ void Waveview::pixchange()
     int perp=global_sets::perp;
     QRect rectl(0,0,(double)((double)qMax(perp,global_sets::step/2)/(double)pt.size())*pm2->width(),pm2->height());
     QRect rectr(pm2->width()-(double)((double)qMax(perp,global_sets::step/2)/(double)pt.size())*pm2->width(),0,(double)((double)qMax(perp,global_sets::step/2)/(double)pt.size())*pm2->width(),pm2->height());
-    painter.fillRect(rectl,QColor(255,255,0,100));
-    painter.fillRect(rectr,QColor(255,255,0,100));
+    painter.fillRect(rectl,QColor(195,33,54,100));//分析区：枣红
+    painter.fillRect(rectr,QColor(195,33,54,100));//分析区：枣红
     painter.end();
-    //pm2->scaled(width(),height());
 }
 
 QPoint Waveview::g_poi(int x,double y)
@@ -77,25 +66,19 @@ void Waveview::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     QPen pen;
     QBrush brush;
-    pen.setWidth(1);
-    pen.setColor(QColor(136,138,133));
-    pen.setStyle(Qt::SolidLine);
     pen.setCapStyle(Qt::RoundCap);
     pen.setJoinStyle(Qt::RoundJoin);
-    painter.setPen(pen);
-    brush.setColor(QColor(85,87,83));
     brush.setStyle(Qt::SolidPattern);
-    painter.setBrush(brush);
-    brush.setColor(Qt::black);
+    brush.setColor(Qt::black);//背景：黑色
     painter.setBrush(brush);
     painter.drawRect(QRect(0,0,width()-1,height()-1));
     painter.drawPixmap(0,0,width(),height(),*pm2);
     if(selected){
-        pen.setColor(Qt::gray);
+        pen.setColor(QColor(224,240,233));//选择框：素
         pen.setWidth(1);
         pen.setStyle(Qt::DashLine);
         painter.setPen(pen);
-        brush.setColor(QColor(255,255,255,100));
+        brush.setColor(QColor(224,240,233,100));//选择框：素
         painter.setBrush(brush);
         painter.drawRect(ssp*width(),0,(sep-ssp)*width(),this->height());
     }
@@ -103,38 +86,38 @@ void Waveview::paintEvent(QPaintEvent *event)
     pen.setStyle(Qt::SolidLine);
     painter.setPen(pen);
     if(l1*pt.size()>=global_sets::perp&&l1*pt.size()<=pt.size()-global_sets::perp){
-        pen.setColor(QColor(114,159,207));
+        pen.setColor(QColor(75,92,196));//一线：宝蓝
         painter.setPen(pen);
         QLine linel((double)l1*(double)(width()),0,(double)l1*(double)(width()),height());
         painter.drawLine(linel);
 
     }
     if(l2*pt.size()>=global_sets::perp&&l2*pt.size()<=pt.size()-global_sets::perp){
-        pen.setColor(QColor(252,233,79));
+        pen.setColor(QColor(255,140,49));//二线：杏黄
         painter.setPen(pen);
         QLine linel((double)l2*(double)(width()),0,(double)l2*(double)(width()),height());
         painter.drawLine(linel);
 
     }
     if(l3*pt.size()>=global_sets::perp&&l3*pt.size()<=pt.size()-global_sets::perp){
-        pen.setColor(QColor(173,127,168));
+        pen.setColor(QColor(203,58,86));//三线：茜色
         painter.setPen(pen);
         QLine linel((double)l3*(double)(width()),0,(double)l3*(double)(width()),height());
         painter.drawLine(linel);
 
     }
     if(l4*pt.size()>=global_sets::perp&&l4*pt.size()<=pt.size()-global_sets::perp){
-        pen.setColor(QColor(138,226,52));
+        pen.setColor(QColor(127,236,173));//四线：缥
         painter.setPen(pen);
         QLine linel((double)l4*(double)(width()),0,(double)l4*(double)(width()),height());
         painter.drawLine(linel);
 
     }
     QRect rect(hs*width(),0,(he-hs)*width(),height());
-    pen.setColor(Qt::white);
+    pen.setColor(QColor(214,236,240));//区域框：月白
     pen.setWidth(4);
     pen.setJoinStyle(Qt::RoundJoin);
-    brush.setColor(QColor(255,255,255,0));
+    brush.setColor(QColor(214,236,240,0));//区域框：月白
     painter.setPen(pen);
     painter.setBrush(brush);
     painter.drawRect(rect);
@@ -157,7 +140,7 @@ void Waveview::seths(double hs,double he)
 
 void Waveview::mouseMoveEvent(QMouseEvent *event)
 {
-    if(true){//event->pos().x()>=0&&event->pos().x()<=width()
+    if(true){
         if(modeflag==0){
             if((double)((double)event->pos().x()/(double)width())>=hs+0.005&&(double)((double)event->pos().x()/(double)width())<=he-0.005){
                 this->setCursor(Qt::OpenHandCursor);
@@ -264,7 +247,7 @@ void Waveview::mouseReleaseEvent(QMouseEvent *event)
         }else{
             this->setCursor(Qt::ArrowCursor);
         }
-        if(true){//event->pos().x()>=0&&event->pos().x()<=width()
+        if(true){
             if(modeflag==1){
                 nx=event->pos().x();
                 ny=event->pos().y();

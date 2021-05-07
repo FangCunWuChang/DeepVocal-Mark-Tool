@@ -20,13 +20,13 @@
   <property name="styleSheet">
    <string notr="true">QToolTip{
 
-background-color:rgb(46, 52, 54);
+background-color:rgb(61,59,79);
 color: rgb(211, 215, 207);
-border:1px solid rgb(85, 87, 83);
+border:1px solid rgb(61,59,79);
 }
 
 QWidget{
-	background-color: rgb(85, 87, 83);
+	background-color: rgb(61,59,79);
 }</string>
   </property>
   <widget class="QPushButton" name="newp">
@@ -43,21 +43,21 @@ QWidget{
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color:white;
-	background-color: rgb(0, 134, 255);
-	border: 0px solid white;
+	color:rgb(214,236,240);
+	background-color: rgb(84,150,136);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }
 QPushButton:disabled{
-border:0px solid white;
-background-color: rgb(85, 87, 83);
+border:0px solid rgb(214,236,240);
+background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
 border-radius:7px;
 }
 QPushButton:pressed{
-	color: rgb(0, 134, 255);
-	background-color:  white;
-	border: 0px solid white;
+	color: rgb(84,150,136);
+	background-color:  rgb(214,236,240);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }</string>
    </property>
@@ -82,21 +82,21 @@ QPushButton:pressed{
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color:white;
-	background-color: rgb(0, 134, 255);
-	border: 0px solid white;
+	color:rgb(214,236,240);
+	background-color: rgb(84,150,136);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }
 QPushButton:disabled{
-border:0px solid white;
-background-color: rgb(85, 87, 83);
+border:0px solid rgb(214,236,240);
+background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
 border-radius:7px;
 }
 QPushButton:pressed{
-	color: rgb(0, 134, 255);
-	background-color:  white;
-	border: 0px solid white;
+	color: rgb(84,150,136);
+	background-color:  rgb(214,236,240);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }</string>
    </property>
@@ -121,21 +121,21 @@ QPushButton:pressed{
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color:white;
-	background-color: rgb(0, 134, 255);
-	border: 0px solid white;
+	color:rgb(214,236,240);
+	background-color: rgb(84,150,136);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }
 QPushButton:disabled{
-border:0px solid white;
-background-color: rgb(85, 87, 83);
+border:0px solid rgb(214,236,240);
+background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
 border-radius:7px;
 }
 QPushButton:pressed{
-	color: rgb(0, 134, 255);
-	background-color:  white;
-	border: 0px solid white;
+	color: rgb(84,150,136);
+	background-color:  rgb(214,236,240);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }</string>
    </property>
@@ -160,21 +160,21 @@ QPushButton:pressed{
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color:white;
-	background-color: rgb(0, 134, 255);
-	border: 0px solid white;
+	color:rgb(214,236,240);
+	background-color: rgb(84,150,136);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }
 QPushButton:disabled{
-border:0px solid white;
-background-color: rgb(85, 87, 83);
+border:0px solid rgb(214,236,240);
+background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
 border-radius:7px;
 }
 QPushButton:pressed{
-	color: rgb(0, 134, 255);
-	background-color:  white;
-	border: 0px solid white;
+	color: rgb(84,150,136);
+	background-color:  rgb(214,236,240);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }</string>
    </property>
@@ -199,21 +199,21 @@ QPushButton:pressed{
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color:white;
-	background-color: rgb(0, 134, 255);
-	border: 0px solid white;
+	color:rgb(214,236,240);
+	background-color: rgb(84,150,136);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }
 QPushButton:disabled{
-border:0px solid white;
-background-color: rgb(85, 87, 83);
+border:0px solid rgb(214,236,240);
+background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
 border-radius:7px;
 }
 QPushButton:pressed{
-	color: rgb(0, 134, 255);
-	background-color:  white;
-	border: 0px solid white;
+	color: rgb(84,150,136);
+	background-color:  rgb(214,236,240);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }</string>
    </property>
@@ -238,21 +238,21 @@ QPushButton:pressed{
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color:white;
-	background-color: rgb(0, 134, 255);
-	border: 0px solid white;
+	color:rgb(214,236,240);
+	background-color: rgb(84,150,136);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }
 QPushButton:disabled{
-border:0px solid white;
-background-color: rgb(85, 87, 83);
+border:0px solid rgb(214,236,240);
+background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
 border-radius:7px;
 }
 QPushButton:pressed{
-	color: rgb(0, 134, 255);
-	background-color:  white;
-	border: 0px solid white;
+	color: rgb(84,150,136);
+	background-color:  rgb(214,236,240);
+	border: 0px solid rgb(214,236,240);
 	border-radius:7px;
 }</string>
    </property>

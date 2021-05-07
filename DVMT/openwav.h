@@ -35,7 +35,6 @@ private slots:
     void on_cancel_clicked();
     void on_enter_clicked();
     void on_name_textChanged(const QString &arg1);
-    //void on_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
     void on_olist_itemPressed(QListWidgetItem *item);
 };
 

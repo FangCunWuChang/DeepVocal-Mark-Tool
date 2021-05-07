@@ -28,7 +28,6 @@ public:
 
 private:
     Ui::Waveview *ui;
-    //AutoImg *pixmap=nullptr;//new AutoImg(1,2001);
     QPixmap *pm2=new QPixmap(width()*scaletimes_wv,height()*scaletimes_wv);
     QVector<double> pt;
     double hs=0,he=1;

@@ -1,4 +1,4 @@
-#include "specplot.h"
+﻿#include "specplot.h"
 #include "ui_specplot.h"
 
 Specplot::Specplot(QWidget *parent) :
@@ -7,22 +7,11 @@ Specplot::Specplot(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setAttribute(Qt::WA_AcceptTouchEvents);
-    //pixmap->fill(Qt::black);
-    //pixacf->fill(Qt::black);
-    pm2->fill(Qt::black);
+    pm2->fill(Qt::black);//图片默认背景：黑
 }
 
 Specplot::~Specplot()
 {
-    /*
-    if(pixmap!=nullptr){
-        delete pixmap;
-        pixmap=nullptr;
-    }
-    if(pixacf!=nullptr){
-        delete pixacf;
-        pixacf=nullptr;
-    }*/
 
     delete pm2;
     delete ui;
@@ -37,7 +26,7 @@ void Specplot::resizeEvent(QResizeEvent *event)
 
 void Specplot::pixchange()
 {
-    pm2->fill(Qt::black);
+    pm2->fill(Qt::black);//图片默认背景：黑
     pm2->scaled(width()*scaletimes_sp*0.975,height()*scaletimes_sp);
 
 
@@ -45,12 +34,10 @@ void Specplot::pixchange()
     QPen pen;
     QBrush brush;
     pen.setWidth(0);
-    pen.setColor(QColor(114,159,207));
     pen.setStyle(Qt::SolidLine);
     pen.setCapStyle(Qt::RoundCap);
     pen.setJoinStyle(Qt::RoundJoin);
     painter.setPen(pen);
-    brush.setColor(QColor(114,159,207,200));
     brush.setStyle(Qt::SolidPattern);
     painter.setBrush(brush);
 
@@ -65,8 +52,8 @@ void Specplot::pixchange()
     int perp=global_sets::perp;
     QRect rectl(-hs*(double)((double)pm2->width()/(double)(he-hs)),0,(double)((double)((double)((double)qMax(perp,global_sets::step/2)/(double)wsize)*pm2->width())/(double)(he-hs)),pm2->height());
     QRect rectr(pm2->width()+(1-he)*(double)((double)pm2->width()/(double)(he-hs))-(double)((double)((double)((double)qMax(perp,global_sets::step/2)/(double)wsize)*pm2->width())/(double)(he-hs)),0,(double)((double)((double)((double)qMax(perp,global_sets::step/2)/(double)wsize)*pm2->width())/(double)(he-hs)),pm2->height());
-    painter.fillRect(rectl,QColor(255,255,0,100));
-    painter.fillRect(rectr,QColor(255,255,0,100));
+    painter.fillRect(rectl,QColor(195,33,54,100));//分析区：枣红
+    painter.fillRect(rectr,QColor(195,33,54,100));//分析区：枣红
     painter.end();
 }
 
@@ -85,17 +72,15 @@ void Specplot::tempchange()
     min_Bound-=Bound_i*-0.55;
     qDebug("max:%.3f min:%.3f",max_Bound,min_Bound);
     QPixmap pmt2(pt.size(),global_sets::step/2);
-    pmt2.fill(Qt::black);
+    pmt2.fill(Qt::black);//主背景：黑
     QPainter painter(&pmt2);
     QPen pen;
     QBrush brush;
     pen.setWidth(1);
-    pen.setColor(QColor(114,159,207));
     pen.setStyle(Qt::SolidLine);
     pen.setCapStyle(Qt::RoundCap);
     pen.setJoinStyle(Qt::RoundJoin);
     painter.setPen(pen);
-    brush.setColor(QColor(114,159,207,200));
     brush.setStyle(Qt::SolidPattern);
     painter.setBrush(brush);
 
@@ -125,16 +110,6 @@ QRect Specplot::g_poi(int x,int y)
     double xper=(double)((double)xp/(double)wsize);
     int xpos=(double)((double)(xper-hs)/(double)(he-hs))*pm2->width();
     int w=(double)((double)wp/(double)wsize)*(double)((double)pm2->width()/(double)(he-hs));
-    /*
-    qDebug("xp:%d",xp);
-    qDebug("wp:%d",wp);
-    qDebug("yp:%d",yp);
-    qDebug("ht:%d",ht);
-    qDebug("h:%d",h);
-    qDebug("ypos:%d",ypos);
-    qDebug("xper:%.2f",xper);
-    qDebug("xpos:%d",xpos);
-    qDebug("w:%d",w);*/
     return QRect(xpos,ypos,w,h);
 }
 
@@ -145,68 +120,30 @@ void Specplot::paintEvent(QPaintEvent *event)
     QPen pen;
     QBrush brush;
     pen.setWidth(1);
-    pen.setColor(QColor(136,138,133));
     pen.setStyle(Qt::SolidLine);
     pen.setCapStyle(Qt::RoundCap);
     pen.setJoinStyle(Qt::RoundJoin);
     painter.setPen(pen);
-    brush.setColor(QColor(85,87,83));
     brush.setStyle(Qt::SolidPattern);
     painter.setBrush(brush);
 
 
-    painter.fillRect(0,0,0.975*width(),height(),Qt::black);
-
-    //int hss=-(double)((double)((double)((double)this->width()*(double)0.975)/(double)(he-hs))*(double)hs);
-    //int hsw=(double)((double)((double)this->width()*(double)0.975)/(double)(he-hs));
+    painter.fillRect(0,0,0.975*width(),height(),Qt::black);//主背景：黑
 
     painter.drawPixmap(0,0,0.975*width(),height(),*pm2);
 
-    if(acfon){
-        pen.setStyle(Qt::SolidLine);
-        pen.setColor(Qt::green);
-        pen.setWidth(2);
-        painter.setPen(pen);
-
-        QPolygon polyacf;
-        for(int i=0;i<acftemp.size();i++){
-            if(flagtemp.at(i)){
-                QPoint point(trasx((i*global_sets::step/global_sets::times+static_cast<double>(static_cast<double>(global_sets::step-static_cast<double>(global_sets::step/global_sets::times))/2)+i*global_sets::step/global_sets::times+static_cast<double>(static_cast<double>(global_sets::step-static_cast<double>(global_sets::step/global_sets::times))/2)+global_sets::step/global_sets::times)/2),height()-((double)((double)1/(double)vs)*(static_cast<double>((double)acftemp.at(i)/(double)((double)global_sets::FS/(double)global_sets::step))))*(double)((double)height()/(double)(double)((double)global_sets::step/(double)2)));
-                //qDebug("acf:%d,%.2f",i,pixacf.height()-static_cast<double>((double)acftemp.at(i)/(double)((double)samplespersec/(double)global_sets::step)));
-                polyacf.append(point);
-
-            }else{
-                QPoint point(trasx((i*global_sets::step/global_sets::times+static_cast<double>(static_cast<double>(global_sets::step-static_cast<double>(global_sets::step/global_sets::times))/2)+i*global_sets::step/global_sets::times+static_cast<double>(static_cast<double>(global_sets::step-static_cast<double>(global_sets::step/global_sets::times))/2)+global_sets::step/global_sets::times)/2),height()+5);
-                //qDebug("acf:%d,%.2f",i,pixacf.height()-static_cast<double>((double)acftemp.at(i)/(double)((double)samplespersec/(double)global_sets::step)));
-                polyacf.append(point);
-
-            }
-
-        }
-
-        painter.drawPolyline(polyacf);
-        polyacf.clear();
-    }
 
     if(selected){
-        pen.setColor(Qt::gray);
+        pen.setColor(QColor(224,240,233));//选择框：素
         pen.setWidth(2);
         pen.setStyle(Qt::DashLine);
         painter.setPen(pen);
-        brush.setColor(QColor(255,255,255,100));
+        brush.setColor(QColor(224,240,233,100));//选择框：素
         painter.setBrush(brush);
         painter.drawRect((double)((double)(ssp-hs)/(double)(he-hs))*(double)(0.975*width()),0,(double)((double)(sep-hs)/(double)(he-hs))*(double)(0.975*width())-(double)((double)(ssp-hs)/(double)(he-hs))*(double)(0.975*width()),this->height());
     }
 
-    pen.setWidth(2);
-    pen.setColor(QColor(136,138,133));
     pen.setStyle(Qt::SolidLine);
-    painter.setPen(pen);
-
-    painter.fillRect(0.975*width(),0,0.025*width(),height(),QColor(46,52,54));
-    //painter.drawRect(QRect(0,0,width()-1,height()-1));
-
-    //double ratespec=pixmap->height()/samplerates;
 
 
 
@@ -215,62 +152,85 @@ void Specplot::paintEvent(QPaintEvent *event)
 
     font.setPointSize(height()*0.05);
     painter.setFont(font);
+    brush.setColor(QColor(61,59,79));//标签底色：玄青
+    painter.setBrush(brush);
 
     if(fourlines){
         if(l1*this->wsize>=global_sets::perp&&l1*this->wsize<=this->wsize-global_sets::perp){
-            pen.setColor(QColor(114,159,207));
+            pen.setColor(QColor(75,92,196));//一线：宝蓝
+            pen.setWidth(2);
             painter.setPen(pen);
             QLine linel((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
-            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height(),"1.CP");
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawRect((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height()-height()*0.08,height()*0.05*4,height()*0.1);
+            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.15*height(),"1.CP");
         }
         if(l2*this->wsize>=global_sets::perp&&l2*this->wsize<=this->wsize-global_sets::perp){
-            pen.setColor(QColor(252,233,79));
+            pen.setColor(QColor(255,140,49));//二线：杏黄
+            pen.setWidth(2);
             painter.setPen(pen);
             QLine linel((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
-            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height(),"2.PP");
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawRect((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height()-height()*0.08,height()*0.05*4,height()*0.1);
+            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.2*height(),"2.PP");
         }
         if(l3*this->wsize>=global_sets::perp&&l3*this->wsize<=this->wsize-global_sets::perp){
-            pen.setColor(QColor(173,127,168));
+            pen.setColor(QColor(203,58,86));//三线：茜色
+            pen.setWidth(2);
             painter.setPen(pen);
             QLine linel((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
-            painter.drawText((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.25*height(),"3.VSP");
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawRect((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.25*height()-height()*0.08,height()*0.05*5,height()*0.1);
+            painter.drawText((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.25*height(),"3.VSP");
         }
         if(l4*this->wsize>=global_sets::perp&&l4*this->wsize<=this->wsize-global_sets::perp){
-            pen.setColor(QColor(138,226,52));
+            pen.setColor(QColor(127,236,173));//四线：缥
+            pen.setWidth(2);
             painter.setPen(pen);
             QLine linel((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
-            painter.drawText((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.3*height(),"4.VEP");
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawRect((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.3*height()-height()*0.08,height()*0.05*5,height()*0.1);
+            painter.drawText((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.3*height(),"4.VEP");
         }
     }else{
         if(l1*this->wsize>=global_sets::perp&&l1*this->wsize<=this->wsize-global_sets::perp){
-            pen.setColor(QColor(114,159,207));
+            pen.setColor(QColor(75,92,196));//一线：宝蓝
+            pen.setWidth(2);
             painter.setPen(pen);
             QLine linel((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
-            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height(),"1.SP");
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawRect((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height()-height()*0.08,height()*0.05*4,height()*0.1);
+            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.15*height(),"1.SP");
         }
         if(l2*this->wsize>=global_sets::perp&&l2*this->wsize<=this->wsize-global_sets::perp){
-            pen.setColor(QColor(252,233,79));
+            pen.setColor(QColor(255,140,49));//二线：杏黄
+            pen.setWidth(2);
             painter.setPen(pen);
             QLine linel((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
-            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height(),"2.EP");
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawRect((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height()-height()*0.08,height()*0.05*4,height()*0.1);
+            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.2*height(),"2.EP");
         }
     }
 
     pen.setWidth(2);
-    pen.setColor(QColor(136,138,133));
-    pen.setStyle(Qt::SolidLine);
-    painter.setPen(pen);
 
-    painter.fillRect(0.975*width(),0,width()-0.975*width(),height(),QColor(46,52,54));
+    painter.fillRect(0.975*width(),0,width()-0.975*width(),height(),QColor(61,59,79));//右侧区域：玄青
 
     pen.setWidth(1);
-    pen.setColor(QColor(136,138,133));
+    pen.setColor(QColor(214,236,240));//右侧刻度：月白
     pen.setStyle(Qt::SolidLine);
     painter.setPen(pen);
 
@@ -305,7 +265,7 @@ void Specplot::paintEvent(QPaintEvent *event)
 
     if(isxon){
         pen.setWidth(2);
-        pen.setColor(Qt::red);
+        pen.setColor(QColor(201,55,86));//时间指示线：樱桃红
         painter.setPen(pen);
 
         painter.drawLine(QLine(xw,0,xw,height()));
@@ -313,8 +273,10 @@ void Specplot::paintEvent(QPaintEvent *event)
 
         font.setPointSize(height()/30);
         painter.setFont(font);
-        pen.setColor(QColor(255,255,255));
+        pen.setColor(QColor(214,236,240));//鼠标坐标：月白
         painter.setPen(pen);
+        brush.setColor(QColor(61,59,79));//标签底色：玄青
+        painter.setBrush(brush);
 
         double per1=hs+(double)((double)xw/(double)(this->width()*0.975))*(double)(he-hs);
         int poi1=(double)per1*(double)this->wsize;
@@ -322,54 +284,27 @@ void Specplot::paintEvent(QPaintEvent *event)
 
         double fre=(double)((double)((double)(height()-yw)/(double)height())/(double)((double)1/(double)vs))*(double)((double)samplerates/(double)2);
 
-        //QString labelstring="t="+QString::number(time)+"s fre="+QString::number(fre)+"Hz";
         if(yon){
             painter.drawEllipse(QPointF(xw,yw),2,2);
-            QString labelstring=QString::asprintf("时间=%.2fs 频率=%.2fHz",time,fre);
+            QString labelstring=QString::asprintf("(%.2fs,%.2fHz)",time,fre);
             int poixw=xw;
             int poiyw=yw;
-            if(poixw+labelstring.size()*font.pointSize()>width()*0.975){
-                poixw-=labelstring.size()*font.pointSize();
+            if(poixw+labelstring.size()*font.pointSize()+(double)(0.5*font.pointSize())>width()*0.975){
+                poixw-=labelstring.size()*font.pointSize()+(double)(0.5*font.pointSize());
+            }else{
+                poixw+=(double)(0.5*font.pointSize());
             }
             if(poiyw-font.pointSize()<0){
                 poiyw+=font.pointSize();
             }
-            painter.drawText(poixw,poiyw,labelstring);
-
-        }
-
-        bool ok=true;
-        int index=getindex(xw,&ok);
-        if(acftemp.size()>0&&ok){//
-            if(flagtemp.at(index)){
-                if(acfon){
-                    pen.setColor(Qt::green);
-                    pen.setWidth(1);
-                    painter.setPen(pen);
-                    brush.setColor(Qt::green);
-                    painter.setBrush(brush);
-                    double acfn=acftemp.at(index);
-                    int poiyp=(double)((double)global_sets::step/(double)2)-static_cast<double>((double)acfn/(double)((double)samplerates/(double)global_sets::step));
-                    int poiyw=this->height()-(double)((double)((double)((double)((double)((double)global_sets::step/(double)2)-poiyp)/(double)(double)((double)global_sets::step/(double)2))/(double)vs)*(double)this->height());
-                    painter.drawEllipse(QPointF(xw,poiyw),2,2);
-                    QString acfstring=QString::asprintf("基频=%.2fHz",acfn);
-                    int poixw=xw;
-                    if(poixw+acfstring.size()*font.pointSize()>width()*0.975){
-                        poixw-=acfstring.size()*font.pointSize();
-                    }
-                    if(poiyw-font.pointSize()<0){
-                        poiyw+=font.pointSize();
-                    }
-                    painter.drawText(poixw,poiyw,acfstring);
-                }
-
-            }
+            painter.drawRect(poixw,poiyw-0.8*2*font.pointSize(),font.pointSize()*labelstring.size(),2*font.pointSize());
+            painter.drawText(poixw+0.2*font.pointSize(),poiyw,labelstring);
 
         }
 
     }
     if(isin&&!(isxon&&yon)){
-        pen.setColor(QColor(255,255,255));
+        pen.setColor(QColor(214,236,240));//鼠标位置：月白
         painter.setPen(pen);
         painter.drawEllipse(mn,2,2);
     }
@@ -435,21 +370,14 @@ void Specplot::changemode(int code)
         break;
     case 4:
         break;
-    case 5:
-        acfon=false;
-        break;
-    case 6:
-        acfon=true;
-        break;
     default:
         break;
     }
     repaint();
 }
 
-void Specplot::setv(QVector<double> acftemp,QVector<bool> flagtemp)
+void Specplot::setv(QVector<bool> flagtemp)
 {
-    this->acftemp=acftemp;
     this->flagtemp=flagtemp;
     repaint();
 }
@@ -571,26 +499,6 @@ void Specplot::setxon(bool xon)
 {
     this->isxon=xon;
     repaint();
-}
-
-int Specplot::getindex(int xw,bool *ok)
-{
-    double per1=hs+(double)((double)xw/(double)(this->width()*0.975))*(double)(he-hs);
-    int poi1=per1*this->wsize;
-    //int index=qFloor((double)((double)(poi1-global_sets::step/2)/(double)(this->wsize-global_sets::step))*acftemp.size());
-
-    int index=qFloor((double)((double)(poi1-(double)((double)(global_sets::step-(double)((double)global_sets::step/(double)global_sets::times))/(double)2))*(double)global_sets::times)/(double)global_sets::step);
-    *ok=true;
-    if(index<0){
-        index=0;
-        *ok=false;
-    }
-    if(index>=acftemp.size()){
-        index=acftemp.size()-1;
-        *ok=false;
-    }
-    //qDebug("index:%d",index);
-    return index;
 }
 
 void Specplot::setselected(bool selected,double ssp,double sep)
@@ -740,7 +648,6 @@ bool Specplot::event(QEvent *event)
             // determine scale factor
             const auto& touchPoint0 = touchPoints.first();
             const auto& touchPoint1 = touchPoints.last();
-            //double currentScaleFactor =QLineF(touchPoint0.pos(), touchPoint1.pos()).length()/ QLineF(touchPoint0.startPos(), touchPoint1.startPos()).length();
             int pcw=(touchPoint0.startPos().x()+touchPoint1.startPos().x())/2;
             if(pcw<=this->width()*0.975){
                 hspt=hs;
@@ -828,7 +735,6 @@ bool Specplot::event(QEvent *event)
         }
         break;
         // 如果不许好后续处理
-        // e ->accept( true );
     }
     default:
         // 其他的事件
@@ -849,26 +755,11 @@ int Specplot::trasx(int x)
 
 QColor Specplot::getcolor(double v)
 {
-    /*
-    int R=0,G=0,B=0;
-    if(x<=0.03){
-        R=static_cast<double>((x/0.03)*255);
-        B=static_cast<double>((x/0.03)*255);
-    }else if(x<=0.06){
-        R=static_cast<double>(255);
-        B=static_cast<double>(255-((x-0.03)/0.03)*255);
-    }else{
-        R=255;
-        G=static_cast<double>(((x-0.06)/0.94)*255);
-    }
-    QColor out(R,G,B);
-    return out;*/
     const double vii = (v-min_Bound)/(max_Bound-min_Bound);
     int red = 0,green = 0,blue = 0;
     if (vii>=0 && vii<0.25)
     {
         blue = vii/0.25*255;
-        //red = vii/0.25*255/2;
 
     }
 
@@ -891,58 +782,4 @@ QColor Specplot::getcolor(double v)
     else if (vii>=1)
             red = 255, blue = 255, green = 255;
     return QColor(red,green,blue);
-}
-
-QColor Specplot::getacfcolor(double x,double max,double min)
-{
-    double part=(double)((double)(max-min)/(double)6);
-    if(x<=min+part){
-        return Qt::black;
-    }else if(x<=min+2*part){
-        return Qt::blue;
-    }else if(x<=min+3*part){
-        return Qt::green;
-    }
-    else if(x<=min+4*part){
-        return Qt::yellow;
-    }
-    else if(x<=min+5*part){
-        return QColor(255,127,0);
-    }
-    else{
-        return Qt::red;
-    }
-}
-
-QColor Specplot::getacfcolor2(double x,double max,double min)
-{
-    const double vii = (x-min)/(max-min);
-    int red = 0,green = 0,blue = 0;
-    if (vii>=0 && vii<0.25)
-    {
-        blue = vii/0.25*255;
-        //red = vii/0.25*255/2;
-
-    }
-
-    else if (vii>=0.25 && vii<0.5 )
-    {
-            blue = (0.5-vii)/0.25*255;
-            red =  (vii-0.25)/0.25*255;
-    }
-    else if (vii>=0.5 && vii<0.75 )
-    {
-            red =  255;
-            green = (vii-0.5)/0.25*255;
-    }
-    else if (vii>=0.75 && vii<1)
-    {
-            red = 255;
-            green = 255;
-            blue =  (vii-0.75)/0.25*255;
-    }
-    else if (vii>=1)
-            red = 255, blue = 255, green = 255;
-    return QColor(red,green,blue);
-
 }

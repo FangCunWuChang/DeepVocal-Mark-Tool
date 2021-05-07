@@ -15,7 +15,6 @@ SubAna::~SubAna()
     spec.clear();
     ene.clear();
     rptz.clear();
-    acf.clear();
     flag.clear();
 }
 
@@ -35,8 +34,6 @@ void SubAna::run()
 
         double rt=AuMathLib::rptz(part);
         rptz.enqueue(rt);
-
-        acf.enqueue(AuMathLib::fre(part,global_sets::FS));
 
         if(et>=global_sets::enebound&&rt<global_sets::rptzbound){
             flag.enqueue(true);

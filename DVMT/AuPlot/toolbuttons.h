@@ -34,7 +34,6 @@ signals:
 private slots:
     void on_b1_clicked(bool checked);
     void on_b2_clicked(bool checked);
-    void on_b3_clicked(bool checked);
     void on_b4_clicked();
     void on_b5_clicked();
     void on_b6_clicked(bool checked);

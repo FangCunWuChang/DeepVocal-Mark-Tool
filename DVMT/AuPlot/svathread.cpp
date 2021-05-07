@@ -19,7 +19,6 @@ void SvaThread::run()
         emit num(92);
         PT->writev(filepath,"rptz",v2);
         emit num(94);
-        PT->writev(filepath,"acf",v3);
         emit num(96);
         PT->writeb(filepath,"flag",v4);
         emit num(98);
@@ -28,12 +27,11 @@ void SvaThread::run()
     }
 }
 
-void SvaThread::set(QString filepath,QVector<double> wavepixv,QVector<double> wavepixp,QVector<QVector<double>> specpix,QVector<double> v1,QVector<double> v2,QVector<double> v3,QVector<bool> v4)
+void SvaThread::set(QString filepath,QVector<double> wavepixv,QVector<double> wavepixp,QVector<QVector<double>> specpix,QVector<double> v1,QVector<double> v2,QVector<bool> v4)
 {
     this->filepath=filepath;
     this->v1=v1;
     this->v2=v2;
-    this->v3=v3;
     this->v4=v4;
     this->specpix=specpix;
     this->wavepixp=wavepixp;

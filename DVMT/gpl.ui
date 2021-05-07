@@ -20,15 +20,15 @@
   <property name="styleSheet">
    <string notr="true">QToolTip{
 
-background-color:rgb(46, 52, 54);
+background-color:rgb(61,59,79);
 color: rgb(211, 215, 207);
-border:1px solid rgb(85, 87, 83);
+border:1px solid rgb(61,59,79);
 }
 
 
 
 QWidget{
-background-color: rgb(85, 87, 83);
+background-color: rgb(61,59,79);
 	color: rgb(238, 238, 236);
 }
 QScrollBar:vertical {
@@ -40,20 +40,20 @@ QScrollBar:vertical {
     QScrollBar::handle:vertical {
         border: 	1px solid grey;
         border-radius: 7px;
-        background-color: rgb(85, 87, 83);
+        background-color: rgb(61,59,79);
         min-height: 60px;
         margin: 0px 0px 0px 0px;
     }
     QScrollBar::add-line:vertical {
         border: none;
-        background: rgb(85, 87, 83);
+        background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: bottom;
         subcontrol-origin: margin;
     }
     QScrollBar::sub-line:vertical {
         border: none;
-background: rgb(85, 87, 83);
+background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: top;
         subcontrol-origin: margin;
@@ -79,14 +79,14 @@ QScrollBar:vertical:disabled{
     }
     QScrollBar::add-line:vertical:disabled{
         border: none;
-        background: rgb(85, 87, 83);
+        background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: bottom;
         subcontrol-origin: margin;
     }
     QScrollBar::sub-line:vertical:disabled{
         border: none;
-background: rgb(85, 87, 83);
+background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: top;
         subcontrol-origin: margin;
@@ -111,20 +111,20 @@ background: rgb(85, 87, 83);
     QScrollBar::handle:vertical {
         border: 	1px solid grey;
         border-radius: 7px;
-        background-color: rgb(85, 87, 83);
+        background-color: rgb(61,59,79);
         min-height: 60px;
         margin: 0px 0px 0px 0px;
     }
     QScrollBar::add-line:vertical {
         border: none;
-        background: rgb(85, 87, 83);
+        background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: bottom;
         subcontrol-origin: margin;
     }
     QScrollBar::sub-line:vertical {
         border: none;
-background: rgb(85, 87, 83);
+background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: top;
         subcontrol-origin: margin;
@@ -150,14 +150,14 @@ QScrollBar:vertical:disabled{
     }
     QScrollBar::add-line:vertical:disabled{
         border: none;
-        background: rgb(85, 87, 83);
+        background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: bottom;
         subcontrol-origin: margin;
     }
     QScrollBar::sub-line:vertical:disabled{
         border: none;
-background: rgb(85, 87, 83);
+background: rgb(61,59,79);
         height: 0px;
         subcontrol-position: top;
         subcontrol-origin: margin;

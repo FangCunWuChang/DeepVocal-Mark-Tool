@@ -17,6 +17,7 @@
 #include "AuPlot/qwaveinfo.h"
 #include "filescaner.h"
 #include "cslget.h"
+#include <QMouseEvent>
 
 namespace Ui {
 class Center;
@@ -34,7 +35,6 @@ public:
     void openfile(QString file);
 private:
     Ui::Center *ui;
-    //QMenu *menu=new QMenu(this);
     Project pro;
     Prset *pset=new Prset(this);
     QString propath=QCoreApplication::applicationDirPath()+"/未命名项目.dvmtp";
@@ -65,10 +65,11 @@ private:
 
     CSLget cget;
     void buildmodel(int cr);
+    double cbmx=0.1,cbmy=0.2;
 protected:
     void resizeEvent(QResizeEvent *event);
 private slots:
-    void on_menu_clicked();
+    void onmenuclicked();
     void onmenukey(int id);
     void onspchanged(Project pro,bool pitref);
     void onwavchanged(QString path,QString filename);
@@ -80,15 +81,15 @@ private slots:
     void onplotlocked();
     void onplotunlocked();
     void onplotautoed(bool autoed);
-    void on_lhb_clicked();
-    void on_lsb_clicked();
-    void on_sea_clicked();
+    void onlhbclicked(bool ok);
+    void onseaclicked();
     void onsearname(QString name);
     void onsearegg();
     void onfiles(QStringList paths,QVector<QStringList> filelist);
     void onwatcherchanged(const QString &path);
     void oncgetappend(CVVCSymbol one,bool finished=false);
-    void on_aw_clicked();
+    void onawclicked();
+    void oncbmrp(QPoint pos);
 };
 
 #endif // CENTER_H

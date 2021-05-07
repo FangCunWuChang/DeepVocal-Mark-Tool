@@ -54,3 +54,5 @@ FORMS += \
     $$PWD/waveview.ui
 
 DISTFILES +=
+
+RESOURCES +=
