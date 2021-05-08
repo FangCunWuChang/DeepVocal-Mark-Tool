@@ -45,24 +45,24 @@ QWidget{
     <string notr="true">QPushButton{
 	color:rgb(214,236,240);
 	background-color: rgb(84,150,136);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }
 QPushButton:disabled{
-border:0px solid rgb(214,236,240);
+border:1px solid rgb(214,236,240);
 background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
-border-radius:7px;
+border-radius:0px;
 }
 QPushButton:pressed{
 	color: rgb(84,150,136);
 	background-color:  rgb(214,236,240);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }</string>
    </property>
    <property name="text">
-    <string>新项目</string>
+    <string>新项目(N)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -84,24 +84,24 @@ QPushButton:pressed{
     <string notr="true">QPushButton{
 	color:rgb(214,236,240);
 	background-color: rgb(84,150,136);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }
 QPushButton:disabled{
-border:0px solid rgb(214,236,240);
+border:1px solid rgb(214,236,240);
 background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
-border-radius:7px;
+border-radius:0px;
 }
 QPushButton:pressed{
 	color: rgb(84,150,136);
 	background-color:  rgb(214,236,240);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }</string>
    </property>
    <property name="text">
-    <string>打开项目</string>
+    <string>打开项目(O)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -123,24 +123,24 @@ QPushButton:pressed{
     <string notr="true">QPushButton{
 	color:rgb(214,236,240);
 	background-color: rgb(84,150,136);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }
 QPushButton:disabled{
-border:0px solid rgb(214,236,240);
+border:1px solid rgb(214,236,240);
 background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
-border-radius:7px;
+border-radius:0px;
 }
 QPushButton:pressed{
 	color: rgb(84,150,136);
 	background-color:  rgb(214,236,240);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }</string>
    </property>
    <property name="text">
-    <string>保存项目</string>
+    <string>保存项目(S)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -162,24 +162,24 @@ QPushButton:pressed{
     <string notr="true">QPushButton{
 	color:rgb(214,236,240);
 	background-color: rgb(84,150,136);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }
 QPushButton:disabled{
-border:0px solid rgb(214,236,240);
+border:1px solid rgb(214,236,240);
 background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
-border-radius:7px;
+border-radius:0px;
 }
 QPushButton:pressed{
 	color: rgb(84,150,136);
 	background-color:  rgb(214,236,240);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }</string>
    </property>
    <property name="text">
-    <string>项目设置</string>
+    <string>项目设置(F2)</string>
    </property>
    <property name="shortcut">
     <string>F2</string>
@@ -201,24 +201,24 @@ QPushButton:pressed{
     <string notr="true">QPushButton{
 	color:rgb(214,236,240);
 	background-color: rgb(84,150,136);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }
 QPushButton:disabled{
-border:0px solid rgb(214,236,240);
+border:1px solid rgb(214,236,240);
 background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
-border-radius:7px;
+border-radius:0px;
 }
 QPushButton:pressed{
 	color: rgb(84,150,136);
 	background-color:  rgb(214,236,240);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }</string>
    </property>
    <property name="text">
-    <string>读取波形</string>
+    <string>读取wav(R)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
@@ -240,24 +240,24 @@ QPushButton:pressed{
     <string notr="true">QPushButton{
 	color:rgb(214,236,240);
 	background-color: rgb(84,150,136);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }
 QPushButton:disabled{
-border:0px solid rgb(214,236,240);
+border:1px solid rgb(214,236,240);
 background-color: rgb(61,59,79);
 color:  rgb(100,100,100);
-border-radius:7px;
+border-radius:0px;
 }
 QPushButton:pressed{
 	color: rgb(84,150,136);
 	background-color:  rgb(214,236,240);
-	border: 0px solid rgb(214,236,240);
-	border-radius:7px;
+	border: 1px solid rgb(214,236,240);
+	border-radius:0px;
 }</string>
    </property>
    <property name="text">
-    <string>关于DVMT</string>
+    <string>关于DVMT(A)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+A</string>

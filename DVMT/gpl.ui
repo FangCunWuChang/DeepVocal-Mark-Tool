@@ -33,7 +33,7 @@ background-color: rgb(61,59,79);
 }
 QScrollBar:vertical {
         border: 1px solid grey;
-        background-color:rgb(136, 138, 133);
+        background-color:rgb(194,204,208);
         width: 20px;
         margin: 0px 0 0px 0;
     }
@@ -59,10 +59,10 @@ background: rgb(61,59,79);
         subcontrol-origin: margin;
     }
     QScrollBar::add-page:vertical {
-        background-color: rgb(136, 138, 133);
+        background-color: rgb(194,204,208);
     }
     QScrollBar::sub-page:vertical {
-        background-color:rgb(136, 138, 133);
+        background-color:rgb(194,204,208);
     }
 QScrollBar:vertical:disabled{
         border: 1px solid rgb(238, 238, 236);
@@ -104,7 +104,7 @@ background: rgb(61,59,79);
      <property name="styleSheet">
       <string notr="true">QScrollBar:vertical {
         border: 1px solid grey;
-        background-color:rgb(136, 138, 133);
+        background-color:rgb(194,204,208);
         width: 20px;
         margin: 0px 0 0px 0;
     }
@@ -130,10 +130,10 @@ background: rgb(61,59,79);
         subcontrol-origin: margin;
     }
     QScrollBar::add-page:vertical {
-        background-color: rgb(136, 138, 133);
+        background-color: rgb(194,204,208);
     }
     QScrollBar::sub-page:vertical {
-        background-color:rgb(136, 138, 133);
+        background-color:rgb(194,204,208);
     }
 QScrollBar:vertical:disabled{
         border: 1px solid rgb(238, 238, 236);

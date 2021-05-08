@@ -170,7 +170,7 @@ void Waveplot::paintEvent(QPaintEvent *event)
 
     QFont font;
 
-    font.setPointSize(height()*0.05);
+    font.setPointSize(height()*0.025);
     painter.setFont(font);
     brush.setColor(QColor(61,59,79));//标签底色：玄青
     painter.setBrush(brush);
@@ -181,68 +181,80 @@ void Waveplot::paintEvent(QPaintEvent *event)
             pen.setColor(QColor(75,92,196));//一线：宝蓝
             pen.setWidth(2);
             painter.setPen(pen);
+            brush.setColor(QColor(75,92,196,100));//一线：宝蓝
+            painter.setBrush(brush);
             QLine linel((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
             pen.setWidth(1);
             painter.setPen(pen);
-            painter.drawRect((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height()-height()*0.08,height()*0.05*4,height()*0.1);
-            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.15*height(),"1.CP");
+            painter.drawRect((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height()-height()*0.036,height()*0.025*4.5,height()*0.05);
+            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.15*height()+0.003*height(),"1.CP");
         }
         if(l2*pt.size()>=global_sets::perp&&l2*pt.size()<=pt.size()-global_sets::perp){
             pen.setColor(QColor(255,140,49));//二线：杏黄
             pen.setWidth(2);
             painter.setPen(pen);
+            brush.setColor(QColor(255,140,49,100));//二线：杏黄
+            painter.setBrush(brush);
             QLine linel((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
             pen.setWidth(1);
             painter.setPen(pen);
-            painter.drawRect((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height()-height()*0.08,height()*0.05*4,height()*0.1);
-            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.2*height(),"2.PP");
+            painter.drawRect((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height()-height()*0.036,height()*0.025*4.5,height()*0.05);
+            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.2*height()+0.003*height(),"2.PP");
         }
         if(l3*pt.size()>=global_sets::perp&&l3*pt.size()<=pt.size()-global_sets::perp){
             pen.setColor(QColor(203,58,86));//三线：茜色
             pen.setWidth(2);
             painter.setPen(pen);
+            brush.setColor(QColor(203,58,86,100));//三线：茜色
+            painter.setBrush(brush);
             QLine linel((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
             pen.setWidth(1);
             painter.setPen(pen);
-            painter.drawRect((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.25*height()-height()*0.08,height()*0.05*5,height()*0.1);
-            painter.drawText((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.25*height(),"3.VSP");
+            painter.drawRect((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width()),0.25*height()-height()*0.036,height()*0.025*5,height()*0.05);
+            painter.drawText((double)((double)(l3-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.25*height()+0.003*height(),"3.VSP");
         }
         if(l4*pt.size()>=global_sets::perp&&l4*pt.size()<=pt.size()-global_sets::perp){
             pen.setColor(QColor(127,236,173));//四线：缥
             pen.setWidth(2);
             painter.setPen(pen);
+            brush.setColor(QColor(127,236,173,100));//四线：缥
+            painter.setBrush(brush);
             QLine linel((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
             pen.setWidth(1);
             painter.setPen(pen);
-            painter.drawRect((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.3*height()-height()*0.08,height()*0.05*5,height()*0.1);
-            painter.drawText((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.3*height(),"4.VEP");
+            painter.drawRect((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width()),0.3*height()-height()*0.036,height()*0.025*5,height()*0.05);
+            painter.drawText((double)((double)(l4-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.3*height()+0.003*height(),"4.VEP");
         }
     }else{
         if(l1*pt.size()>=global_sets::perp&&l1*pt.size()<=pt.size()-global_sets::perp){
             pen.setColor(QColor(75,92,196));//一线：宝蓝
             pen.setWidth(2);
             painter.setPen(pen);
+            brush.setColor(QColor(75,92,196,100));//一线：宝蓝
+            painter.setBrush(brush);
             QLine linel((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
             pen.setWidth(1);
             painter.setPen(pen);
-            painter.drawRect((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height()-height()*0.08,height()*0.05*4,height()*0.1);
-            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.15*height(),"1.SP");
+            painter.drawRect((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width()),0.15*height()-height()*0.036,height()*0.025*4.5,height()*0.05);
+            painter.drawText((double)((double)(l1-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.15*height()+0.003*height(),"1.SP");
         }
         if(l2*pt.size()>=global_sets::perp&&l2*pt.size()<=pt.size()-global_sets::perp){
             pen.setColor(QColor(255,140,49));//二线：杏黄
             pen.setWidth(2);
             painter.setPen(pen);
+            brush.setColor(QColor(255,140,49,100));//二线：杏黄
+            painter.setBrush(brush);
             QLine linel((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.1*height(),(double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.9*height());
             painter.drawLine(linel);
             pen.setWidth(1);
             painter.setPen(pen);
-            painter.drawRect((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height()-height()*0.08,height()*0.05*4,height()*0.1);
-            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.2*height(),"2.EP");
+            painter.drawRect((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width()),0.2*height()-height()*0.036,height()*0.025*4.5,height()*0.05);
+            painter.drawText((double)((double)(l2-hs)/(double)(he-hs))*(double)(0.975*width())+0.02*height(),0.2*height()+0.003*height(),"2.EP");
         }
     }
 
@@ -291,10 +303,86 @@ void Waveplot::paintEvent(QPaintEvent *event)
 
         font.setPointSize(height()/30);
         painter.setFont(font);
+
+        pen.setWidth(1);
+        painter.setPen(pen);
+        brush.setColor(QColor(61,59,79,100));//标签底色：玄青
+        painter.setBrush(brush);
+
+
+
+
+        bool ok=true;
+        int index=getindex(xw,&ok);
+        if(enetemp.size()>0&&ok){
+            if(eneon){
+                pen.setColor(QColor(255,182,30));//能量数值：藤黄
+                pen.setWidth(1);
+                painter.setPen(pen);
+                brush.setColor(QColor(255,182,30,0));//能量数值：藤黄
+                painter.setBrush(brush);
+                double enen=enetemp.at(index);
+
+                int poiyw=this->height()-2*(double)((double)enen*(double)this->height());
+                painter.drawEllipse(QPointF(xw,poiyw),2,2);
+                QString enestring=QString::asprintf("%.3f",enen);
+                int poixw=xw;
+                if(poixw+enestring.size()*font.pointSize()+(double)(0.5*font.pointSize())>width()*0.975){
+                    poixw-=enestring.size()*font.pointSize()+(double)(0.5*font.pointSize());
+                }else{
+                    poixw+=(double)(0.5*font.pointSize());
+                }
+                if(poiyw-font.pointSize()<0){
+                    poiyw+=font.pointSize();
+                }
+                brush.setColor(QColor(61,59,79,100));//标签底色：玄青
+                painter.setBrush(brush);
+                pen.setWidth(1);
+                pen.setColor(QColor(255,182,30));//标签边框：藤黄
+                painter.setPen(pen);
+
+                painter.drawRect(0.95*width()-font.pointSize()*enestring.size()*0.9,0.1*height()+2*font.pointSize(),font.pointSize()*enestring.size()*0.9,2*font.pointSize());
+                pen.setWidth(1);
+                pen.setColor(QColor(255,182,30));//标签坐标：藤黄
+                painter.setPen(pen);
+                painter.drawText(0.95*width()-font.pointSize()*enestring.size()*0.9+0.2*font.pointSize(),0.1*height()+2*font.pointSize()-0.015*height()+2*font.pointSize(),enestring);
+            }
+            if(rptzon){
+                pen.setColor(QColor(42,221,156));//过零率数值：碧绿
+                pen.setWidth(1);
+                painter.setPen(pen);
+                brush.setColor(QColor(42,221,156,0));//过零率数值：碧绿
+                painter.setBrush(brush);
+                double rptzn=rptztemp.at(index);
+
+                int poiyw=this->height()-2*(double)((double)rptzn*(double)this->height());
+                painter.drawEllipse(QPointF(xw,poiyw),2,2);
+                QString rptzstring=QString::asprintf("%.3f",rptzn);
+                int poixw=xw;
+                if(poixw+rptzstring.size()*font.pointSize()+(double)(0.5*font.pointSize())>width()*0.975){
+                    poixw-=rptzstring.size()*font.pointSize()+(double)(0.5*font.pointSize());
+                }else{
+                    poixw+=(double)(0.5*font.pointSize());
+                }
+                if(poiyw-font.pointSize()<0){
+                    poiyw+=font.pointSize();
+                }
+                brush.setColor(QColor(61,59,79,100));//标签底色：玄青
+                painter.setBrush(brush);
+                pen.setWidth(1);
+                pen.setColor(QColor(42,221,156));//标签边框：碧绿
+                painter.setPen(pen);
+
+                painter.drawRect(0.95*width()-font.pointSize()*rptzstring.size()*0.9,0.1*height()+4*font.pointSize(),font.pointSize()*rptzstring.size()*0.9,2*font.pointSize());
+                pen.setWidth(1);
+                pen.setColor(QColor(42,221,156));//标签坐标：碧绿
+                painter.setPen(pen);
+                painter.drawText(0.95*width()-font.pointSize()*rptzstring.size()*0.9+0.2*font.pointSize(),0.1*height()+2*font.pointSize()-0.015*height()+4*font.pointSize(),rptzstring);
+            }
+
+        }
         pen.setColor(QColor(214,236,240));//鼠标坐标：月白
         painter.setPen(pen);
-        brush.setColor(QColor(61,59,79));//标签底色：玄青
-        painter.setBrush(brush);
 
         double per1=hs+(double)((double)xw/(double)(this->width()*0.975))*(double)(he-hs);
         int poi1=(double)per1*(double)pt.size();
@@ -314,66 +402,18 @@ void Waveplot::paintEvent(QPaintEvent *event)
             if(poiyw-font.pointSize()<0){
                 poiyw+=font.pointSize();
             }
-            painter.drawRect(poixw,poiyw-0.8*2*font.pointSize(),font.pointSize()*labelstring.size(),2*font.pointSize());
-            painter.drawText(poixw+0.2*font.pointSize(),poiyw,labelstring);
 
-        }
+            brush.setColor(QColor(61,59,79,100));//标签底色：玄青
+            painter.setBrush(brush);
+            pen.setWidth(1);
+            pen.setColor(QColor(214,236,240));//标签边框：月白
+            painter.setPen(pen);
 
-
-        bool ok=true;
-        int index=getindex(xw,&ok);
-        if(enetemp.size()>0&&ok){
-            if(eneon){
-                pen.setColor(QColor(255,182,30));//能量数值：藤黄
-                pen.setWidth(1);
-                painter.setPen(pen);
-                brush.setColor(QColor(255,182,30));//能量数值：藤黄
-                painter.setBrush(brush);
-                double enen=enetemp.at(index);
-
-                int poiyw=this->height()-2*(double)((double)enen*(double)this->height());
-                painter.drawEllipse(QPointF(xw,poiyw),2,2);
-                QString enestring=QString::asprintf("%.3f",enen);
-                int poixw=xw;
-                if(poixw+enestring.size()*font.pointSize()+(double)(0.5*font.pointSize())>width()*0.975){
-                    poixw-=enestring.size()*font.pointSize()+(double)(0.5*font.pointSize());
-                }else{
-                    poixw+=(double)(0.5*font.pointSize());
-                }
-                if(poiyw-font.pointSize()<0){
-                    poiyw+=font.pointSize();
-                }
-                brush.setColor(QColor(61,59,79));//标签底色：玄青
-                painter.setBrush(brush);
-
-                painter.drawRect(poixw,poiyw-0.8*2*font.pointSize(),font.pointSize()*enestring.size(),2*font.pointSize());
-                painter.drawText(poixw+0.2*font.pointSize(),poiyw,enestring);
-            }
-            if(rptzon){
-                pen.setColor(QColor(42,221,156));//过零率数值：碧绿
-                pen.setWidth(1);
-                painter.setPen(pen);
-                brush.setColor(QColor(42,221,156));//过零率数值：碧绿
-                painter.setBrush(brush);
-                double rptzn=rptztemp.at(index);
-
-                int poiyw=this->height()-2*(double)((double)rptzn*(double)this->height());
-                painter.drawEllipse(QPointF(xw,poiyw),2,2);
-                QString rptzstring=QString::asprintf("%.3f",rptzn);
-                int poixw=xw;
-                if(poixw+rptzstring.size()*font.pointSize()+(double)(0.5*font.pointSize())>width()*0.975){
-                    poixw-=rptzstring.size()*font.pointSize()+(double)(0.5*font.pointSize());
-                }else{
-                    poixw+=(double)(0.5*font.pointSize());
-                }
-                if(poiyw-font.pointSize()<0){
-                    poiyw+=font.pointSize();
-                }
-                brush.setColor(QColor(61,59,79));//标签底色：玄青
-                painter.setBrush(brush);
-                painter.drawRect(poixw,poiyw-0.8*2*font.pointSize(),font.pointSize()*rptzstring.size(),2*font.pointSize());
-                painter.drawText(poixw+0.2*font.pointSize(),poiyw,rptzstring);
-            }
+            painter.drawRect(0.95*width()-font.pointSize()*labelstring.size()*0.75,0.1*height(),font.pointSize()*labelstring.size()*0.75,2*font.pointSize());
+            pen.setWidth(1);
+            pen.setColor(QColor(214,236,240));//标签坐标：月白
+            painter.setPen(pen);
+            painter.drawText(0.95*width()-font.pointSize()*labelstring.size()*0.75+0.2*font.pointSize(),0.1*height()+2*font.pointSize()-0.015*height(),labelstring);
 
         }
     }

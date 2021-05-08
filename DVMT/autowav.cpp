@@ -31,7 +31,7 @@ void AutoWav::resizeEvent(QResizeEvent *event)
 void AutoWav::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.fillRect(0,0,width(),height(),QColor(211,215,207,0));
+    painter.fillRect(0,0,width(),height(),QColor(61,59,79,200));
     painter.fillRect(0.20*width(),0.20*height(),0.6*width(),0.6*height(),QColor(61,59,79));
     QWidget::paintEvent(event);
 }

@@ -18,6 +18,7 @@
 #include "filescaner.h"
 #include "cslget.h"
 #include <QMouseEvent>
+#include <QKeyEvent>
 
 namespace Ui {
 class Center;
@@ -38,6 +39,7 @@ private:
     Project pro;
     Prset *pset=new Prset(this);
     QString propath=QCoreApplication::applicationDirPath()+"/未命名项目.dvmtp";
+    QString mes="Deepvocal Mark Tool "+QString(DVMT_VERSION)+" Build "+QString(__DATE__)+"\nDVMT (C)2020-2021 Wu Chang.All rights reserved.\n声库配布时请注明使用DVMT进行标记.\nAuPlot版本："+QString(AU_VERSION)+"\nAuPlot (C)2020-2021 Wu Chang.All rights reserved.\nQt库版本："+QString(qVersion())+"\nDeepVocal 软件版权归Boxstar所有.\n文泉驿微米黑体使用GPLv3许可协议.";
     bool saved=true;
     void newpro();
     void openpro();
@@ -68,6 +70,7 @@ private:
     double cbmx=0.1,cbmy=0.2;
 protected:
     void resizeEvent(QResizeEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 private slots:
     void onmenuclicked();
     void onmenukey(int id);
@@ -90,6 +93,7 @@ private slots:
     void oncgetappend(CVVCSymbol one,bool finished=false);
     void onawclicked();
     void oncbmrp(QPoint pos);
+    void onmtphasemouseplace(int x,int y,int gx,int gy);
 };
 
 #endif // CENTER_H

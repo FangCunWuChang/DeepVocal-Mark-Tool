@@ -16,16 +16,16 @@ CBM::~CBM()
 void CBM::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    ui->sname->resize(width(),0.2*height());
+    ui->sname->resize(width(),0.3*height());
     ui->sname->move(0,0);
-    ui->lhb->resize(0.5*width(),0.4*height());
-    ui->lhb->move(0,0.2*height());
-    ui->aw->resize(0.5*width(),0.4*height());
-    ui->aw->move(0.5*width(),0.2*height());
-    ui->menu->resize(0.5*width(),0.4*height());
-    ui->menu->move(0,0.6*height());
-    ui->sea->resize(0.5*width(),0.4*height());
-    ui->sea->move(0.5*width(),0.6*height());
+    ui->lhb->resize(0.5*width(),0.35*height());
+    ui->lhb->move(0,0.3*height());
+    ui->aw->resize(0.5*width(),0.35*height());
+    ui->aw->move(0.5*width(),0.3*height());
+    ui->menu->resize(0.5*width(),0.35*height());
+    ui->menu->move(0,0.65*height());
+    ui->sea->resize(0.5*width(),0.35*height());
+    ui->sea->move(0.5*width(),0.65*height());
     repaint();
 }
 
@@ -129,6 +129,48 @@ void CBM::mouseReleaseEvent(QMouseEvent *event)
 void CBM::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event);
+    if(m_bDrag)
+    {
+        m_bDrag=false;
+    }
+}
+
+void CBM::outclick(int x,int y)
+{
+    m_bDrag=true;
+    mouseStartPoint=QPoint(x,y);
+    windowTopLeftPoint=this->frameGeometry().topLeft();
+}
+
+void CBM::outmove(int x,int y)
+{
+    if(m_bDrag)
+    {
+        QPoint distance=QPoint(x,y)-mouseStartPoint;
+        QPoint pos=windowTopLeftPoint+distance;
+        pos.setX(qBound(0,pos.x(),parentWidget()->width()-width()));
+        pos.setY(qBound(0,pos.y(),parentWidget()->height()-height()));
+        this->move(pos);
+        emit rp(pos);
+    }
+}
+
+void CBM::outrelease(int x,int y)
+{
+    if(m_bDrag)
+    {
+        QPoint distance=QPoint(x,y)-mouseStartPoint;
+        QPoint pos=windowTopLeftPoint+distance;
+        pos.setX(qBound(0,pos.x(),parentWidget()->width()-width()));
+        pos.setY(qBound(0,pos.y(),parentWidget()->height()-height()));
+        this->move(pos);
+        emit rp(pos);
+        m_bDrag=false;
+    }
+}
+
+void CBM::outleave()
+{
     if(m_bDrag)
     {
         m_bDrag=false;

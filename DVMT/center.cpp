@@ -26,6 +26,10 @@ Center::Center(QWidget *parent) :
     connect(ui->cbm,&CBM::lhbclicked,this,&Center::onlhbclicked);
     connect(ui->cbm,&CBM::seaclicked,this,&Center::onseaclicked);
     connect(ui->cbm,&CBM::rp,this,&Center::oncbmrp);
+    connect(ui->mt,&Menu::phasemouseplace,this,&Center::onmtphasemouseplace);
+    connect(ui->mt,&Menu::phasemouserel,ui->cbm,&CBM::outrelease);
+    connect(ui->mt,&Menu::phasemousemov,ui->cbm,&CBM::outmove);
+    connect(ui->mt,&Menu::phaselea,ui->cbm,&CBM::outleave);
 
     this->setMouseTracking(true);
     effect->setSource(QUrl::fromLocalFile(":/sounds/save.wav"));
@@ -68,6 +72,15 @@ void Center::onmenuclicked()
     ui->sear->hide();
     ui->egg->hide();
     ui->aww->hide();
+    int px=ui->cbm->geometry().x()-0.1*width();
+    int py=ui->cbm->geometry().y()+0.65*ui->cbm->height();
+    if(px<0){
+        px=ui->cbm->geometry().x()+0.5*ui->cbm->width();
+    }
+    if(py+0.2*height()>height()){
+        py=ui->cbm->geometry().y()+ui->cbm->height()-0.2*height();
+    }
+    ui->mt->setplace(px,py);
     ui->mt->show();
 }
 
@@ -93,7 +106,6 @@ void Center::onmenukey(int id)
         break;
     case 6:
     {
-        QString mes="Deepvocal Mark Tool "+QString(DVMT_VERSION)+" Build "+QString(__DATE__)+"\nDVMT (C)2020-2021 Wu Chang.All rights reserved.\n声库配布时请注明使用DVMT进行标记.\nAuPlot版本："+QString(AU_VERSION)+"\nAuPlot (C)2020-2021 Wu Chang.All rights reserved.\nQt库版本："+QString(qVersion())+"\nDeepVocal 软件版权归Boxstar所有.\n文泉驿微米黑体使用GPLv3许可协议.";
         QMessageBox::information(this,"关于DVMT",mes);
         break;
     }
@@ -585,7 +597,7 @@ void Center::resize()
         ui->plot->resize(0.8*width(),height());
         ui->list->move(0,0);
         ui->plot->move(0.2*width(),0);
-        ui->cbm->resize(qMin(0.15*width(),0.15*height()),qMin(0.15*width(),0.15*height()));
+        ui->cbm->resize(qMin(0.15*width(),0.15*height()),qMin(0.15*width(),0.15*height())*0.8);
         ui->cbm->move(width()*cbmx,height()*cbmy);
         ui->cbm->raise();
         ui->mt->resize(width(),height());
@@ -609,7 +621,7 @@ void Center::resize()
         ui->list->move(0,0);
         ui->plot->move(0,0);
         ui->plot->raise();
-        ui->cbm->resize(qMin(0.15*width(),0.15*height()),qMin(0.15*width(),0.15*height()));
+        ui->cbm->resize(qMin(0.15*width(),0.15*height()),qMin(0.15*width(),0.15*height())*0.8);
         ui->cbm->move(width()*cbmx,height()*cbmy);
         ui->cbm->raise();
         ui->mt->resize(width(),height());
@@ -860,4 +872,52 @@ void Center::oncbmrp(QPoint pos)
 {
     cbmx=(double)((double)pos.x()/(double)width());
     cbmy=(double)((double)pos.y()/(double)height());
+    int px=ui->cbm->geometry().x()-0.1*width();
+    int py=ui->cbm->geometry().y()+0.65*ui->cbm->height();
+    if(px<0){
+        px=ui->cbm->geometry().x()+0.5*ui->cbm->width();
+    }
+    if(py+0.2*height()>height()){
+        py=ui->cbm->geometry().y()+ui->cbm->height()-0.2*height();
+    }
+    ui->mt->setplace(px,py);
+}
+
+void Center::onmtphasemouseplace(int x,int y,int gx,int gy)
+{
+    if(x>=ui->cbm->geometry().x()&&x<=ui->cbm->geometry().x()+ui->cbm->width()&&y>=ui->cbm->geometry().y()&&y<=ui->cbm->geometry().y()+ui->cbm->height()){
+        ui->cbm->outclick(gx,gy);
+    }
+}
+
+void Center::keyPressEvent(QKeyEvent *event)
+{
+    if(ui->mt->isHidden()){
+        if(event->modifiers()==Qt::CTRL){
+            switch (event->key()) {
+            case Qt::Key_N:
+                newpro();
+                break;
+            case Qt::Key_O:
+                openpro();
+                break;
+            case Qt::Key_S:
+                savepro();
+                break;
+            case Qt::Key_R:
+                ow->setps(paths,filelist);
+                ow->exec();
+                break;
+            case Qt::Key_A:
+                QMessageBox::information(this,"关于DVMT",mes);
+                break;
+            default:
+                break;
+            }
+        }
+        if(event->key()==Qt::Key_F2){
+            pset->setproject(pro);
+            pset->exec();
+        }
+    }
 }

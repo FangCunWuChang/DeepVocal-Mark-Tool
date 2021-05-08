@@ -22,6 +22,8 @@ public:
     void setmenuenabled(bool ok);
     void setseaenabled(bool ok);
     void setawenabled(bool ok);
+    void outclick(int x,int y);
+
 
 protected:
     void resizeEvent(QResizeEvent *event);
@@ -46,6 +48,10 @@ private slots:
     void on_aw_clicked();
     void on_sea_clicked();
     void on_menu_clicked();
+public slots:
+    void outmove(int x,int y);
+    void outrelease(int x,int y);
+    void outleave();
 };
 
 #endif // CBM_H

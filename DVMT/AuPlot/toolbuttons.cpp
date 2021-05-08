@@ -39,6 +39,7 @@ ToolButtons::ToolButtons(QWidget *parent) :
     ui->b10->move(ui->b10->geometry().x(),height()*0.1);
     ui->b11->move(ui->b11->geometry().x(),height()*0.1);
     ui->b12->move(ui->b12->geometry().x(),height()*0.1);
+    ui->b6->setShortcut(QKeySequence("Alt+X"));
 }
 
 ToolButtons::~ToolButtons()
@@ -74,6 +75,7 @@ void ToolButtons::on_b6_clicked(bool checked)
     }else{
         ui->b6->setText("播放");
     }
+    ui->b6->setShortcut(QKeySequence("Alt+X"));
     emit plotplay(checked);
 }
 
@@ -88,12 +90,14 @@ void ToolButtons::setplay(bool play)
             ui->b6->setText("播放");
         }
     }
+    ui->b6->setShortcut(QKeySequence("Alt+X"));
 
 }
 
 void ToolButtons::setcanplay(bool can)
 {
     ui->b6->setEnabled(can);
+    ui->b6->setShortcut(QKeySequence("Alt+X"));
 }
 
 void ToolButtons::resizeEvent(QResizeEvent *event)

@@ -72,7 +72,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>短时能量</string>
+      <string>短时能量(E)</string>
      </property>
      <property name="shortcut">
       <string>Alt+E</string>
@@ -128,7 +128,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>短时过零率</string>
+      <string>短时过零率(P)</string>
      </property>
      <property name="shortcut">
       <string>Alt+P</string>
@@ -184,7 +184,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>重新分析</string>
+      <string>重新分析(R)</string>
      </property>
      <property name="shortcut">
       <string>Alt+R</string>
@@ -237,7 +237,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>清空缓存</string>
+      <string>清空缓存(C)</string>
      </property>
      <property name="shortcut">
       <string>Alt+C</string>
@@ -293,7 +293,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>播放</string>
+      <string>播放(X)</string>
      </property>
      <property name="shortcut">
       <string>Alt+X</string>
@@ -352,7 +352,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>自动切换</string>
+      <string>自动切换(A)</string>
      </property>
      <property name="shortcut">
       <string>Alt+A</string>
@@ -411,7 +411,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>一线</string>
+      <string>一线(1)</string>
      </property>
      <property name="shortcut">
       <string>1</string>
@@ -470,7 +470,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>二线</string>
+      <string>二线(2)</string>
      </property>
      <property name="shortcut">
       <string>2</string>
@@ -529,7 +529,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>三线</string>
+      <string>三线(3)</string>
      </property>
      <property name="shortcut">
       <string>3</string>
@@ -588,7 +588,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>四线</string>
+      <string>四线(4)</string>
      </property>
      <property name="shortcut">
       <string>4</string>
@@ -647,7 +647,7 @@ QPushButton:pressed{
 }</string>
      </property>
      <property name="text">
-      <string>保存</string>
+      <string>保存(S)</string>
      </property>
      <property name="shortcut">
       <string>Alt+S</string>

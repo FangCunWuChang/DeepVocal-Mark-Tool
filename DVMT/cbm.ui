@@ -85,7 +85,7 @@ QPushButton:pressed{
 }</string>
    </property>
    <property name="text">
-    <string>菜单</string>
+    <string>菜单(M)</string>
    </property>
    <property name="shortcut">
     <string>Alt+M</string>
@@ -124,7 +124,7 @@ QPushButton:pressed{
 }</string>
    </property>
    <property name="text">
-    <string>预测</string>
+    <string>预测(Z)</string>
    </property>
    <property name="shortcut">
     <string>Alt+Z</string>
