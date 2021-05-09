@@ -26,6 +26,13 @@ void CBM::resizeEvent(QResizeEvent *event)
     ui->menu->move(0,0.65*height());
     ui->sea->resize(0.5*width(),0.35*height());
     ui->sea->move(0.5*width(),0.65*height());
+    QFont font;
+    font.setPixelSize(0.15*height());
+    ui->sname->setFont(font);
+    ui->lhb->setFont(font);
+    ui->aw->setFont(font);
+    ui->menu->setFont(font);
+    ui->sea->setFont(font);
     repaint();
 }
 

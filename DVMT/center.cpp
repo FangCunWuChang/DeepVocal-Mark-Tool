@@ -500,8 +500,11 @@ void Center::onausaved(double l1,double l2,double l3,double l4)
         }else{
             brush.setColor(QColor(255,255,0,70));
         }
+        QFont font;
+        font.setPixelSize(ui->list->height()*0.02);
         ui->list->item(cr)->setBackground(brush);
         ui->list->item(cr)->setSizeHint(QSize(ui->list->width()*0.9,ui->list->height()*0.025));
+        ui->list->item(cr)->setFont(font);
         if(autoed){
             if(cr<ui->list->count()-1){
                 ui->list->setCurrentRow(cr+1);
@@ -603,6 +606,15 @@ void Center::resize()
         ui->mt->resize(width(),height());
         ui->mt->move(0,0);
         ui->mt->raise();
+        int px=ui->cbm->geometry().x()-0.1*width();
+        int py=ui->cbm->geometry().y()+0.65*ui->cbm->height();
+        if(px<0){
+            px=ui->cbm->geometry().x()+0.5*ui->cbm->width();
+        }
+        if(py+0.2*height()>height()){
+            py=ui->cbm->geometry().y()+ui->cbm->height()-0.2*height();
+        }
+        ui->mt->setplace(px,py);
         ui->sear->resize(width(),height());
         ui->sear->move(0,0);
         ui->sear->raise();
@@ -612,8 +624,11 @@ void Center::resize()
         ui->aww->resize(width(),height());
         ui->aww->move(0,0);
         ui->aww->raise();
+        QFont font;
+        font.setPixelSize(ui->list->height()*0.02);
         for(int i=0;i<ui->list->count();i++){
             ui->list->item(i)->setSizeHint(QSize(ui->list->width()*0.9,ui->list->height()*0.025));
+            ui->list->item(i)->setFont(font);
         }
     }else{
         ui->list->resize(0.2*width(),height());
@@ -627,6 +642,15 @@ void Center::resize()
         ui->mt->resize(width(),height());
         ui->mt->move(0,0);
         ui->mt->raise();
+        int px=ui->cbm->geometry().x()-0.1*width();
+        int py=ui->cbm->geometry().y()+0.65*ui->cbm->height();
+        if(px<0){
+            px=ui->cbm->geometry().x()+0.5*ui->cbm->width();
+        }
+        if(py+0.2*height()>height()){
+            py=ui->cbm->geometry().y()+ui->cbm->height()-0.2*height();
+        }
+        ui->mt->setplace(px,py);
         ui->sear->resize(width(),height());
         ui->sear->move(0,0);
         ui->sear->raise();
@@ -636,8 +660,11 @@ void Center::resize()
         ui->aww->resize(width(),height());
         ui->aww->move(0,0);
         ui->aww->raise();
+        QFont font;
+        font.setPixelSize(ui->list->height()*0.02);
         for(int i=0;i<ui->list->count();i++){
             ui->list->item(i)->setSizeHint(QSize(ui->list->width()*0.9,ui->list->height()*0.025));
+            ui->list->item(i)->setFont(font);
         }
     }
 }
@@ -840,8 +867,11 @@ void Center::oncgetappend(CVVCSymbol one,bool finished)
     }else{
         brush.setColor(QColor(255,255,0,70));
     }
+    QFont font;
+    font.setPixelSize(ui->list->height()*0.02);
     ui->list->item(ui->list->count()-1)->setBackground(brush);
     ui->list->item(ui->list->count()-1)->setSizeHint(QSize(ui->list->width()*0.9,ui->list->height()*0.025));
+    ui->list->item(ui->list->count()-1)->setFont(font);
     if(CSL.size()==1){
         ui->list->setCurrentRow(0);
     }

@@ -17,6 +17,9 @@ void LockDialog::resizeEvent(QResizeEvent *event)
 {
     ui->label->resize(width(),height());
     ui->label->move(0,0);
+    QFont font;
+    font.setPixelSize(0.03*height());
+    ui->label->setFont(font);
     QWidget::resizeEvent(event);
 }
 

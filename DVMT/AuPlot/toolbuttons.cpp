@@ -135,6 +135,19 @@ void ToolButtons::resizeEvent(QResizeEvent *event)
     ui->b10->move(ui->b10->geometry().x(),height()*0.1);
     ui->b11->move(ui->b11->geometry().x(),height()*0.1);
     ui->b12->move(ui->b12->geometry().x(),height()*0.1);
+    QFont font;
+    font.setPixelSize(height()*0.4);
+    ui->b1->setFont(font);
+    ui->b2->setFont(font);
+    ui->b4->setFont(font);
+    ui->b5->setFont(font);
+    ui->b6->setFont(font);
+    ui->b7->setFont(font);
+    ui->b8->setFont(font);
+    ui->b9->setFont(font);
+    ui->b10->setFont(font);
+    ui->b11->setFont(font);
+    ui->b12->setFont(font);
     QWidget::resizeEvent(event);
 }
 

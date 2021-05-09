@@ -1,7 +1,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#define AU_VERSION "3.3.0-alpha"
+#define AU_VERSION "3.3.1-alpha"
 
 class global_sets{
 public:

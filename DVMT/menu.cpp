@@ -33,6 +33,14 @@ void Menu::resizeNow()
     ui->sets->move(x,y+3*0.2*height()/6);
     ui->read->move(x,y+4*0.2*height()/6);
     ui->about->move(x,y+5*0.2*height()/6);
+    QFont font;
+    font.setPixelSize(0.1*height()/6);
+    ui->newp->setFont(font);
+    ui->open->setFont(font);
+    ui->save->setFont(font);
+    ui->sets->setFont(font);
+    ui->read->setFont(font);
+    ui->about->setFont(font);
     repaint();
 }
 

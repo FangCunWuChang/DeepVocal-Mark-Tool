@@ -21,8 +21,11 @@ void AutoWav::resizeEvent(QResizeEvent *event)
     ui->name->move(0.20*width()+0.05*0.60*width(),0.2*height()+(0.033333)*0.60*height());
     ui->olist->move(0.20*width()+0.05*0.60*width(),0.2*height()+(0.033333)*3*0.60*height()+0.1*0.60*height());
 
+    QFont font;
+    font.setPixelSize(ui->olist->height()*0.05);
     for(int i=0;i<ui->olist->count();i++){
         ui->olist->item(i)->setSizeHint(QSize(ui->olist->width()*0.9,ui->olist->height()*0.1));
+        ui->olist->item(i)->setFont(font);
     }
     repaint();
     QWidget::resizeEvent(event);
