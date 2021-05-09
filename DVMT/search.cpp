@@ -21,8 +21,11 @@ void Search::resizeEvent(QResizeEvent *event)
     ui->line->move(0.20*width()+0.05*0.60*width(),0.2*height()+(0.033333)*0.60*height());
     ui->slist->move(0.20*width()+0.05*0.60*width(),0.2*height()+(0.033333)*3*0.60*height()+0.1*0.60*height());
     ui->push->move(0.20*width()+0.05*0.60*width(),0.2*height()+(0.033333)*0.60*height()+0.1*0.60*height());
+    QFont font;
+    font.setPixelSize(ui->slist->height()*0.05);
     for(int i=0;i<ui->slist->count();i++){
         ui->slist->item(i)->setSizeHint(QSize(ui->slist->width()*0.9,ui->slist->height()*0.1));
+        ui->slist->item(i)->setFont(font);
     }
     repaint();
     QWidget::resizeEvent(event);
