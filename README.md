@@ -42,3 +42,29 @@ sudo yum install mesa-libGLU-devel
 ### MacOS
 
 下载[最新的release版本](https://github.com/FangCunWuChang/DeepVocal-Mark-Tool/releases/latest "最新的release版本")中的dmg镜像并双击挂载后即可在dvmt中运行。MacOS版本的DVMT无需安装。
+
+## 卸载
+### Windows
+
+双击运行安装目录下的`unins000.exe`或在设置->应用->应用和功能或控制面板->程序->卸载程序中卸载。
+
+### Linux
+##### Debian系系统
+
+在终端中执行：
+```bash
+sudo dpkg -r dvmt
+```
+进行卸载。
+
+##### RedHat系系统
+
+在终端中执行：
+```bash
+sudo yum remove dvmt
+```
+进行卸载。
+
+### MacOS
+
+MacOS系统无需卸载，推出dmg挂载的磁盘后删除文件即可。
