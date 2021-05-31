@@ -3,7 +3,7 @@ A convenient third party tool for editing the symbols of DeepVocal voice databas
 一个便捷的第三方DeepVocal声库原音设定工具
 ![image](https://user-images.githubusercontent.com/40859406/119842800-9348e080-bf39-11eb-8236-e71dac48f686.png)
 
-## 安装
+## 下载与安装
 ### Windows
 
 下载[最新的release版本](https://github.com/FangCunWuChang/DeepVocal-Mark-Tool/releases/latest "最新的release版本")中的exe安装程序并安装即可。
