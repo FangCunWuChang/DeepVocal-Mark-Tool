@@ -32,6 +32,11 @@ void PluginDialog::on_repair_clicked()
             return;
         }
 
+        QFile file(path+"/voice.dvcfg");
+        if(!file.copy(path+"/voice.dvcfg.old")){
+            QMessageBox::warning(this,"出错","未能备份dvcfg文件");
+            return;
+        }
         for(int i=0;i<symbollist.size();i++){
             DVSym sym=symbollist.at(i);
             if(sym.srcType=="VX"||sym.srcType=="INDIE"){
