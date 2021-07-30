@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FM</class>
+ <widget class="QDialog" name="FM">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>729</width>
+    <height>524</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>标记管理（实验功能）</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="src.qrc">
+    <normaloff>:/imag/icon.png</normaloff>:/imag/icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QToolTip{
+
+background-color:rgb(31,31,31);
+color: rgb(211, 215, 207);
+border:1px solid rgb(31,31,31);
+}
+
+
+
+QWidget{
+background-color: rgb(31,31,31);
+	color: rgb(238, 238, 236);
+}
+QScrollBar:vertical {
+        border: 1px solid grey;
+        background-color:rgb(194,204,208);
+        width: 20px;
+        margin: 0px 0 0px 0;
+    }
+    QScrollBar::handle:vertical {
+        border: 	1px solid grey;
+        border-radius: 7px;
+        background-color: rgb(31,31,31);
+        min-height: 60px;
+        margin: 0px 0px 0px 0px;
+    }
+    QScrollBar::add-line:vertical {
+        border: none;
+        background: rgb(31,31,31);
+        height: 0px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::sub-line:vertical {
+        border: none;
+background: rgb(31,31,31);
+        height: 0px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::add-page:vertical {
+        background-color: rgb(194,204,208);
+    }
+    QScrollBar::sub-page:vertical {
+        background-color:rgb(194,204,208);
+    }
+QScrollBar:vertical:disabled{
+        border: 1px solid rgb(238, 238, 236);
+        background-color:rgb(186, 189, 182);
+        width: 20px;
+        margin: 0px 0 0px 0;
+    }
+    QScrollBar::handle:vertical:disabled{
+        border: 	1px solid rgb(238, 238, 236);
+        border-radius: 7px;
+        background-color:rgb(186, 189, 182);
+        min-height: 60px;
+        margin: 0px 0px 0px 0px;
+    }
+    QScrollBar::add-line:vertical:disabled{
+        border: none;
+        background: rgb(31,31,31);
+        height: 0px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::sub-line:vertical:disabled{
+        border: none;
+background: rgb(31,31,31);
+        height: 0px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::add-page:vertical:disabled{
+        background-color:rgb(186, 189, 182);
+    }
+    QScrollBar::sub-page:vertical:disabled {
+        background-color:rgb(186, 189, 182);
+    }</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QListWidget" name="pitl">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+QListWidget{
+background-color: rgb(31,31,31);
+color: rgb(211, 215, 207);
+border:1px solid grey;
+}
+
+QListWidget::disabled{
+background-color: rgb(194,204,208);
+color: rgb(211, 215, 207);
+border:1px solid grey;
+}
+
+    
+</string>
+     </property>
+     <property name="layoutMode">
+      <enum>QListView::SinglePass</enum>
+     </property>
+     <property name="modelColumn">
+      <number>0</number>
+     </property>
+     <property name="currentRow">
+      <number>48</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>C0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C#9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D#9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F#99</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>G#9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A#9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B9</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>音阶信息</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>音阶：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="pit">
+        <property name="text">
+         <string>C4</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>总标记数：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="all">
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>CV标记数：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="cvm">
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>VX标记数：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="vxm">
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>INDIE标记数：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="indiem">
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QPushButton" name="clem">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>清除标记</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" colspan="2">
+       <widget class="QPushButton" name="copm">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>复制音阶至（漏洞功能，请谨慎使用）</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" colspan="2">
+       <widget class="QPushButton" name="edim">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>编辑标记</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
+ <connections/>
+</ui>
