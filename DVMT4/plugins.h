@@ -15,7 +15,7 @@ namespace Ui {
 class Plugins;
 }
 
-typedef QString(*pluiF)();
+typedef QString*(*pluiF)();
 typedef PluginDialog*(*pluoF)(QWidget*,Project*);
 
 class Plugins : public QDialog

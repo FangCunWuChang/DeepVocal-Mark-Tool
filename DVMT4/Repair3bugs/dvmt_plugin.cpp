@@ -3,8 +3,8 @@
 QString* DVMT_PluInfo2()
 {
     QJsonObject Infojson;
-    Infojson.insert("Plugin Name","Export Symbol List");
-    Infojson.insert("Plugin Info","导出项目文件中的Symbol List");
+    Infojson.insert("Plugin Name","Repair3bugs");
+    Infojson.insert("Plugin Info","修复DVMT3生成的dvcfg中的bug");
     Infojson.insert("Plugin Version",4.0);
     QJsonDocument jsondoc(Infojson);
     QString* out=new QString(jsondoc.toJson(QJsonDocument::Compact));
