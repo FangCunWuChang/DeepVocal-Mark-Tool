@@ -1,17 +1,15 @@
-[TOC]
-
 # DeepVocal-Mark-Tool
 A convenient third party tool for editing the symbols of DeepVocal voice database in the process of making the database
 一个便捷的第三方DeepVocal声库原音设定工具
 ![image](https://user-images.githubusercontent.com/40859406/119842800-9348e080-bf39-11eb-8236-e71dac48f686.png)
 
-DVMT (C)2020-2021 Wu Chang.All rights reserved.
-UI设计：[Oxygen Dioxide](https://github.com/oxygen-dioxide "Oxygen Dioxide")
-DVMT使用GPLv3许可协议.
-声库配布时请注明使用DVMT进行标记.
-AuPlot (C)2020-2021 Wu Chang.All rights reserved.
-DeepVocal 软件版权归Boxstar所有.
-文泉驿微米黑体使用GPLv3许可协议.
+## 更新内容
+### 4.0版本
+
+- 将字典注释符由#改为*
+- 修复VX与INDIE标记EP线不准确问题
+- 更新插件系统，新版插件可以读写项目数据
+##### 4.0版本目前只有Windows Release版本
 
 ## 下载与安装
 ### Windows
@@ -78,7 +76,3 @@ sudo yum remove dvmt
 ### MacOS
 
 MacOS系统无需卸载，推出dmg挂载的磁盘后删除文件即可。
-
-## 相关链接
-[DeepVocal官方网站](https://www.deep-vocal.com/#/ "DeepVocal官方网站")
-[Oxygen Dioxide的Github主页](https://github.com/oxygen-dioxide "Oxygen Dioxide的Github主页")
