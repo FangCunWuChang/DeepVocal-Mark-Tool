@@ -1,4 +1,4 @@
-#Symbol List
+*Symbol List
 a,a,a
 ai,ai,ai
 an,an,an
@@ -405,7 +405,7 @@ zun,z,en
 zuo,z,o
 tei,t,ei
 sei,s,ei
-#Independent Symbol List
+*Independent Symbol List
 bre
 bre2
 bre3
@@ -418,7 +418,7 @@ bre9
 bre10
 bre11
 bre12
-#Tail Symbol List
+*Tail Symbol List
 %B
 %L
 %R
